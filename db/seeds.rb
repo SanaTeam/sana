@@ -29,7 +29,7 @@ end
 # content:string to:integer from:integer
 15.times do 
     message_cont = Faker::Quotes::Chiquito.term
-    Message.create(content: message_cont, to: User.all.sample.id, from: User.all.sample.id)
+    Message.create(content: message_cont, to: User.all.sample.id, user_id: User.all.sample.id)
 end 
 
 # Profile model fields 
