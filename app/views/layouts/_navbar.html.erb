@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to("#", class: "navbar-brand") do %>
+    <%= fa_icon "users", text: "Sana" %>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sana" aria-controls="navbar-sana" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-sana">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to(posts_path, class: "nav-link") do %>
+          <%= fa_icon "comments", text: "Forum" %> 
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to(match_path, class: "nav-link") do %>
+          <%= fa_icon "handshake-o", text: "Match" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>

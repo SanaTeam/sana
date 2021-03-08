@@ -1,6 +1,6 @@
 <h1>Posts</h1>
 
-<table>
+<table class="table">
     <thead>
         <tr>
         <th>Content</th>
@@ -13,7 +13,7 @@
         <% @posts.each do |post| %>
         <tr>
             <td><%= post.content %></td>
-            <td><%= post.date %></td>
+            <td><%= to_datetime_string(post.date) %></td>
             <td><%= link_to 'Show', post %></td>
         </tr>
         <% end %>
