@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :users
 
   root "posts#index"
+  post "/posts/new", to: "posts#create"
   get "/match", to: "posts#match"
 end

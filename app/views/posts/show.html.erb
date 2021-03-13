@@ -1,11 +1,14 @@
 <div class="card">
-  <h5 class="card-header"><%= @post.content %></h5>
+  <h5 class="card-header"><%= @post.title %></h5>
   <div class="card-body">
+    <%= @post.content %>
     <% if !@post.is_anonymous %>
-      <h5 class="card-title">Posted by <%= @user.first_name + " " + @user.last_name%> on <%= to_datetime_string(@post.date)%></h5>
+      <h5 class="card-title">Posted by <%= @user.first_name + " " + @user.last_name%> on <%= to_datetime_string(@post.created_at)%></h5>
     <% else %>
-      <h5 class="card-title">Anonymously posted on <%= to_datetime_string(@post.date)%></h5>
+      <h5 class="card-title">Anonymously posted on <%= to_datetime_string(@post.created_at)%></h5>
     <% end %>
-    <a href="/posts" class="btn btn-primary">Back to Posts</a>
+    <%= render "/layouts/operations", edit_route: edit_post_path(@post), destroy_route: @post %>
+    <br>
+    <a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>
   </div>
 </div>

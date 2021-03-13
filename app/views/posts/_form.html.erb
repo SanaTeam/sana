@@ -1,0 +1,15 @@
+<%= form_with model: @post do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <br>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+    <br>
+    <%= form.label :pinned %>
+    <%= form.check_box :pinned %>
+    <br>
+    <%= form.label :is_anonymous %>
+    <%= form.check_box :is_anonymous %>
+    <br>
+    <%= form.submit %>
+<% end %>

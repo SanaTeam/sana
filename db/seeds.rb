@@ -1,4 +1,3 @@
-
 User.delete_all
 Organization.delete_all
 Post.delete_all
@@ -41,13 +40,13 @@ end
 end 
 
 # Post model fields
-# content:string user_id:integer pinned:boolean is_anonymous:boolean date:datetime
+# title:string content:string user_id:integer pinned:boolean is_anonymous:boolean
 15.times do 
+    post_title = Faker::GreekPhilosophers.name
     post_content = Faker::GreekPhilosophers.quote
     post_pinned = Faker::Boolean.boolean
     post_anon = Faker::Boolean.boolean
-    post_date = Faker::Date.between(from: '2019-09-23', to: '2021-03-02')
-    Post.create(content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon, date: post_date)
+    Post.create(title: post_title, content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon)
 end 
 
 
