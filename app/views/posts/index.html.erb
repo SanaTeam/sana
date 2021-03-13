@@ -1,20 +1,28 @@
-<h1>Posts</h1>
+<h1 class="d-inline">Posts</h1>
+<%= link_to("/posts/new", class: "ml-2 d-inline") do %>
+    <%= fa_icon "plus", text: "Create" %>
+<% end %>
 
 <table class="table">
     <thead>
         <tr>
-        <th>Content</th>
+        <th>Title</th>
         <th>Date</th>
-        <th colspan="2"></th>
+        <th></th>
         </tr>
     </thead>
 
     <tbody>
         <% @posts.each do |post| %>
         <tr>
-            <td><%= post.content %></td>
-            <td><%= to_datetime_string(post.date) %></td>
-            <td><%= link_to 'Show', post %></td>
+            <td><%= post.title %></td>
+            <td><%= to_datetime_string(post.created_at) %></td>
+            <td>
+                <%= link_to(post) do %>
+                    <%= fa_icon "info-circle", text: "Show" %>
+                <% end %>
+                <%= render "/layouts/operations", edit_route: edit_post_path(post), destroy_route: post %>
+            </td>
         </tr>
         <% end %>
     </tbody>
