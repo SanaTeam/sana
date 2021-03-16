@@ -18,14 +18,22 @@
         <% end %>
       </li>
       <% if logged_in? %>
-      <ul class="nav navbar-right ">
-        <li><%= link_to "Log out", session_path(session), class: "mx-2", method: :delete %></li> 
-      </ul>
-      <% else %>
-      <ul class="nav navbar-right ">
-        <li><%= link_to "Log in", new_session_path, class: "mx-2" %></li> 
-        <li><%= link_to "Sign up", new_user_path, class: "mx-2" %></li>
-      </ul>
+        <li class="nav-item">
+          <%= link_to(session_path(session), class: "nav-link", method: :delete) do %>
+            <%= fa_icon "user-times", text: "Log out" %>
+          <% end %>
+        </li>
+      <% else %> 
+        <li class="nav-item">
+          <%= link_to(new_session_path, class: "nav-link") do %>
+            <%= fa_icon "user", text: "Log in" %>
+          <% end %>    
+        </li>
+        <li class="nav-item">
+          <%= link_to(new_user_path, class: "nav-link") do %>
+            <%= fa_icon "user-plus", text: "Sign up" %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
