@@ -17,6 +17,17 @@
           <%= fa_icon "handshake-o", text: "Match" %>
         <% end %>
       </li>
+      <% if logged_in? %>
+      <ul class="nav navbar-right ">
+        <li><%= link_to "Log out", session_path(session), class: "mx-2", method: :delete %></li> 
+      </ul>
+      <% else %>
+      <ul class="nav navbar-right ">
+        <li><%= link_to "Log in", new_session_path, class: "mx-2" %></li> 
+        <li><%= link_to "Sign up", new_user_path, class: "mx-2" %></li>
+      </ul>
+      <% end %>
     </ul>
   </div>
+  
 </nav>

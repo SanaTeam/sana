@@ -1,0 +1,18 @@
+<%= form_with model: @user, local: true do |form| %>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, class: 'mb-1 form-control' %>
+
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, class: 'mb-1 form-control' %>
+
+    <%= form.label :email %>
+    <%= form.email_field :email, class: 'mb-1 form-control' %>
+
+    <%= form.label :password %>
+    <%= form.password_field :password, class: 'mb-1 form-control' %>
+
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: 'mb-1 form-control' %>
+    
+    <%= form.submit %>
+<% end %>
