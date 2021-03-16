@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyString
-  to: 1
-  from: 1
+  id: 1
+  content: "Her daily goal was to improve on yesterday."
+  to: 2
+  user_id: 1
 
 two:
-  content: MyString
+  id: 2
+  content: "As she walked along the street and looked in the gutter, she realized facemasks had become the new cigarette butts."
   to: 1
-  from: 1
+  user_id: 2

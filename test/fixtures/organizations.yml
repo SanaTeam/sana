@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: "Banana"
   org_type: 1
   accepts_donations: false
-  location: MyString
+  location: "415 South St."
 
 two:
-  name: MyString
+  name: "Pineapple"
   org_type: 1
   accepts_donations: false
-  location: MyString
+  location: "415 South St."
