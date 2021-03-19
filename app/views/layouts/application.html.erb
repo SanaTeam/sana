@@ -9,13 +9,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
   <body>
-    <%= render partial: "/layouts/navbar" %>
-    <div class="container">
+    <%= render partial: "/layouts/header" %>
+    <div class="container mt-3">
       <%= render partial: "/layouts/alert" %>
       <%= yield %>
     </div>
+    <%= render partial: "/layouts/footer" %>
   </body>
 </html>

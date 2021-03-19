@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header">
+    <%= @message.user.first_name%>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%=@message.content %></p>
+      <footer class="blockquote-footer"> <%= to_datetime_string(@message.created_at) %><cite title="Source Title"></cite></footer>
+    </blockquote>
+  </div>
+</div>
