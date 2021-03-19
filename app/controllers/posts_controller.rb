@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :logged_in!, only: [:new, :edit]
+    before_action :logged_in!, only: [:new, :show, :edit, :destroy]
 
     def index
         @posts = Post.all

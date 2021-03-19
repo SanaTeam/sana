@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :messages
+  resources :replies
   resources :profiles
   resources :posts
   resources :organizations
