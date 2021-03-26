@@ -1,6 +1,6 @@
-<%= form_with model: @reply do |reply| %>
+<%= form_with model: @reply do |form| %>
     <%= form.label :content %>
-    <%= form.text_field :title, class: 'mb-1 form-control' %>
+    <%= form.text_field :content, class: 'mb-1 form-control' %>
     <br>
-    <%= form.submit, "Send" class: 'btn btn-primary' %>
+    <%= form.submit "Send", class: 'btn btn-primary' %>
 <% end %>
