@@ -1,18 +1,15 @@
 class PostsController < ApplicationController
+    before_action :logged_in!, only: [:new, :show, :edit, :destroy]
+
     def index
         @posts = Post.all
-    end
-
-    def match
-        flash[:notice] = "Match to be implemented soon!"
-        redirect_to posts_path
     end
 
     def new
     end
 
     def create
-        @post = Post.new(title: params[:title], content: params[:content], user_id: User.all.sample.id, pinned: params[:pinned], is_anonymous: params[:is_anonymous])
+        @post = Post.new(title: params[:title], content: params[:content], user_id: current_user.id, pinned: params[:pinned], is_anonymous: params[:is_anonymous])
         @post.save!
         flash[:notice] = "Your post was created!"
         redirect_to posts_path

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    before_action :logged_in_user, only: [:show]
     def show
         @user = User.find(params[:id])
     end
@@ -15,6 +14,7 @@ class UsersController < ApplicationController
             flash[:notice] = "Your account was created!"
             redirect_to @user
         else
+            flash[:alert] = @user.errors.full_messages.join(", ")
             render 'new'
         end
     end

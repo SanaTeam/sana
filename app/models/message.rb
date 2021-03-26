@@ -1,3 +1,11 @@
 class Message < ApplicationRecord
-    belongs_to :user
+    validates :user_id, presence: true
+    validate :user_in_match?
+    belongs_to :match
+
+    def user_in_match?
+        if !Match.find(self[:match_id]).contains_user?(self[:user_id])
+            errors.add(:user_id, "Invalid user id")
+        end
+    end
 end

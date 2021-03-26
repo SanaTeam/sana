@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
   resources :messages
+  resources :replies
   resources :profiles
   resources :posts
   resources :organizations
   resources :users
   resources :sessions
+  resources :matches
 
   root "welcome#index"
-  post "/posts/new", to: "posts#create"
-  get "/match", to: "posts#match"
-
-  post "/sessions/new", to: "sessions#create"
   get "/home", to: "welcome#index"
-
+  post "/posts/new", to: "posts#create"
+  post "/sessions/new", to: "sessions#create"
+  post "/matches/:id", to: "matches#create"
 end

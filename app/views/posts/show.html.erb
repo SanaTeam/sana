@@ -8,7 +8,10 @@
       <h5 class="card-title">Anonymously posted on <%= to_datetime_string(@post.created_at)%></h5>
     <% end %>
     <%= render "/layouts/operations", edit_route: edit_post_path(@post), destroy_route: @post %>
-    <br>
-    <a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>
   </div>
 </div>
+<% @post.replies.each do |reply| %>
+  <%= render "/layouts/reply", reply: reply %>        
+<% end %>
+
+<a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>

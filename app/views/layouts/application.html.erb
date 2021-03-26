@@ -9,20 +9,20 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
 
   <body>
-    <%= render partial: "/layouts/navbar" %>
-    <% if current_page?(root_url) %>
-      <%= render partial: "/layouts/alert" %>
-      <%= yield %>
-    <% else %>
-      <div class="container">
+      <%= render partial: "/layouts/navbar" %>
+      <% if current_page?(root_url) %>
         <%= render partial: "/layouts/alert" %>
         <%= yield %>
-      </div>
-    <% end %>
-
-    
+      <% else %>
+        <div class="container">
+          <%= render partial: "/layouts/alert" %>
+          <%= yield %>
+        </div>
+      <% end %>
+      <%= render partial: "/layouts/footer" %>
   </body>
 </html>

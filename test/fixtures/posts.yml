@@ -1,15 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  content: MyString
+  id: 1
+  content: "Rock music approaches at high velocity."
   user_id: 1
   pinned: false
   is_anonymous: false
-  date: 2021-03-04 10:47:15
+  title: "Hello, world!"
 
 two:
-  content: MyString
-  user_id: 1
+  id: 2
+  content: "Twin 4-month-olds slept in the shade of the palm tree while the mother tanned in the sun."
+  user_id: 2
   pinned: false
   is_anonymous: false
-  date: 2021-03-04 10:47:15
+  title: "Nice to meet you!"

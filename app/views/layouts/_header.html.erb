@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <%= link_to("#", class: "navbar-brand") do %>
-    <%= fa_icon "users", text: "Sana" %>
+    <%= fa_icon "heartbeat", text: "Sana" %>
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-sana" aria-controls="navbar-sana" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -13,19 +13,27 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to(match_path, class: "nav-link") do %>
+        <%= link_to(matches_path, class: "nav-link") do %>
           <%= fa_icon "handshake-o", text: "Match" %>
         <% end %>
       </li>
       <% if logged_in? %>
-      <ul class="nav navbar-right ">
-        <li><%= link_to "Log out", session_path(session), class: "mx-2", method: :delete %></li> 
-      </ul>
-      <% else %>
-      <ul class="nav navbar-right ">
-        <li><%= link_to "Log in", new_session_path, class: "mx-2" %></li> 
-        <li><%= link_to "Sign up", new_user_path, class: "mx-2" %></li>
-      </ul>
+        <li class="nav-item">
+          <%= link_to(session_path(session), class: "nav-link", method: :delete) do %>
+            <%= fa_icon "user-times", text: "Log out" %>
+          <% end %>
+        </li>
+      <% else %> 
+        <li class="nav-item">
+          <%= link_to(new_session_path, class: "nav-link") do %>
+            <%= fa_icon "user", text: "Log in" %>
+          <% end %>    
+        </li>
+        <li class="nav-item">
+          <%= link_to(new_user_path, class: "nav-link") do %>
+            <%= fa_icon "user-plus", text: "Sign up" %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>

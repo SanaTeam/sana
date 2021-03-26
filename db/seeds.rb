@@ -1,8 +1,8 @@
 User.delete_all
 Organization.delete_all
-Post.delete_all
 Profile.delete_all
-Message.delete_all
+Post.delete_all
+Reply.delete_all
 
 # User model fields
 # first_name:string last_name:string email:string password:string
@@ -24,13 +24,6 @@ end
     Organization.create(name: org_name, org_type: type_org, accepts_donations: org_accepts_don, location: org_location)
 end 
 
-# Message model fields
-# content:string to:integer from:integer
-15.times do 
-    message_cont = Faker::Quotes::Chiquito.term
-    Message.create(content: message_cont, to: User.all.sample.id, user_id: User.all.sample.id)
-end 
-
 # Profile model fields 
 # user_id:integer organization_id:integer description:string is_active:boolean
 15.times do 
@@ -49,5 +42,11 @@ end
     Post.create(title: post_title, content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon)
 end 
 
+# Reply model fields
+# content:string to:integer user_id:integer post_id:integer
+15.times do 
+    reply_cont = Faker::Quotes::Chiquito.term
+    Reply.create(content: reply_cont, to: User.all.sample.id, user_id: User.all.sample.id, post_id: Post.all.sample.id)
+end 
 
 
