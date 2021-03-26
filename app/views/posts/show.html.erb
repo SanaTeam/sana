@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-5">
   <h5 class="card-header"><%= @post.title %></h5>
   <div class="card-body">
     <%= @post.content %>
@@ -10,15 +10,17 @@
     <%= render "/layouts/operations", edit_route: edit_post_path(@post), destroy_route: @post %>
   </div>
 </div>
-<div>
-  <%= link_to("/replies/new", class: "ml-2 d-inline") do %>
-    <%= fa_icon "plus", text: "Reply" %>
-<% end %>
-</div>
+
 <% @post.replies.each do |reply| %>
-  <div class="reply">
-    <%= render "/replies/_form", reply: reply %> 
-  </div>
+  <div class="row" >
+        <div class="card w-50 <%=reply.user_id == current_user.id ? "mr-auto" : "ml-auto" %>">
+            <div class="card-body">
+                <strong><%= User.find(reply.user_id).first_name %></strong>: <%= reply.content %>
+            </div>
+        </div>
+    </div>
+    <br>
 <% end %>
+  <%= render '/replies/form', reply: Reply.new %>
 <br>
 <a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>

@@ -1,8 +1,10 @@
 class RepliesController < ApplicationController
 
     def create
+        @post = Post.find(params[:id])
         @reply = Reply.new(content: params[:content], to: params[:to], user_id: current_user.id, post_id: params[:id])
         @reply.save!
+        redirect_to @post
     end
 
     def destroy
