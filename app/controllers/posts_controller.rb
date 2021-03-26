@@ -5,11 +5,6 @@ class PostsController < ApplicationController
         @posts = Post.all
     end
 
-    def match
-        flash[:notice] = "Match to be implemented soon!"
-        redirect_to posts_path
-    end
-
     def new
     end
 

@@ -14,6 +14,14 @@ module SessionsHelper
         !current_user.nil?
     end
 
+    def logged_in!
+        unless logged_in?
+            store_location
+            flash[:alert] = "Please log in."
+            redirect_to new_session_path
+        end
+    end
+
     def log_out
         session.delete(:user_id)
         @current_user = nil
