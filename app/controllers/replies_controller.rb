@@ -1,7 +1,7 @@
 class RepliesController < ApplicationController
 
     def create
-        @reply = Reply.new(content: params[:content], to: params[:to], user_id: params[:user_id])
+        @reply = Reply.new(content: params[:content], to: params[:to], user_id: current_user.id, post_id: params[:id])
         @reply.save!
     end
 
@@ -9,5 +9,10 @@ class RepliesController < ApplicationController
         @reply = Reply.find(params[:id])
         @reply.destroy!
         flash[:notice] = "Your reply was destroyed!"
+        redirect_to replies_path
     end
+
+    def new
+    end
+
 end

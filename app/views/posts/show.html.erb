@@ -10,8 +10,15 @@
     <%= render "/layouts/operations", edit_route: edit_post_path(@post), destroy_route: @post %>
   </div>
 </div>
-<% @post.replies.each do |reply| %>
-  <%= render "/layouts/reply", reply: reply %>        
+<div>
+  <%= link_to("/replies/new", class: "ml-2 d-inline") do %>
+    <%= fa_icon "plus", text: "Reply" %>
 <% end %>
-
+</div>
+<% @post.replies.each do |reply| %>
+  <div class="reply">
+    <%= render "/replies/_form", reply: reply %> 
+  </div>
+<% end %>
+<br>
 <a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>
