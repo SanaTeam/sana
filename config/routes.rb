@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :replies
   resources :profiles
   resources :posts
@@ -7,7 +8,8 @@ Rails.application.routes.draw do
   resources :sessions
   resources :matches
 
-  root "posts#index"
+  root "welcome#index"
+  get "/home", to: "welcome#index"
   post "/posts/new", to: "posts#create"
   post "/sessions/new", to: "sessions#create"
   post "/matches/:id", to: "matches#create"
