@@ -13,9 +13,16 @@
 
   <body>
     <%= render partial: "/layouts/navbar" %>
-    <div class="container">
+    <% if current_page?(root_url) %>
       <%= render partial: "/layouts/alert" %>
       <%= yield %>
-    </div>
+    <% else %>
+      <div class="container">
+        <%= render partial: "/layouts/alert" %>
+        <%= yield %>
+      </div>
+    <% end %>
+
+    
   </body>
 </html>
