@@ -21,7 +21,7 @@
                 <%= link_to(post) do %>
                     <%= fa_icon "info-circle", text: "Show" %>
                 <% end %>
-                <% if current_user.id == post.user_id %>
+                <% if owns_post?(post) %>
                     <%= render "/layouts/operations", edit_route: edit_post_path(post), destroy_route: post %>
                 <% end %>
             </td>

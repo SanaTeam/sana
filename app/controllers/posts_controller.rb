@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
     def edit
         @post = Post.find(params[:id])
+        owns_post!(@post)
     end
 
     def update
@@ -29,6 +30,7 @@ class PostsController < ApplicationController
 
     def destroy
         @post = Post.find(params[:id])
+        owns_post!(@post)
         @post.destroy!
         flash[:notice] = "Your post was destroyed!"
         redirect_to posts_path
