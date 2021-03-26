@@ -1,0 +1,6 @@
+<%= form_with model: @message do |form| %>
+    <%= form.label :content, "Message" %>
+    <%= form.text_area :content, class: 'mb-1 form-control' %>
+    <br>
+    <%= form.submit class: 'btn btn-primary' %>
+<% end %>

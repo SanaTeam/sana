@@ -1,0 +1,12 @@
+<% @match.messages.each do |message| %>
+    <div class="row">
+        <div class="card w-50 <%=message.user_id == current_user.id ? "mr-auto" : "ml-auto" %>">
+            <div class="card-body">
+                <strong><%= User.find(message.user_id).first_name %></strong>: <%= message.content %>
+            </div>
+        </div>
+    </div>
+    <br>
+<% end %>
+
+<%= render 'form', post: Message.new %>
