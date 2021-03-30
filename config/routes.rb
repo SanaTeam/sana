@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   post "/posts/new", to: "posts#create"
   post "/sessions/new", to: "sessions#create"
-  post "/matches/:id", to: "matches#create"
+  post "/matches/:id", to: "messages#create"
   post "/posts/:id", to: "replies#create"
 end

@@ -9,9 +9,10 @@ class RepliesController < ApplicationController
 
     def destroy
         @reply = Reply.find(params[:id])
+        @post = Post.find(@reply.post_id)
         @reply.destroy!
         flash[:notice] = "Your reply was destroyed!"
-        redirect_to replies_path
+        redirect_to @post
     end
 
     def new

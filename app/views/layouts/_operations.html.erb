@@ -1,6 +1,11 @@
-<%= link_to(edit_route) do %>
-    <%= fa_icon "pencil", text: "Edit" %>
+<% unless edit_route.blank? %>
+    <%= link_to(edit_route) do %>
+        <%= fa_icon "pencil", text: "Edit" %>
+    <% end %>
 <% end %>
-<%= link_to(destroy_route, method: :delete, data: {confirm: "Are you sure that you want to delete this?"}) do %>
-    <%= fa_icon "bomb", text: "Destroy" %>
+
+<% unless destroy_route.blank? %>
+    <%= link_to(destroy_route, method: :delete, data: {confirm: "Are you sure that you want to delete this?"}) do %>
+        <%= fa_icon "bomb", text: "Delete" %>
+    <% end %>
 <% end %>
