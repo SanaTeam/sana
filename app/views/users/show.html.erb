@@ -13,13 +13,16 @@
     </div>
   <% end %>
   <div class="col-md-10 justify-content-center">
-    <h5 class="card-header"><%= @user.email %></h5>
-    <div class="card-body">
-      <h5 class="card-title"><%= @user.first_name + " " + @user.last_name%></h5>
-      <br>
-      <% if @user.id == current_user.id %>
-        <%= render partial: "home" %>
-      <% end %>
+    <div class="card">
+      <h5 class="card-header"><%= @user.email %></h5>
+      <div class="card-body">
+        <h5 class="card-title"><%= @user.first_name + " " + @user.last_name%></h5>
+        <br>
+        <% if @user.id == current_user.id %>
+          <%= render partial: "home" %>
+        <% end %>
+      </div>
     </div>
   </div>
+
 </div>
