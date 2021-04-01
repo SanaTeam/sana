@@ -17,8 +17,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= @user.first_name + " " + @user.last_name%></h5>
       <br>
-      <%= button_to "Create a Post", new_post_path, :method => "get" %>
-      <%= button_to "Register an Organization", "#" %>
+      <%= render partial: "home"%>
     </div>
   </div>
 </div>
