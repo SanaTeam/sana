@@ -17,7 +17,9 @@
     <div class="card-body">
       <h5 class="card-title"><%= @user.first_name + " " + @user.last_name%></h5>
       <br>
-      <%= render partial: "home"%>
+      <% if @user.id == current_user.id %>
+        <%= render partial: "home" %>
+      <% end %>
     </div>
   </div>
 </div>
