@@ -20,18 +20,23 @@
       <% if logged_in? %>
         <li class="nav-item">
           <%= link_to(session_path(session), class: "nav-link", method: :delete) do %>
-            <%= fa_icon "user-times", text: "Log out" %>
+            <%= fa_icon "user-times", text: "Log Out" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(user_path(current_user), class: "nav-link") do %>
+            <%= fa_icon "user-circle", text: "View Profile"%>
           <% end %>
         </li>
       <% else %> 
         <li class="nav-item">
           <%= link_to(new_session_path, class: "nav-link") do %>
-            <%= fa_icon "user", text: "Log in" %>
+            <%= fa_icon "user", text: "Log In" %>
           <% end %>    
         </li>
         <li class="nav-item">
           <%= link_to(new_user_path, class: "nav-link") do %>
-            <%= fa_icon "user-plus", text: "Sign up" %>
+            <%= fa_icon "user-plus", text: "Sign Up" %>
           <% end %>
         </li>
       <% end %>
