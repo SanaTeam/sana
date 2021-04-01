@@ -26,6 +26,8 @@
     </div>
     <br>
 <% end %>
-  <%= render '/replies/form', reply: Reply.new %>
+<%= render '/replies/form', reply: Reply.new %>
+<br>
+<%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
 <br>
 <a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>

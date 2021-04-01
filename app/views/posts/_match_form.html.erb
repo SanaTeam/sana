@@ -1,0 +1,7 @@
+<%= form_with model: match do |form| %>
+    <%= form.hidden_field :post_id, :value => post_id %>
+    <%= form.hidden_field :user1_id, :value => user1_id %>
+    <%= form.hidden_field :user2_id, :value => user2_id %>
+    <%= form.hidden_field :user1_confirmed, :value => true %>
+    <%= form.submit "Request Match", class: 'btn btn-primary' %>
+<% end %>
