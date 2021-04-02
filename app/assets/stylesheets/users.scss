@@ -1,3 +1,20 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.col-md-2 {
+    background-color: #e2e2e2;
+    border: solid black;
+    padding: 15px;
+}
+
+.btn, .btn-primary, .mt-2 {
+    color: white;
+}
