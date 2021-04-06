@@ -6,7 +6,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbar-sana">
-    <ul class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <%= link_to(posts_path, class: "nav-link") do %>
           <%= fa_icon "comments", text: "Forum" %> 
@@ -17,27 +17,35 @@
           <%= fa_icon "handshake-o", text: "Match" %>
         <% end %>
       </li>
+    </ul>
+    <ul class="navbar-nav">
       <% if logged_in? %>
-        <li class="nav-item">
-          <%= link_to(session_path(session), class: "nav-link", method: :delete) do %>
-            <%= fa_icon "user-times", text: "Log Out" %>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to(user_path(current_user), class: "nav-link") do %>
-            <%= fa_icon "user-circle", text: "View Profile"%>
-          <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "user-circle", text: current_user.first_name %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
+            <%= link_to(user_path(current_user), class: "dropdown-item") do %>
+              <%= fa_icon "id-card", text: "Profile" %>
+            <% end %>
+            <%= link_to(session_path(session), class: "dropdown-item", method: :delete) do %>
+              <%= fa_icon "user-times", text: "Log Out" %>
+            <% end %>
+          </div>
         </li>
       <% else %> 
-        <li class="nav-item">
-          <%= link_to(new_session_path, class: "nav-link") do %>
-            <%= fa_icon "user", text: "Log In" %>
-          <% end %>    
-        </li>
-        <li class="nav-item">
-          <%= link_to(new_user_path, class: "nav-link") do %>
-            <%= fa_icon "user-plus", text: "Sign Up" %>
-          <% end %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= fa_icon "user-secret", text: "Guest" %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
+            <%= link_to(new_session_path, class: "dropdown-item") do %>
+              <%= fa_icon "unlock-alt", text: "Log In" %>
+            <% end %>    
+            <%= link_to(new_user_path, class: "dropdown-item") do %>
+              <%= fa_icon "user-plus", text: "Sign Up" %>
+            <% end %>
+          </div>
         </li>
       <% end %>
     </ul>

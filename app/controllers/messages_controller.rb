@@ -5,11 +5,10 @@ class MessagesController < ApplicationController
         @message = Message.new(content: params[:content], user_id: current_user.id, match_id: params[:id])
         if @message.save
             flash[:notice] = "Your message was created!"
-            redirect_to @match
         else
             flash[:alert] = @message.errors.full_messages.join(", ")
-            render 'new'
         end
+        redirect_to @match
     end
 
     def destroy

@@ -4,20 +4,20 @@
       <div>
         <ul>
           <li><%= fa_icon "envelope", text: "Messages" %></li>
-          <li>Your Activity</li>
-          <li>Your Matches</li>
-          <li>Your Organizations</li>
-          <li>Your Badges</li>
+          <li><%= fa_icon "comments", text: "Activity" %></li>
+          <li><%= fa_icon "handshake-o", text: "Matches" %></li>
+          <li><%= fa_icon "users", text: "Organizations" %></li>
+          <li><%= fa_icon "star", text: "Badges" %></li>
         </ul>
       </div>
     </div>
   <% end %>
   <div class="col-md-10 justify-content-center">
     <div class="card">
-      <h5 class="card-header"><%= @user.email %></h5>
+      <h5 class="card-header"><%= fa_icon "id-card", text: "Profile" %></h5>
       <div class="card-body">
-        <h5 class="card-title"><%= @user.first_name + " " + @user.last_name%></h5>
-        <br>
+        <h5 class="card-title"><%= @user.first_name + " " + @user.last_name %></h5>
+        <p><%= @user.email %></p>
         <% if @user.id == current_user.id %>
           <%= render partial: "home" %>
         <% end %>

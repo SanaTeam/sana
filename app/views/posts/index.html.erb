@@ -1,4 +1,4 @@
-<h1 class="d-inline">Posts</h1>
+<h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
 <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
     <%= fa_icon "plus", text: "Create" %>
 <% end %>
@@ -29,3 +29,5 @@
         <% end %>
     </tbody>
 </table>
+
+<%= paginate @posts %>
