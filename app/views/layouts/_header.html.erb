@@ -12,13 +12,12 @@
           <%= fa_icon "comments", text: "Forum" %> 
         <% end %>
       </li>
-      <% if logged_in? %>
-        <li class="nav-item">
+      <li class="nav-item">
+        
         <%= link_to(matches_path, class: "nav-link") do %>
           <%= fa_icon "handshake-o", text: "Match" %>
         <% end %>
       </li>
-      <% end %>
     </ul>
     <ul class="navbar-nav">
       <% if logged_in? %>

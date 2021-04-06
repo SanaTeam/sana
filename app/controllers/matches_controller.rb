@@ -1,5 +1,5 @@
 class MatchesController < ApplicationController
-    before_action :logged_in!, only: [:show]
+    before_action :logged_in!, only: [:show, :index]
 
     def index
         redirect_to user_match_path(current_user.id)
