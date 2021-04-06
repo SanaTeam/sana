@@ -1,6 +1,7 @@
 class Message < ApplicationRecord
     validates :user_id, presence: true
     validate :user_in_match?
+    validates :content, presence: true 
     belongs_to :match
 
     def user_in_match?

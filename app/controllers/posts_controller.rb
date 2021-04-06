@@ -2,17 +2,21 @@ class PostsController < ApplicationController
     before_action :logged_in!, only: [:index, :new, :show, :edit, :destroy]
 
     def index
-        @posts = Post.all
+        @posts = Post.order(created_at: :desc).page(params[:page])
     end
 
     def new
     end
 
     def create
-        @post = Post.new(title: params[:title], content: params[:content], user_id: current_user.id, pinned: params[:pinned], is_anonymous: params[:is_anonymous])
-        @post.save!
-        flash[:notice] = "Your post was created!"
-        redirect_to posts_path
+        @post = Post.new(title: post_params[:title], content: post_params[:content], user_id: current_user.id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous])
+        if @post.save
+            flash[:notice] = "Your post was created!"
+            redirect_to @post
+        else
+            flash[:alert] = @post.errors.full_messages.join(", ")
+            render 'new'
+        end
     end
 
     def edit
@@ -22,10 +26,13 @@ class PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        post_params = params[:post]
-        @post.update!(title: post_params[:title], content: post_params[:content], user_id: @post.user_id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous])
-        flash[:notice] = "Your post was updated!"
-        redirect_to posts_path
+        if @post.update(title: post_params[:title], content: post_params[:content], user_id: @post.user_id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous])
+            flash[:notice] = "Your post was updated!"
+            redirect_to @post
+        else
+            flash[:alert] = @post.errors.full_messages.join(", ")
+            render 'edit'
+        end
     end
 
     def destroy
@@ -39,5 +46,13 @@ class PostsController < ApplicationController
     def show
         @post = Post.find(params[:id])
         @user = User.find(@post.user_id)
+    end
+
+    def post_params
+        if params[:post]
+            params[:post]
+        else
+            params
+        end
     end
 end
