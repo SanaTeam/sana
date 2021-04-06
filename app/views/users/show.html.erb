@@ -5,20 +5,15 @@
     </div>
   <% end %>
   <div class="col-md-10 justify-content-center">
-    <div class="card">
-      <h5 class="card-header"><%= fa_icon "id-card", text: "Profile" %></h5>
-      <div class="card-body">
-        <h5 class="card-title"><%= @user.first_name + " " + @user.last_name %></h5>
-        <p><%= @user.email %></p>
-        <% if @user.id == current_user.id %>
-          <% last = request.path.split('/').last%>
-          <% if last == '' %>
-            <%= render partial: "home" %>
-          <% elsif last == 'match' %>
-            <%= render partial: "match" %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <% last = request.path.split('/').last%>
+    <% if last == "match" %>
+      <% if @user.id == current_user.id %>
+        <%= render partial: "match" %>
+      <% end %>
+    <% else %>
+      <%= render partial: "home" %>
+    <% end %>
+    
+    
   </div>
 </div>
