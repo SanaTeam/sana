@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root "welcome#index"
   get "/home", to: "welcome#index"
   get "/match", to: "posts#match"
+  get "/users/:id/match", to: "users#show"
 
   post "/posts/new", to: "posts#create"
   post "/sessions/new", to: "sessions#create"
