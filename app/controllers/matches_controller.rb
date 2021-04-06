@@ -2,7 +2,7 @@ class MatchesController < ApplicationController
     before_action :logged_in!, only: [:show]
 
     def index
-        @matches = Match.all
+        redirect_to user_match_path(current_user.id)
     end
 
     def create
