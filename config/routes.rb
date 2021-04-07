@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "/match", to: "posts#match"
   get "/users/:id/match", to: "users#show", as: "user_match"
   get "/users/:id/activity", to: "users#show", as: "user_activity"
+  get "/users/:id/message", to: "users#show", as: "user_message"
   
 
   post "/posts/new", to: "posts#create"

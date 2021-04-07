@@ -5,7 +5,7 @@
         <% matches.each do | match | %>
             <h5 class="card-title">
                 <% if match.user1_id == current_user.id %>
-                <%= User.find(match.user2_id).first_name %> 
+                    <%= User.find(match.user2_id).first_name %> 
                 <% else %>
                     <%= User.find(match.user1_id).first_name %>
                 <% end %>

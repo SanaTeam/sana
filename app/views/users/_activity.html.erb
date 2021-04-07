@@ -1,5 +1,5 @@
 <div class="card">
-    <h5 class="card-header"><%= fa_icon "comments", text: "Activity" %></h5>
+    <h5 class="card-header"><%= fa_icon "comments", text: "Your Activity" %></h5>
     <div class="card-body">
         <% posts = Post.all.where(user_id: current_user.id)%>
         <% posts.each do | post | %>
