@@ -1,6 +1,5 @@
 User.delete_all
 Organization.delete_all
-Profile.delete_all
 Post.delete_all
 Reply.delete_all
 
@@ -22,14 +21,6 @@ end
     org_accepts_don = Faker::Boolean.boolean 
     org_location = Faker::Address.city 
     Organization.create(name: org_name, org_type: type_org, accepts_donations: org_accepts_don, location: org_location)
-end 
-
-# Profile model fields 
-# user_id:integer organization_id:integer description:string is_active:boolean
-15.times do 
-    prof_description = Faker::Job.title
-    prof_active = Faker::Boolean.boolean
-    Profile.create(user_id: User.all.sample.id, organization_id: Organization.all.sample.id, description: prof_description, is_active: prof_description)
 end 
 
 # Post model fields

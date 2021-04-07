@@ -1,17 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  id: 1
-  content: "Rock music approaches at high velocity."
-  user_id: 1
-  pinned: false
-  is_anonymous: false
-  title: "Hello, world!"
-
-two:
-  id: 2
-  content: "Twin 4-month-olds slept in the shade of the palm tree while the mother tanned in the sun."
+without_content:
+  id: 3
   user_id: 2
   pinned: false
   is_anonymous: false
-  title: "Nice to meet you!"
+
+valid:
+  id: 2
+  content: "An example of content."
+  user_id: 3
+  pinned: false
+  is_anonymous: true
+  title: "Hello, world!"
+
+valid_two:
+  id: 1
+  content: "Rock music approaches at high velocity."
+  user_id: 5
+  pinned: false
+  is_anonymous: false
+  title: "Hello, world!"

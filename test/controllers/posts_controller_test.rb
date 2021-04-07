@@ -3,10 +3,15 @@ require "minitest/reporters"
 Minitest::Reporters.use!
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
+
+  setup do
+    help_new_session
+  end
+ 
   test "should get index view" do 
     get posts_url
     assert_response :success
-    assert_select "h1", text: "Posts"
+    assert_select "h1", text: "Forum"
   end
 
   test "should get show view" do

@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :messages
   resources :replies
-  resources :profiles
   resources :posts
   resources :organizations
   resources :users
