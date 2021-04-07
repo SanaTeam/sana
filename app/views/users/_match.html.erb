@@ -11,8 +11,9 @@
                 <% end %>
             </h5>
             <p>
-                <% post = Post.all.where(id: match.post_id).first %>
-                <%= post.title %>
+                <% Post.all.where(id: match.post_id).each do |post| %>
+                    <%= post.title %>
+                <% end %>
             </p>
             <p>
                 <% if match.confirmed? %>
