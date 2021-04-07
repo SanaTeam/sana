@@ -10,6 +10,10 @@
       <% if @user.id == current_user.id %>
         <%= render partial: "match" %>
       <% end %>
+    <% elsif last == "activity" %>
+      <% if @user.id == current_user.id %>
+        <%= render partial: "activity" %>
+      <% end %>
     <% else %>
       <%= render partial: "home" %>
     <% end %>

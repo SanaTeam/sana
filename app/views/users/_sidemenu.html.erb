@@ -1,7 +1,10 @@
 <div>
     <ul>
         <li><%= fa_icon "envelope", text: "Messages" %></li>
-        <li><%= fa_icon "comments", text: "Activity" %></li>
+        <li>
+            <%= link_to(user_activity_path(current_user.id)) do %>
+                <%= fa_icon "comments", text: "Activity" %>
+            <% end %>
         <li>
             <%= link_to(user_match_path(current_user.id)) do %>
                 <%= fa_icon "handshake-o", text: "Matches" %>
