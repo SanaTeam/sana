@@ -6,18 +6,16 @@
   <% end %>
   <div class="col-md-10 justify-content-center">
     <% last = request.path.split('/').last%>
-    <% if last == "match" %>
-      <% if @user.id == current_user.id %>
+    <% if @user.id == current_user.id %>
+      <% if last == "match" %>
         <%= render partial: "match" %>
-      <% end %>
-    <% elsif last == "activity" %>
-      <% if @user.id == current_user.id %>
+      <% elsif last == "activity" %>
         <%= render partial: "activity" %>
+      <% else %>
+        <%= render partial: "home"%>
       <% end %>
     <% else %>
       <%= render partial: "home" %>
     <% end %>
-    
-    
   </div>
 </div>
