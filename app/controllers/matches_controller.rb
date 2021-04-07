@@ -1,18 +1,32 @@
 class MatchesController < ApplicationController
-    before_action :logged_in!, only: [:show]
+    before_action :logged_in!, only: [:show, :index]
 
     def index
-        flash[:notice] = "Match to be implemented soon!"
-        redirect_to posts_path
+        redirect_to user_match_path(current_user.id)
     end
 
     def create
         @match = Match.new(match_params)
         @match.save!
-        flash[:notice] = "Your match was created!"
+        flash[:notice] = "You requested a match!"
         redirect_to posts_path
     end
 
+    def accept
+        @match = Match.find(params[:id])
+        match_contains_user!(@match)
+        @match.update!(user1_confirmed: true, user2_confirmed: true)
+        flash[:notice] = "You confirmed a match!"
+        redirect_to @match
+    end
+
+    def destroy
+        @match = Match.find(params[:id])
+        match_contains_user!(@match)
+        @match.destroy!
+        flash[:notice] = "You denied a match!"
+        redirect_to user_match_path(current_user.id)
+    end
 
     def show
         @match = Match.find(params[:id])

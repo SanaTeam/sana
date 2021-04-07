@@ -1,0 +1,42 @@
+<h1 class="d-inline">Matches</h1>
+<%= link_to("/matches/new", class: "ml-2 d-inline") do %>
+    <%= fa_icon "plus", text: "Create" %>
+<% end %>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>User</th>
+        <th>Post</th>
+        <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @matches.each do |match| %>
+        <tr>
+            <td>
+                <% if match.user1_id == current_user.id %>
+                    <%= match.user2_id %>
+                <% else %>
+                    <%= match.user1_id %>
+                <% end %>
+            </td>
+            <td>
+                <% post = Post.all.where(id: match.post_id).first %>
+                <% if post != nil %>
+                    <%= post.content %>
+                <% end %>
+            </td>
+            <td>
+                <%= link_to(match) do %>
+                    <%= fa_icon "info-circle", text: "Show" %>
+                <% end %>
+                <% if owns_match?(match) %>
+                    <%= render "/layouts/operations", edit_route: edit_match_path(match), destroy_route: match %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+<div class="card">
+    <h5 class="card-header"><%= fa_icon "envelope", text: "Your Messages" %></h5>
+    <div class="card-body">
+        <% matches = Match.all.where(user1_id: current_user.id).or(Match.all.where(user2_id: current_user.id))%>
+        <% matches.each do | match | %>
+            <% if match.confirmed? %>
+            <h5 class="card-title">
+                <% if match.user1_id == current_user.id %>
+                    <%= User.find(match.user2_id).first_name %> 
+                <% else %>
+                    <%= User.find(match.user1_id).first_name %>
+                <% end %>
+            </h5>
+            <p>
+                <%= link_to(match) do %>
+                    <%= fa_icon "info-circle", text: "Show" %>
+                <% end %>
+            </p>
+            <% end %>
+        <% end %>
+    </div>
+</div>
