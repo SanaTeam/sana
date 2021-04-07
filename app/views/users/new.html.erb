@@ -1,3 +1,5 @@
 <h1><%= fa_icon "user-plus", text: "Sign Up" %></h1>
 
 <%= render 'form', user: User.new %>
+
+<p>Already have an account? Sign in <%= link_to "here!", "/sessions/new" %></p>
