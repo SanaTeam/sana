@@ -28,7 +28,15 @@
 <% end %>
 <%= render '/replies/form', reply: Reply.new %>
 <br>
-<% if (current_user.id != @user.id) || (not_matched)  %>
+<% not_matched = true %>
+<% matches = Match.all.where(user1_id: current_user.id).or(Match.all.where(user2_id: current_user.id)) %>
+<% matches.each do |match| %>
+  <% other_user_id = (match.user1_id == current_user.id ? match.user2_id : match.user1_id) %>
+  <% if other_user_id == @user.id %>
+    <% not_matched = false %>
+  <% end %>
+<% end %>
+<% if (current_user.id != @user.id) && (not_matched || @post.is_anonymous) %>
   <%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
   <br>
 <% end %>
