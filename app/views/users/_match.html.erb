@@ -1,3 +1,11 @@
+<% def populate_list(confirmed, sent_requests, received_requests, match) %>
+    <% if confirmed == true %>
+        <% sent_requests << match %>
+    <% else %>
+        <% received_requests << match %>
+    <% end %>
+<% end %>
+
 <% def populate_section(match) %>
     <h5 class="card-title">
         <% if match.user1_id == current_user.id %>
@@ -25,17 +33,9 @@
                 <% confirmed_matches << match %>
             <% else %>
                 <% if current_user.id == match.user1_id %>
-                    <% if match.user1_confirmed == true %>
-                        <% sent_requests << match %>
-                    <% else %>
-                        <% received_requests << match %>
-                    <% end %>
+                    <% populate_list(match.user1_confirmed, sent_requests, received_requests, match) %>
                 <% else %>
-                    <% if match.user2_confirmed == true %>
-                        <% sent_requests << match %>
-                    <% else %>
-                        <% received_requests << match %>
-                    <% end %>
+                    <% populate_list(match.user2_confirmed, sent_requests, received_requests, match) %>
                 <% end %>
             <% end %>
             </p>
