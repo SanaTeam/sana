@@ -48,8 +48,8 @@
                     <%= fa_icon "info-circle", text: "Show" %>
                 <% end %>
             <% end %>
+            <br><br>
         <% end %>
-        <br><br>
         <% if sent_requests.size > 0 %>
             <h4>Sent Requests:</h4>
             <% sent_requests.each do |match| %>
@@ -65,8 +65,8 @@
                 <% end %>
                 
             <% end %>
+            <br><br>
         <% end %>
-        <br><br>
         <% if received_requests.size > 0 %>
             <h4>Received Requests:</h4>
             <% received_requests.each do |match| %>
@@ -78,7 +78,7 @@
                     <%= fa_icon "times", text: "Deny" %>
                 <% end %>
             <% end %>
+            <br><br>
         <% end %>
-        <br><br>
     </div>
 </div>
