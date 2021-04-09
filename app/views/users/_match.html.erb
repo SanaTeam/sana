@@ -1,35 +1,48 @@
 <div class="card">
     <h5 class="card-header"><%= fa_icon "handshake-o", text: "Your Matches" %></h5>
     <div class="card-body">
+        <% confirmed_matches = [] %>
+        <% received_requests = [] %>
+        <% sent_requests = [] %>
         <% matches = Match.all.where(user1_id: current_user.id).or(Match.all.where(user2_id: current_user.id)) %>
         <% matches.each do | match | %>
-            <h5 class="card-title">
-                <% if match.user1_id == current_user.id %>
-                    <%= User.find(match.user2_id).first_name %> 
-                <% else %>
-                    <%= User.find(match.user1_id).first_name %>
-                <% end %>
-            </h5>
-            <p>
-                <% Post.all.where(id: match.post_id).each do |post| %>
-                    <%= post.title %>
-                <% end %>
-            </p>
-            <p>
-                <% if match.confirmed? %>
-                    <%= link_to(match) do %>
-                        <%= fa_icon "info-circle", text: "Show" %>
+            <% if match.confirmed? %>
+                <% confirmed_matches << match %>
+            <% else %>
+                <% if current_user.id == match.user1_id %>
+                    <% if match.user1_confirmed == true %>
+                        <% sent_requests << match %>
+                    <% else %>
+                        <% received_requests << match %>
                     <% end %>
                 <% else %>
-                    <%= link_to(accept_match_path(match), method: :post) do %>
-                        <%= fa_icon "heart", text: "Accept" %>
-                    <% end %>
-                    <%= link_to(match, method: :delete, data: {confirm: "Are you sure that you want to delete this?"}) do %>
-                        <%= fa_icon "times", text: "Deny" %>
+                    <% if match.user2_confirmed == true %>
+                        <% sent_requests << match %>
+                    <% else %>
+                        <% received_requests << match %>
                     <% end %>
                 <% end %>
+            <% end %>
             </p>
+        <% end %>
+        <% if confirmed_matches.size > 0 %>
+            <h4>Confirmed Matches:</h4>
+            <% confirmed_matches.each do |match| %>
+                <h5 class="card-title">
+                    <% if match.user1_id == current_user.id %>
+                        <%= User.find(match.user2_id).first_name %> 
+                    <% else %>
+                        <%= User.find(match.user1_id).first_name %>
+                    <% end %>
+                </h5>
+                <p>
+                    <% Post.all.where(id: match.post_id).each do |post| %>
+                        <%= post.title %>
+                    <% end %>
+                </p>
+            <% end %>
+        <% end %>
+        <% if sent_requests.size > 0 %>
         <% end %>
     </div>
 </div>
-
