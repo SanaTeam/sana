@@ -43,6 +43,38 @@
             <% end %>
         <% end %>
         <% if sent_requests.size > 0 %>
+            <h4>Sent Requests:</h4>
+            <% sent_requests.each do |match| %>
+                <h5 class="card-title">
+                    <% if match.user1_id == current_user.id %>
+                        <%= User.find(match.user2_id).first_name %> 
+                    <% else %>
+                        <%= User.find(match.user1_id).first_name %>
+                    <% end %>
+                </h5>
+                <p>
+                    <% Post.all.where(id: match.post_id).each do |post| %>
+                        <%= post.title %>
+                    <% end %>
+                </p>
+            <% end %>
+        <% end %>
+        <% if received_requests.size > 0 %>
+            <h4>Received Requests:</h4>
+            <% received_requests.each do |match| %>
+                <h5 class="card-title">
+                    <% if match.user1_id == current_user.id %>
+                        <%= User.find(match.user2_id).first_name %> 
+                    <% else %>
+                        <%= User.find(match.user1_id).first_name %>
+                    <% end %>
+                </h5>
+                <p>
+                    <% Post.all.where(id: match.post_id).each do |post| %>
+                        <%= post.title %>
+                    <% end %>
+                </p>
+            <% end %>
         <% end %>
     </div>
 </div>
