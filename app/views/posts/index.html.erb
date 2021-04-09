@@ -1,3 +1,14 @@
+<div class="row">
+    <div class="col-md-12">
+        <%= form_with(model: @post, url: posts_path, method: :get) do |form| %>
+            <%= search_field_tag :search, params[:search], placeholder: "Look for Post", class: "form-control" %> 
+                <div class= "pull-right">
+                    <%= form.submit "Search"%>
+                </div>
+        <% end %>
+    </div>
+</div>
+
 <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
 <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
     <%= fa_icon "plus", text: "Create" %>

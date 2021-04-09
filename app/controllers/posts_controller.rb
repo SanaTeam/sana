@@ -5,6 +5,10 @@ class PostsController < ApplicationController
         @posts = Post.order(created_at: :desc).page(params[:page])
     end
 
+    def search
+        @posts = Post.all
+    end 
+
     def new
     end
 
