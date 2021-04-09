@@ -14,8 +14,8 @@
 </div>
 
 <% @post.replies.each do |reply| %>
-  <div class="row">
-        <div class="card w-50 <%=reply.user_id == current_user.id ? "mr-auto" : "ml-auto" %>">
+    <div class="row">
+        <div class="card w-50 <%= reply.user_id == current_user.id ? "mr-auto" : "ml-auto" %>">
             <div class="card-body">
                 <strong><%= User.find(reply.user_id).first_name %></strong>: <%= reply.content %>
                 <% if owns_model?(reply) %>
@@ -28,6 +28,16 @@
 <% end %>
 <%= render '/replies/form', reply: Reply.new %>
 <br>
-<%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
-<br>
+<% matched = false %>
+<% matches = Match.all.where(post_id: @post.id) %>
+<% matches.each do |match| %>
+  <% if match.user1_id == current_user.id || match.user2_id == current_user.id %>
+    <% matched = true %>
+  <% end %>
+<% end %>
+<% if current_user.id != @user.id && !matched %>
+  <%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
+  <br>
+<% end %>
+
 <a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>
