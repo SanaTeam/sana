@@ -1,19 +1,19 @@
-module RepliesHelper
+module MessagesHelper
     include CableReady::Broadcaster
 
-    def dispatch_reply(user_id, post_id, content)
+    def dispatch_message(user_id, match_id, content)
         cable_ready["notifs"].dispatch_event(
             name: "notify",
             detail: {
-                id: post_id,
-                title: Post.find(post_id).title,
+                id: match_id,
+                title: "match",
                 content: content,
                 from_name: User.find(user_id).first_name,
                 from_id: user_id,
-                users: Post.find(post_id).replies.pluck(:user_id).uniq,
-                is_match: false
+                users: Match.find(match_id).messages.pluck(:user_id).uniq,
+                is_match: true
             }
-          )
+        )
         cable_ready.broadcast
     end
 end

@@ -13,4 +13,9 @@ class UserTest < ActiveSupport::TestCase
   test 'invalid short password' do
     refute users(:short_password).valid?
   end
+
+  test 'valid user' do
+    assert users(:valid_user).valid?
+    assert_instance_of User, users(:valid_user).authenticate("password")
+  end
 end

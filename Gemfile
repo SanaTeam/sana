@@ -65,3 +65,6 @@ gem 'font-awesome-rails'
 gem 'bcrypt'
 gem 'rails_admin', '~> 2.0'
 gem 'kaminari'
+gem "stimulus_reflex", "~> 3.4"
+gem 'redis'
+gem 'redis-rails'
