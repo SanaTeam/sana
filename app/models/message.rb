@@ -9,4 +9,8 @@ class Message < ApplicationRecord
             errors.add(:user_id, "Invalid user id")
         end
     end
+
+    after_create do
+        ApplicationController.helpers.dispatch_message(self[:user_id], self[:match_id], self[:content])
+    end
 end
