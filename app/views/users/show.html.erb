@@ -5,19 +5,11 @@
     </div>
   <% end %>
   <div class="col-md-10 justify-content-center">
-    <% last = request.path.split('/').last%>
-    <% if @user.id == current_user.id %>
-      <% if last == "match" %>
-        <%= render partial: "match" %>
-      <% elsif last == "activity" %>
-        <%= render partial: "activity" %>
-      <% elsif last == "message" %>
-        <%= render partial: "message" %>
-      <% else %>
-        <%= render partial: "home"%>
-      <% end %>
+    <% valid_partials = ["home", "match", "activity", "message"] %>
+    <% if params[:section] == nil || !valid_partials.include?(params[:section]) %>
+      <%= render partial: "home"%>
     <% else %>
-      <%= render partial: "home" %>
+      <%= render partial: params[:section] %>
     <% end %>
   </div>
 </div>
