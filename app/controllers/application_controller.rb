@@ -6,5 +6,5 @@ class ApplicationController < ActionController::Base
     include MessagesHelper
     include PostsHelper
     include RepliesHelper
-
+    
 end

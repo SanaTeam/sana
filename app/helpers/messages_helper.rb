@@ -6,12 +6,12 @@ module MessagesHelper
             name: "notify",
             detail: {
                 id: match_id,
-                title: "match",
+                title: "",
                 content: content,
-                from_name: User.find(user_id).first_name,
+                from_name: User.find(user_id).full_name,
                 from_id: user_id,
-                users: Match.find(match_id).messages.pluck(:user_id).uniq,
-                is_match: true
+                users: Match.find(match_id).participants,
+                notif_type: "message"
             }
         )
         cable_ready.broadcast

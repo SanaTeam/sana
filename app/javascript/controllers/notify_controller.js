@@ -21,16 +21,23 @@ export default class extends Controller {
   }
   
   notify = event => {
-    const { id, title, content, fromName, fromId, users, isMatch } = event.detail
+    const { id, title, content, fromName, fromId, users, notifType } = event.detail
     const currentUser = Number($(".notifs").attr('data-user'))
-    let notifType = "reply"
-    let route = "posts"
-    let icon = "comments"
+    let route
+    let icon
+    
     if (users.includes(currentUser) && currentUser != fromId) {
-      if (isMatch) {
-         notifType = "message"
-         route = "matches"
-         icon = "handshake-o"
+      if (notifType == "reply") {
+        route = `/posts/${id}`
+        icon = "comments"
+      }
+      else if (notifType == "message") {
+        route = `/matches/${id}`
+        icon = "handshake-o"
+      }
+      else {
+        route = `/users/${currentUser}/match`
+        icon = "handshake-o"
       }
       $(".notifs").append(`
       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast ml-auto mb-4" data-autohide="false">
@@ -42,9 +49,9 @@ export default class extends Controller {
           </button>
         </div>
         <div class="toast-body">
-          <p>New ${notifType} from <strong>${fromName}</strong> on <strong>${title}</strong>:</p>
-          <p>${content}</p>
-          <a href="/${route}/${id}"><i class="fa fa-arrow-circle-right"></i> Go</a>
+          <p>New ${notifType} from <strong>${fromName}</strong>${title ? ` on <strong>${title}</strong>` : ""}:</p>
+          ${content ? `<p>${content}</p>` : ""}
+          <a href="${route}"><i class="fa fa-arrow-circle-right"></i> Go</a>
         </div>
       </div>
       `)

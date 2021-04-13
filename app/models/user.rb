@@ -10,4 +10,7 @@ class User < ApplicationRecord
     validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     validates :password, length: { minimum: 6 }, allow_nil: true
 
+    def full_name
+        "#{self[:first_name]} #{self[:last_name]}"
+    end
 end

@@ -1,0 +1,16 @@
+<% models.each do |model| %>
+  <div class="row">
+      <div role="alert" aria-live="assertive" aria-atomic="true" class="toast <%= model.user_id == current_user.id ? "mr-auto" : "ml-auto" %> mb-4" data-autohide="false">
+          <div class="toast-header">
+            <strong class="mr-auto"><%= User.find(model.user_id).full_name %></strong>
+            <small><%= to_datetime_string(model.created_at) %></small>
+          </div>
+          <div class="toast-body">
+            <p><%= model.content %></p>
+            <% if owns_model?(model) %>
+              <div><%= render "/layouts/operations", edit_route: "", destroy_route: model %></div>
+            <% end %>
+          </div>
+        </div>
+  </div>
+<% end %>

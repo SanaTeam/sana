@@ -1,7 +1,7 @@
 <div class="card">
     <h5 class="card-header"><%= fa_icon "id-card", text: "Profile" %></h5>
     <div class="card-body">
-    <h5 class="card-title"><%= @user.first_name + " " + @user.last_name %></h5>
+    <h5 class="card-title"><%= @user.full_name %></h5>
     <p><%= @user.email %></p>
         <% if @user.id == current_user.id %>
             <%= button_to "Request Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
