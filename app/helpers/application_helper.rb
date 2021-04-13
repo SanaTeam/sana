@@ -1,6 +1,6 @@
 module ApplicationHelper
     def to_datetime_string(datetime)
-        datetime.strftime("%m/%d/%Y %H:%M %p")
+        datetime.strftime("%m/%d/%Y %I:%M %p")
     end
 
     def owns_model?(model)

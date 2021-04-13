@@ -5,4 +5,8 @@ class Post < ApplicationRecord
 
     validates :title, presence: true 
     validates :content, presence: true 
+
+    def participants 
+        (self.replies.pluck(:user_id) + [self[:user_id]]).uniq
+    end
 end

@@ -1,15 +1,32 @@
-<% @match.messages.each do |message| %>
-    <div class="row">
-        <div class="card w-50 <%=message.user_id == current_user.id ? "mr-auto" : "ml-auto" %>">
-            <div class="card-body">
-                <strong><%= User.find(message.user_id).first_name %></strong>: <%= message.content %>
-                <% if owns_model?(message) %>        
-                    <div><%= render "/layouts/operations",  edit_route: "", destroy_route: message %></div>
-                <% end %>
-            </div>
-        </div>
-    </div>
-    <br>
-<% end %>
+<div class="card mb-5">
+  <h5 class="card-header">
+    <strong class="float-left">
+        Match
+    </strong>
+    <small class="float-right"><%= to_datetime_string(@match.created_at)%></small>
+  </h5>
+  <div class="card-body">
+    <% if @match.post_id %>
+        <% @post = Post.find(@match.post_id) %>
+        <h5 class="card-title"> Matched via post
+          <%= @post.title %>
+        </h5>
+    <% else %>
+        <h5 class="card-title">Matched via user</h5>
+    <% end %>
+  </div>
+  <div class="card-footer text-muted">
+    <% if @post %>
+      <%= link_to(@post) do %>
+        <%= fa_icon "info-circle", text: "Show" %>
+      <% end %>
+    <% end %>
+    <% if owns_match?(@match) %>
+      <%= render "/layouts/operations", edit_route: "", destroy_route: @match %>
+    <% end %>
+  </div>
+</div>
+
+<%= render '/layouts/minitexts', models: @match.messages %>
 
 <%= render 'form', post: Message.new %>
