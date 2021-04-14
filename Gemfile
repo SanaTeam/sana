@@ -66,3 +66,6 @@ gem 'bcrypt'
 gem 'rails_admin', '~> 2.0'
 gem 'kaminari'
 gem 'searchkick'
+gem 'bootstrap-multiselect_rails', '~> 0.9.4'
+gem "select2-rails"
+gem "bootstrap_form", "~> 4.0"

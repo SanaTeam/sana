@@ -5,6 +5,13 @@ class Post < ApplicationRecord
 
     searchkick
 
+    def search_data
+        {
+            title: title,
+            content: content
+        }
+    end 
+
     Post.reindex
 
     validates :title, presence: true 

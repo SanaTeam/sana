@@ -1,14 +1,34 @@
 <div class="row">
-    <div class="col-md-12">
-        <%= form_with(model: @post, url: posts_path, method: :get) do |form| %>
-            <%= search_field_tag :search, params[:search], placeholder: "Look for Post", class: "form-control" %> 
-                <div class= "pull-right">
-                    <%= form.submit "Search"%>
-                </div>
-        <% end %>
-    </div>
+    <div class="col md-12">
+    <%= form_with(model: @post, url: posts_path, method: :get, :class => "form-inline justify-content-center") do |form| %>
+        <%= search_field_tag :search, params[:search], placeholder: "Keyword Search", class: "form-control" %>
+    <%= form.submit "Search" %>
+    <% end %>
 </div>
+<br>
 
+<div class="row">
+    <div class="col-3">
+        <div class="form-group">
+            <%= bootstrap_form_with(model: @post, url: posts_path, local: true) do |form| %>
+                <%= @categories.each do |cat| %>
+                    <%= form.check_box cat, { :multiple => true } %>
+                <% end%>
+                <%= form.submit "Select Categories" %>            
+            <% end %>
+        </div>
+    </div>
+
+
+
+<script>
+    $( document ).ready(function() {
+        $('#multiselect-category').select2({
+            placeholder: "Select Categories"
+        });
+    });
+</script>
+<div class="col-9">
 <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
 <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
     <%= fa_icon "plus", text: "Create" %>
@@ -40,5 +60,5 @@
         <% end %>
     </tbody>
 </table>
-
-<%= paginate @posts %>
+</div>
+</div>
