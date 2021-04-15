@@ -12,8 +12,8 @@ class PostsController < ApplicationController
             puts "there was no search q"
             Post.all
         end
-        puts "HERE"
-        @posts = @posts.where(categories: params[:category])
+        # puts "HERE"
+        # @posts = @posts.where(categories: params[:category])
         # @posts = @posts.where(params[:category])
     end
 
