@@ -1,0 +1,14 @@
+<form class="form">
+    <h4>Select Categories</h4>
+    <%= @categories.each do |cat|%>
+        <div class="checkbox">
+            <label>
+            <input type="checkbox" name="chosen_categories" value=<% cat%>>
+                <%= cat %>
+            </label>  
+        </div>
+    <% end %>
+    <div class="form-group">
+        <button type="submit" class="btn btn-md btn-info">Save</button>
+    </div>
+</form>
