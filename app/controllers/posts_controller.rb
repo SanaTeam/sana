@@ -13,7 +13,7 @@ class PostsController < ApplicationController
             Post.all
         end
         # puts "HERE"
-        # @posts = @posts.where(categories: params[:category])
+        @posts = @posts.select{|post| post.contains_categories?(params[:category])}
         # @posts = @posts.where(params[:category])
     end
 
