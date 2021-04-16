@@ -15,6 +15,10 @@ class OrganizationsController < ApplicationController
     def new
     end
 
+    def show
+        @organization = Organization.find(params[:id])
+    end
+
     def organization_params
         if params[:organization]
             params[:organization]
