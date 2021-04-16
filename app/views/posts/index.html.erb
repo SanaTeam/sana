@@ -9,17 +9,9 @@
 <br>
 
 <div class="row">
-    <div class="col-9">
-    <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
-    <%= link_to("/posts/new", class: "ml-2 d-inline text-center") do %>
-        <%= fa_icon "plus", text: "Create" %>
-    <% end %>
-</div>
-<br>
-<br>
-
-<div class="row">
-    <div class="col-4">
+    <div class="col-3">
+        <br>
+        <br>
         <%= form_with(model: @post, url: posts_path, method: :get, local: true) do |form| %>
             <% @categories.each do |cat| %>
                 <%= check_box_tag 'category[]', cat, false %>
@@ -27,13 +19,29 @@
             <% end%>
             <%= form.submit "Select Categories" %>            
         <% end %>
+        <br>
+        <br>
+        <%= form_with(model: @post, url: posts_path, method: :get, local: true) do |form| %>
+                <%= form.label :help_request %>
+                <%= form.check_box :is_request %>    
+                <br>
+                <%= form.label :help_offer %>
+                <%= form.check_box :is_request %>  
+        <%end%>
     </div>
-    <div class="col-8 d-inline">
+
+    <div class="col-9">
+    <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
+    <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
+        <%= fa_icon "plus", text: "Create" %>
+    <% end %>
+
     <table class="table">
         <thead>
             <tr>
             <th>Title</th>
             <th>Date</th>
+            <th>Status</th>
             <th></th>
             </tr>
         </thead>
@@ -43,6 +51,13 @@
             <tr>
                 <td><%= post.title %></td>
                 <td><%= to_datetime_string(post.created_at) %></td>
+                <td>
+                <% if post.is_request%>
+                    <span class="badge badge-pill badge-primary">Help Request</span>
+                <% else %>
+                    <span class="badge badge-pill badge-success">Help Offer</span>
+                <% end %>
+                </td>
                 <td>
                     <%= link_to(post) do %>
                         <%= fa_icon "info-circle", text: "Show" %>
@@ -55,6 +70,5 @@
             <% end %>
         </tbody>
     </table>
-    </div>
     </div>
 </div>
