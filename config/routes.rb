@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  default_url_options :host => "localhost:3000"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :messages
   resources :replies
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :matches
+  resources :password_resets
+
 
   root "welcome#index"
   get "/home", to: "welcome#index"

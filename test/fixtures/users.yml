@@ -28,3 +28,9 @@ valid_user:
   email: user@gmail.com
   password_digest: <%= BCrypt::Password.create('password') %>
 
+email_user:
+  id: 5
+  first_name: Aaron
+  last_name: Portman
+  email: aaronportman@gmail.com
+  password_digest: <%= BCrypt::Password.create('password') %>

@@ -10,6 +10,18 @@
             <% if owns_model?(model) %>
               <div><%= render "/layouts/operations", edit_route: "", destroy_route: model %></div>
             <% end %>
+            <div style="float:right; margin:2px">
+              <%= fa_icon "thumbs-up" %>
+            </div>
+            <div style="float:right; margin:2px">
+              <%= fa_icon "thumbs-down" %>
+            </div>
+            <div style="float:right; margin:2px">
+              <%= fa_icon "heart" %>
+            </div>
+            <div style="float:right; margin:2px">
+              <%= fa_icon "exclamation" %>
+            </div>
           </div>
         </div>
   </div>
