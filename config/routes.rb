@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :administrators
   get 'password_resets/new'
   default_url_options :host => "localhost:3000"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
