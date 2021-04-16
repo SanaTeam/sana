@@ -5,7 +5,7 @@
     </div>
   <% end %>
   <div class="col-md-10 justify-content-center">
-    <% valid_partials = ["home", "match", "activity", "message"] %>
+    <% valid_partials = ["home", "match", "activity", "message", "organizations"] %>
     <% if params[:section] == nil || !valid_partials.include?(params[:section]) %>
       <%= render partial: "home"%>
     <% else %>

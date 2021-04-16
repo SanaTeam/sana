@@ -20,5 +20,10 @@
                 <%= fa_icon "handshake-o", text: "Matches" %>
             <% end %>
         </li>
+        <li>
+            <%= link_to(user_path(current_user.id, section: "organizations")) do %>
+                <%= fa_icon "users", text: "Organizations" %>
+            <% end %>
+        </li>
     </ul>
 </div>

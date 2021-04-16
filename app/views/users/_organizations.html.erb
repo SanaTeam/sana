@@ -1,0 +1,14 @@
+<div class="card">
+    <h5 class="card-header"><%= fa_icon "users", text: "Your Organizations" %></h5>
+    <div class="card-body">
+        <% organizations = Organization.all %>
+        <% organizations.each do |organization| %>
+            <h5 class="card-title"><%= organization.name%></h5>
+            <p>
+                <%= link_to(organization) do %>
+                    <%= fa_icon "info-circle", text: "Show" %>
+                <% end %>
+            </p>
+        <% end %>
+    </div>
+</div>
