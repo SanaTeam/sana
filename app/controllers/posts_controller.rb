@@ -2,9 +2,8 @@ class PostsController < ApplicationController
     before_action :logged_in!, only: [:index, :new, :show, :edit, :destroy]
 
     def index
-        @categories = ["Financial Literacy", "Transportation", "Productivity", "Mindfulness", "Healhty Habits", "Other"]
+        @categories = ["Financial Literacy", "Transportation", "Productivity", "Mindfulness", "Healthy Habits", "Other"]
         search = params[:search].present? ? params[:search] : nil
-        # @posts = Post.order(created_at: :desc).page(params[:page])
         @posts = if search
             puts "Search query"
             Post.search(search)
@@ -12,9 +11,8 @@ class PostsController < ApplicationController
             puts "there was no search q"
             Post.all
         end
-        # puts "HERE"
         @posts = @posts.select{|post| post.contains_categories?(params[:category])}
-        # @posts = @posts.where(params[:category])
+        # @posts = @posts.order(created_at: :desc).page(params[:page])
     end
 
     def search 

@@ -9,7 +9,17 @@
 <br>
 
 <div class="row">
-    <div class="col-2">
+    <div class="col-9">
+    <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
+    <%= link_to("/posts/new", class: "ml-2 d-inline text-center") do %>
+        <%= fa_icon "plus", text: "Create" %>
+    <% end %>
+</div>
+<br>
+<br>
+
+<div class="row">
+    <div class="col-4">
         <%= form_with(model: @post, url: posts_path, method: :get, local: true) do |form| %>
             <% @categories.each do |cat| %>
                 <%= check_box_tag 'category[]', cat, false %>
@@ -18,13 +28,7 @@
             <%= form.submit "Select Categories" %>            
         <% end %>
     </div>
-
-    <div class="col-9">
-    <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
-    <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
-        <%= fa_icon "plus", text: "Create" %>
-    <% end %>
-
+    <div class="col-8 d-inline">
     <table class="table">
         <thead>
             <tr>
@@ -51,5 +55,6 @@
             <% end %>
         </tbody>
     </table>
+    </div>
     </div>
 </div>
