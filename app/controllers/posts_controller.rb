@@ -2,7 +2,7 @@ class PostsController < ApplicationController
     before_action :logged_in!, only: [:index, :new, :show, :edit, :destroy]
 
     def index
-        @posts = Post.order(created_at: :desc).page(params[:page])
+        @posts = Post.order(pinned: :desc, created_at: :desc).page(params[:page])
     end
 
     def new

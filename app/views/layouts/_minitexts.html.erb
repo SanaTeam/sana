@@ -2,7 +2,9 @@
   <div class="row">
       <div role="alert" aria-live="assertive" aria-atomic="true" class="toast <%= model.user_id == current_user.id ? "mr-auto" : "ml-auto" %> mb-4" data-autohide="false">
           <div class="toast-header">
-            <strong class="mr-auto"><%= User.find(model.user_id).full_name %></strong>
+            <% user = User.find(model.user_id) %>
+            <%= get_gravatar(user, "rounded mr-2", 20) %>
+            <strong class="mr-auto"><%= user.full_name %></strong>
             <small><%= to_datetime_string(model.created_at) %></small>
           </div>
           <div class="toast-body">
