@@ -1,0 +1,16 @@
+<div class="card mb-5 w-50" id="match" data-post-id="<%= post.id %>" data-user1-id="<%= current_user.id %>" data-user2-id="<%= post.user_id %>" data-action="swipeleft->match#swipeleft swiperight->match#swiperight">
+    <h5 class="card-header">
+        <strong class="float-left">
+            <% if !post.is_anonymous %>
+                <%= User.find(post.user_id).full_name %>
+            <% else %>
+                Anonymous
+            <% end %>
+        </strong>
+        <small class="float-right"><%= to_datetime_string(post.created_at)%></small>
+    </h5>
+    <div class="card-body">
+        <h5 class="card-title"><%= post.title %></h5>
+        <%= post.content %>
+    </div>
+</div>
