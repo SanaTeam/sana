@@ -2,7 +2,6 @@ class MatchesController < ApplicationController
     before_action :logged_in!, only: [:show, :index]
 
     def index
-        redirect_to user_path(current_user.id, section: "match")
     end
 
     def create
@@ -29,7 +28,7 @@ class MatchesController < ApplicationController
         match_contains_user!(@match)
         @match.destroy!
         flash[:notice] = "You closed a match!"
-        redirect_to user_match_path(current_user.id)
+        redirect_to user_path(current_user.id)
     end
 
     def show
