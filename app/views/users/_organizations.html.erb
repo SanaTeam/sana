@@ -4,7 +4,7 @@
         <% admin_organizations = Administrator.all.where(user_id: current_user.id) %>
         <% admin_organizations.each do |admin_organization| %>
             <% organization = Organization.find(admin_organization.organization_id) %>
-            <h5 class="card-title"><%= organization.id%></h5>
+            <h5 class="card-title"><%= organization.name %></h5>
             <p>
                 <%= link_to(organization) do %>
                     <%= fa_icon "info-circle", text: "Show" %>
