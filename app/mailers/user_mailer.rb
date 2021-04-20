@@ -1,9 +1,8 @@
-class UserMailer < ApplicationMailer
-    
-    def forgot_password(user)
+class UserMailer < ActionMailer::Base
+    default from: 'aaronportman@brandeis.edu'
+    def password_reset(user)
         @user = user
-        @greeting = "Hi"
-        
-        mail from: 'sanadeveloperteam@gmail.com', to: user.email, subject: 'Reset password instructions'
+        mail to: user.email, subject: "Password reset"  
     end
+      
 end
