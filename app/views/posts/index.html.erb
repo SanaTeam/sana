@@ -16,7 +16,14 @@
     <tbody>
         <% @posts.each do |post| %>
         <tr>
-            <td><%= post.title %></td>
+            <td>
+            <%= post.title %>
+            <% if post.pinned %>
+                <span class="badge badge-secondary">
+                    <%= fa_icon "tag", text: "Pinned" %>
+                </span>
+            <% end %>
+            </td>
             <td><%= to_datetime_string(post.created_at) %></td>
             <td><%= post.replies.count %>
             <td>

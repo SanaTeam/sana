@@ -11,9 +11,11 @@
     <%= form.label :content %>
     <%= form.text_area :content, class: 'mb-1 form-control' %>
     <br>
-    <%= form.label :pinned %>
-    <%= form.check_box :pinned %>
-    <br>
+    <% if current_user.admin %>
+        <%= form.label :pinned %>
+        <%= form.check_box :pinned %>
+        <br>
+    <% end %>
     <%= form.label :is_anonymous %>
     <%= form.check_box :is_anonymous %>
     <br>

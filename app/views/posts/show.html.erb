@@ -1,7 +1,8 @@
 <div class="card mb-5">
   <h5 class="card-header">
-    <strong class="float-left">
+    <strong>
       <% if !@post.is_anonymous %>
+        <%= get_gravatar(User.find(@post.user_id), "rounded mr-2", 25) %>
         <%= @user.full_name %>
       <% else %>
         Anonymous
