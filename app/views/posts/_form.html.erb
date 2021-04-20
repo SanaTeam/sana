@@ -1,7 +1,7 @@
 <% admin_organizations = Administrator.all.where(user_id: current_user.id) %>
 <% organizations = [] %>
 <% admin_organizations.each do |admin_organization| %>
-    <% organizations << Organization.find(admin_organization.organization_id).name %>
+    <% organizations << Organization.find(admin_organization.organization_id) %>
 <% end %>
 
 <%= form_with model: @post do |form| %>
@@ -19,7 +19,7 @@
     <%= form.label :is_anonymous %>
     <%= form.check_box :is_anonymous %>
     <br>
-    <%= form.select :organization, organizations %>
+    <%= form.select :organization_id, options_for_select(organizations.collect{ |organization| [organization.name, organization.id] }) %>
     <br><br>
     <%= form.submit class: 'btn btn-primary' %>
 <% end %>

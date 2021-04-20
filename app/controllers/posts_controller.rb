@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(title: post_params[:title], content: post_params[:content], user_id: current_user.id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous])
+        @post = Post.new(title: post_params[:title], content: post_params[:content], user_id: current_user.id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous], organization_id: post_params[:organization_id])
         if @post.save
             flash[:notice] = "Your post was created!"
             redirect_to @post
