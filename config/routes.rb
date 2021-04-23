@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "/home", to: "welcome#index"
   get "/match", to: "posts#match"
   get "/users/:id/:section", to: "users#show", constraints: { section: /(home|match|activity|match|organizations)/ }
+  get "posts/:query/search", to: "posts#index", as: "post_search"
 
   post "/posts/new", to: "posts#create"
   post "/sessions/new", to: "sessions#create"

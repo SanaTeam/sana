@@ -1,14 +1,37 @@
-<h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
-<%= link_to("/posts/new", class: "ml-2 d-inline") do %>
-    <%= fa_icon "plus", text: "Create" %>
-<% end %>
+<div class="row">
+    <div class="col ms-12">
+    <%= form_with(model: @post, url: posts_path, method: :get, :class => "form-inline justify-content-center") do |form| %>
+        <%= search_field_tag :search, params[:search], placeholder: "Keyword Search", class: "form-control" %>
+    <%= form.submit "Search" %>
+    <% end %>
+    </div>
+</div>
+<br>
 
+<div class="row">
+    <div class="col-3">
+        <br>
+        <br>
+        <%= render 'filtering_bar', posts: @posts%>
+    </div>
+
+    <div class="col-9">
+    <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
+    <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
+        <%= fa_icon "plus", text: "Create" %>
+    <% end %>
+    <br>
+    <% if @has_category %>
+        Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>
+    <% end %>
+=======
 <table class="table">
     <thead>
         <tr>
         <th>Title</th>
         <th>Date Posted</th>
         <th># of Replies</th>
+        <th>Status</th>
         <th>Actions</th>
         </tr>
     </thead>
@@ -27,6 +50,13 @@
             <td><%= to_datetime_string(post.created_at) %></td>
             <td><%= post.replies.count %>
             <td>
+                <% if post.is_request%>
+                    <span class="badge badge-pill badge-primary">Help Request</span>
+                <% else %>
+                    <span class="badge badge-pill badge-success">Help Offer</span>
+                <% end %>
+            </td>
+            <td>
                 <%= link_to(post) do %>
                     <%= fa_icon "info-circle", text: "Show" %>
                 <% end %>
@@ -36,7 +66,8 @@
             </td>
         </tr>
         <% end %>
-    </tbody>
-</table>
-
-<%= paginate @posts %>
+        </tbody>
+    </table>
+    </div>
+    <%= paginate @posts %>
+</div>

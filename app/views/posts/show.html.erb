@@ -16,6 +16,23 @@
   <div class="card-body">
     <h5 class="card-title"><%= @post.title %></h5>
     <%= @post.content %>
+    <br>Categories: 
+    <% @post.categories.each do |cat| %>
+    <%= cat%>
+    <% end %>
+
+    <%= @post.is_request %>
+    <br>
+    <% if !@post.is_anonymous %>
+      <h5 class="card-title">Posted by <%= @user.first_name + " " + @user.last_name%> on <%= to_datetime_string(@post.created_at)%></h5>
+    <% else %>
+      <h5 class="card-title">Anonymously posted on <%= to_datetime_string(@post.created_at)%></h5>
+    <% end %>
+    <% if @post.is_request%>
+      <span class="badge badge-pill badge-primary">Help Request</span>
+    <% else %>
+      <span class="badge badge-pill badge-success">Help Offer</span>
+    <% end %>
   </div>
   <% if owns_model?(@post) %>
     <div class="card-footer text-muted">
