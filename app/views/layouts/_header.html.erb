@@ -13,7 +13,6 @@
         <% end %>
       </li>
       <li class="nav-item">
-        
         <%= link_to(matches_path, class: "nav-link") do %>
           <%= fa_icon "handshake-o", text: "Match" %>
         <% end %>
@@ -21,6 +20,13 @@
     </ul>
     <ul class="navbar-nav">
       <% if logged_in? %>
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <%= link_to(rails_admin_path, class: "nav-link") do %>
+              <%= fa_icon "cogs", text: "Admin" %>
+            <% end %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= fa_icon "user-circle", text: current_user.first_name %>

@@ -1,16 +1,22 @@
 <div>
     <ul>
         <li>
-            <%= link_to(user_message_path(current_user.id)) do %>
+            <%= link_to(user_path(current_user.id, section: "home")) do %>
+                <%= fa_icon "id-card", text: "Home" %>
+            <% end %>
+        </li>
+        <li>
+            <%= link_to(user_path(current_user.id, section: "message")) do %>
                 <%= fa_icon "envelope", text: "Messages" %>
             <% end %>
         </li>
         <li>
-            <%= link_to(user_activity_path(current_user.id)) do %>
+            <%= link_to(user_path(current_user.id, section: "activity")) do %>
                 <%= fa_icon "comments", text: "Activity" %>
             <% end %>
+        </li>
         <li>
-            <%= link_to(user_match_path(current_user.id)) do %>
+            <%= link_to(user_path(current_user.id, section: "match")) do %>
                 <%= fa_icon "handshake-o", text: "Matches" %>
             <% end %>
         </li>

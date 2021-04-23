@@ -19,4 +19,11 @@ ActiveStorage.start()
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
 import "../select2/select2"
+import "controllers"
 
+document.addEventListener("turbolinks:load", () => {
+    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="popover"]').popover()
+    $('.toast').toast({ autohide: false })
+    $('.toast').toast('show')
+})

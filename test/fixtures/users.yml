@@ -6,7 +6,6 @@ short_password:
   last_name: User
   email: test@user.com
   password: pass
-  password_digest: pass
 
 duplicate_email:
   id: 2
@@ -14,7 +13,6 @@ duplicate_email:
   last_name: MyString
   email: test@user.com
   password: MyString
-  password_digest: MyString
 
 without_email:
   id: 3
@@ -22,13 +20,17 @@ without_email:
   last_name: MyString
   email: MyString
   password: MyString
-  password_digest: MyString
 
 valid_user:
   id: 4
+  first_name: A
+  last_name: User
+  email: user@gmail.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+
+email_user:
+  id: 5
   first_name: Aaron
   last_name: Portman
   email: aaronportman@gmail.com
-  password: password
   password_digest: <%= BCrypt::Password.create('password') %>
-

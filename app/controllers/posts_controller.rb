@@ -22,8 +22,6 @@ class PostsController < ApplicationController
             @posts = @posts.select{|post| post.contains_categories?(params[:category])}
             @posts = Post.where(id: @posts.pluck(:id))
         end 
-        puts("these are the posts")
-        puts @posts
         @posts = @posts.order(pinned: :desc, created_at: :desc).page(params[:page])
     end
 

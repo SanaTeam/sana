@@ -2,14 +2,17 @@ class MatchesController < ApplicationController
     before_action :logged_in!, only: [:show, :index]
 
     def index
-        redirect_to user_match_path(current_user.id)
     end
 
     def create
         @match = Match.new(match_params)
-        @match.save!
-        flash[:notice] = "You requested a match!"
-        redirect_to posts_path
+        if @match.save
+            flash[:notice] = "You requested a match!"
+            redirect_to posts_path
+        else
+            flash[:alert] = @match.errors.full_messages.join(", ")
+            redirect_to @match
+        end
     end
 
     def accept
@@ -24,8 +27,8 @@ class MatchesController < ApplicationController
         @match = Match.find(params[:id])
         match_contains_user!(@match)
         @match.destroy!
-        flash[:notice] = "You denied a match!"
-        redirect_to user_match_path(current_user.id)
+        flash[:notice] = "You closed a match!"
+        redirect_to user_path(current_user.id)
     end
 
     def show

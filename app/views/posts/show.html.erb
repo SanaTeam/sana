@@ -1,6 +1,17 @@
 <div class="card mb-5">
-  <h5 class="card-header"><%= @post.title %></h5>
+  <h5 class="card-header">
+    <strong>
+      <% if !@post.is_anonymous %>
+        <%= get_gravatar(User.find(@post.user_id), "rounded mr-2", 25) %>
+        <%= @user.full_name %>
+      <% else %>
+        Anonymous
+      <% end %>
+    </strong>
+    <small class="float-right"><%= to_datetime_string(@post.created_at)%></small>
+  </h5>
   <div class="card-body">
+    <h5 class="card-title"><%= @post.title %></h5>
     <%= @post.content %>
     <br>Categories: 
     <% @post.categories.each do |cat| %>
@@ -19,27 +30,18 @@
     <% else %>
       <span class="badge badge-pill badge-success">Help Offer</span>
     <% end %>
-    <% if owns_model?(@post) %>
-      <%= render "/layouts/operations", edit_route: edit_post_path(@post), destroy_route: @post %>
-    <% end %>
   </div>
+  <% if owns_model?(@post) %>
+    <div class="card-footer text-muted">
+      <%= render "/layouts/operations", edit_route: edit_post_path(@post), destroy_route: @post %>
+    </div>
+  <% end %>
 </div>
 
-<% @post.replies.each do |reply| %>
-  <div class="row">
-        <div class="card w-50 <%=reply.user_id == current_user.id ? "mr-auto" : "ml-auto" %>">
-            <div class="card-body">
-                <strong><%= User.find(reply.user_id).first_name %></strong>: <%= reply.content %>
-                <% if owns_model?(reply) %>
-                  <div><%= render "/layouts/operations", edit_route: "", destroy_route: reply %></div>
-                <% end %>
-            </div>
-        </div>
-    </div>
-    <br>
-<% end %>
+<div class="replies">
+  <%= render '/layouts/minitexts', models: @post.replies %>
+</div>
+
 <%= render '/replies/form', reply: Reply.new %>
-<br>
 <%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
-<br>
-<a href="/posts" class="btn btn-primary mt-2">Back to Posts</a>
+<a href="/posts" class="btn btn-primary">Back to Posts</a>

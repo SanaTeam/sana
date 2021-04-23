@@ -1,12 +1,19 @@
 <div class="card">
     <h5 class="card-header"><%= fa_icon "id-card", text: "Profile" %></h5>
     <div class="card-body">
-    <h5 class="card-title"><%= @user.first_name + " " + @user.last_name %></h5>
-    <p><%= @user.email %></p>
-        <% if @user.id == current_user.id %>
-            <%= button_to "Request Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
-            <%= button_to "Offer Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
-            <%= button_to "Register an Organization", "#", :method => "get", class: "btn btn-primary disabled mt-2" %>
-        <% end %> 
+        <div class="row ml-1 mr-1">
+            <div class="col-10">
+                <h5 class="card-title"><%= @user.full_name %></h5>
+                <p><%= @user.email %></p>
+                <% if @user.id == current_user.id %>
+                    <%= button_to "Request Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
+                    <%= button_to "Offer Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
+                    <%= button_to "Register an Organization", "#", :method => "get", class: "btn btn-primary disabled mt-2" %>
+                <% end %> 
+            </div>
+            <div class="col-2">
+                <%= get_gravatar(@user, "", 80) %>
+            </div>
+        </div>
     </div>
 </div>
