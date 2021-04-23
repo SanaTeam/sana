@@ -1,0 +1,10 @@
+<% user_matches = Match.where(user1_id: current_user.id).or(Match.where(user2_id: current_user.id)) %>
+
+<% user_matches.each |match| do %>
+    <% if match.user1_id == current_user.id %>
+        <%= match.user2_id.first_name %> 
+    <% else %>
+        <%= match.user1_id.first_name %>
+    <% end %>
+    <%= match.post_id.content %>
+<% end %>

@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   root "welcome#index"
   get "/home", to: "welcome#index"
   get "/match", to: "posts#match"
+  get "/users/:id/match", to: "users#show", as: "user_match"
+  get "/users/:id/activity", to: "users#show", as: "user_activity"
+  get "/users/:id/message", to: "users#show", as: "user_message"
+  get "posts/:query/search", to: "posts#index", as: "post_search"
   get "/users/:id/:section", to: "users#show", constraints: { section: /(home|match|activity|match)/ }
 
   post "/posts/new", to: "posts#create"

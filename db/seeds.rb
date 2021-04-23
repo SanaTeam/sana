@@ -29,8 +29,10 @@ end
     post_title = Faker::GreekPhilosophers.name
     post_content = Faker::GreekPhilosophers.quote
     post_pinned = Faker::Boolean.boolean
-    post_anon = Faker::Boolean.boolean
-    Post.create(title: post_title, content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon)
+    post_anon = Faker::Boolean.boolean(true_ratio: 0.5)
+    post_isrequest = Faker::Boolean.boolean(true_ratio: 0.5)
+    post_categories = ["Financial Literacy", "Transportation", "Productivity", "Mindfulness", "Healthy Habits", "Academics/Tutoring", "Language Learning", "Other"].sample(2)
+    Post.create(title: post_title, content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon, categories: post_categories, is_request: post_isrequest)
 end 
 
 # Reply model fields

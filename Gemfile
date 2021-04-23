@@ -65,6 +65,10 @@ gem 'font-awesome-rails'
 gem 'bcrypt'
 gem 'rails_admin', '~> 2.0'
 gem 'kaminari'
+gem 'searchkick'
+gem 'bootstrap-multiselect_rails', '~> 0.9.4'
+gem "select2-rails"
+gem "bootstrap_form", "~> 4.0"
 gem "stimulus_reflex", "~> 3.4"
 gem 'redis'
 gem 'redis-rails'
