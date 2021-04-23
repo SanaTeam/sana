@@ -69,13 +69,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reactions", force: :cascade do |t|
-    t.string "user"
-    t.string "reply"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "replies", force: :cascade do |t|
     t.string "content"
     t.integer "to"
