@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :administrators
   get 'password_resets/new'
+  get 'password_resets/edit'
   default_url_options :host => "localhost:3000"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :messages
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :matches
-  resources :password_resets
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
 
   root "welcome#index"
