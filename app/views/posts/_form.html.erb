@@ -19,8 +19,11 @@
     <%= form.label :is_anonymous %>
     <%= form.check_box :is_anonymous %>
     <br>
-    <%= form.select :organization_id, 
-        options_for_select(organizations.collect{ |organization| [organization.name, organization.id] }), {include_blank: 'Please select an organization if you are posting on their behalf'} %>
-    <br><br>
+    <% if organizations.size > 0 %>
+        <%= form.select :organization_id, 
+            options_for_select(organizations.collect{ |organization| ["Post for #{organization.name}", organization.id] }), {include_blank: 'Personal post'} %>
+        <br>
+    <% end %>
+    <br>
     <%= form.submit class: 'btn btn-primary' %>
 <% end %>
