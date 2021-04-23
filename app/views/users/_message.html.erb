@@ -2,21 +2,30 @@
     <h5 class="card-header"><%= fa_icon "envelope", text: "Your Messages" %></h5>
     <div class="card-body">
         <% matches = Match.all.where(user1_id: current_user.id).or(Match.all.where(user2_id: current_user.id))%>
-        <% matches.each do | match | %>
-            <% if match.confirmed? %>
-            <h5 class="card-title">
-                <% if match.user1_id == current_user.id %>
-                    <%= User.find(match.user2_id).first_name %> 
+        <% if matches.size > 0 %>
+            <% matches.each do | match | %>
+                <% if match.confirmed? %>
+                    <h5 class="card-title">
+                        <% if match.user1_id == current_user.id %>
+                            <%= User.find(match.user2_id).first_name %> 
+                        <% else %>
+                            <%= User.find(match.user1_id).first_name %>
+                        <% end %>
+                    </h5>
+                    <p>
+                        <%= link_to(match) do %>
+                            <%= fa_icon "info-circle", text: "Show" %>
+                        <% end %>
+                    </p>
                 <% else %>
-                    <%= User.find(match.user1_id).first_name %>
+                    <h5>You can't message anyone, because you don't have any confirmed matches yet!</h5>
                 <% end %>
-            </h5>
-            <p>
-                <%= link_to(match) do %>
-                    <%= fa_icon "info-circle", text: "Show" %>
-                <% end %>
-            </p>
             <% end %>
+        <% else %>
+            <h5>You can't message anyone, because you don't have any matches yet!</h5>
+        <% end %>
+        <%= link_to("/matches", class: "ml-2 d-inline") do %>
+            <%= fa_icon "search", text: "Search for Matches" %>
         <% end %>
     </div>
 </div>
