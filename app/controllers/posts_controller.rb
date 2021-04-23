@@ -20,7 +20,11 @@ class PostsController < ApplicationController
                 @has_category = params[:category]
             end 
             @posts = @posts.select{|post| post.contains_categories?(params[:category])}
+            @posts = Post.where(id: @posts.pluck(:id))
         end 
+        puts("these are the posts")
+        puts @posts
+        @posts = @posts.order(pinned: :desc, created_at: :desc).page(params[:page])
     end
 
     def search 
@@ -31,7 +35,7 @@ class PostsController < ApplicationController
     end
 
     def create
-        @post = Post.new(title: post_params[:title], content: post_params[:content], user_id: current_user.id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous])
+        @post = Post.new(title: post_params[:title], content: post_params[:content], user_id: current_user.id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous], is_request: post_params[:is_request])
         if @post.save
             flash[:notice] = "Your post was created!"
             redirect_to @post
@@ -48,7 +52,7 @@ class PostsController < ApplicationController
 
     def update
         @post = Post.find(params[:id])
-        if @post.update(title: post_params[:title], content: post_params[:content], user_id: @post.user_id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous])
+        if @post.update(title: post_params[:title], content: post_params[:content], user_id: @post.user_id, pinned: post_params[:pinned], is_anonymous: post_params[:is_anonymous], is_request: post_params[:is_request])
             flash[:notice] = "Your post was updated!"
             redirect_to @post
         else
