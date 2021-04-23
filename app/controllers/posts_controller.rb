@@ -2,15 +2,25 @@ class PostsController < ApplicationController
     before_action :logged_in!, only: [:index, :new, :show, :edit, :destroy]
 
     def index
+        @has_category = nil
         @categories = ["Financial Literacy", "Transportation", "Productivity", "Mindfulness", "Healthy Habits", "Academics/Tutoring", "Language Learning", "Other"]
-        search = params[:search].present? ? params[:search] : nil
-        @posts = if search
-            Post.search(search)
-        else
-            Post.all
-        end
-        @posts = @posts.select{|post| post.contains_categories?(params[:category])}
-       
+        if params[:clear_filters]
+            @posts = Post.all
+        else 
+            search = params[:search].present? ? params[:search] : nil
+            @posts = if search
+                Post.search(search)
+            else
+                Post.all
+            end
+            if params[:help_status]
+                @posts = @posts.where(is_request: params[:help_status])
+            end 
+            if params[:category]
+                @has_category = params[:category]
+            end 
+            @posts = @posts.select{|post| post.contains_categories?(params[:category])}
+        end 
     end
 
     def search 

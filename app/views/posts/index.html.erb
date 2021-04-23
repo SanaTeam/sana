@@ -12,28 +12,17 @@
     <div class="col-3">
         <br>
         <br>
-        <%= form_with(model: @post, url: posts_path, method: :get, local: true) do |form| %>
-            <% @categories.each do |cat| %>
-                <%= check_box_tag 'category[]', cat, false %>
-                <%= cat %><br>
-            <% end%>
-            <%= form.submit "Select Categories" %>            
-        <% end %>
-        <br>
-        <br>
-        <%= form_with(model: @post, url: posts_path, method: :get, local: true) do |form| %>
-                <%= form.label :help_request %>
-                <%= form.check_box :is_request %>    
-                <br>
-                <%= form.label :help_offer %>
-                <%= form.check_box :is_request %>  
-        <%end%>
+        <%= render 'filtering_bar', posts: @posts%>
     </div>
 
     <div class="col-9">
     <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
     <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
         <%= fa_icon "plus", text: "Create" %>
+    <% end %>
+    <br>
+    <% if @has_category %>
+        Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>
     <% end %>
 
     <table class="table">
