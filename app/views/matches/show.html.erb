@@ -6,7 +6,7 @@
     <small class="float-right"><%= to_datetime_string(@match.created_at)%></small>
   </h5>
   <div class="card-body">
-    <% if @match.post_id %>
+    <% if @match.post_id && Post.where(id: @match.post_id).count == 1%>
         <% @post = Post.find(@match.post_id) %>
         <h5 class="card-title"> Matched via post
           <%= @post.title %>

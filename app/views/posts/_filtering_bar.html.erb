@@ -1,0 +1,24 @@
+<%= form_with(model: @post, url: posts_path, method: :get, local: true) do |form| %>
+    <h5>Categories</h5>
+    <% @categories.each do |cat| %>
+        <%= check_box_tag 'category[]', cat, false %>
+        <%= cat %><br>
+    <% end%>
+    <br>
+    <h5>Help Status</h5>
+    <%= check_box_tag 'help_status[]', true %>
+    <%= "Help Request" %>    
+    <br> 
+    <%= check_box_tag 'help_status[]', false %>
+    <%= "Help Offer" %>  
+    <br>
+    <br>
+    <h5>Filters</h5>
+    <%= check_box_tag 'clear_filters[]', false %>
+    <%= "Clear Filters" %> 
+    <br>
+    <br>
+    <%= form.submit "Apply Filters", class: "btn btn-primary" %>            
+<% end %>
+<br>
+<br>

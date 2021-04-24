@@ -15,6 +15,16 @@
   </h5>
   <div class="card-body">
     <h5 class="card-title"><%= @post.title %></h5>
+    <div class="mb-2">
+      <% if @post.is_request %>
+        <span class="badge badge-pill badge-primary">Help Request</span>
+      <% else %>
+        <span class="badge badge-pill badge-success">Help Offer</span>
+      <% end %>
+      <% @post.categories.each do |cat| %>
+        <span class="badge badge-pill"><%= cat %></span>
+      <% end %>
+    </div>
     <%= @post.content %>
   </div>
   <% if owns_model?(@post) %>
