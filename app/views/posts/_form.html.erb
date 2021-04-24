@@ -1,3 +1,9 @@
+<% admin_organizations = Administrator.all.where(user_id: current_user.id) %>
+<% organizations = [] %>
+<% admin_organizations.each do |admin_organization| %>
+    <% organizations << Organization.find(admin_organization.organization_id) %>
+<% end %>
+
 <%= form_with model: @post do |form| %>
     <%= form.label :title %>
     <%= form.text_field :title, class: 'mb-1 form-control' %>
@@ -18,6 +24,12 @@
     <%= form.label :is_request, "Requesting help?" %>
     <%= form.check_box :is_request %>
     <small class="form-text text-muted">Check to request help, leave unchecked to offer.</small>
+    <br>
+    <% if organizations.size > 0 %>
+        <%= form.select :organization_id, 
+            options_for_select(organizations.collect{ |organization| ["Post for #{organization.name}", organization.id] }), {include_blank: 'Personal post'} %>
+        <br>
+    <% end %>
     <br>
     <%= form.submit class: 'btn btn-primary' %>
 <% end %>

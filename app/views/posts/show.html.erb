@@ -4,6 +4,9 @@
       <% if !@post.is_anonymous %>
         <%= get_gravatar(User.find(@post.user_id), "rounded mr-2", 25) %>
         <%= @user.full_name %>
+        <% if @post.organization_id != nil %>
+          (<%= Organization.find(@post.organization_id).name %>)
+        <% end %>
       <% else %>
         Anonymous
       <% end %>

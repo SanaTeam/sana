@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "administrators", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user1_id"
@@ -50,6 +57,16 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
+    t.integer "organization_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.string "description"
+    t.boolean "is_active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.text "categories", default: [], array: true
     t.boolean "is_request"
   end
