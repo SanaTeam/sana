@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "categories", default: [], array: true
+    t.boolean "is_request"
   end
 
   create_table "replies", force: :cascade do |t|
