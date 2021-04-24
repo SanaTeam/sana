@@ -4,6 +4,9 @@ Minitest::Reporters.use!
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
 
+  fixtures :posts
+  fixtures :users
+
   setup do
     help_new_session
   end
