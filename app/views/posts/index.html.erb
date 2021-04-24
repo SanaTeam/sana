@@ -2,7 +2,7 @@
     <div class="col ms-12">
     <%= form_with(model: @post, url: posts_path, method: :get, :class => "form-inline justify-content-center") do |form| %>
         <%= search_field_tag :search, params[:search], placeholder: "Keyword Search", class: "form-control" %>
-    <%= form.submit "Search" %>
+    <%= form.submit "Search", class: "btn btn-primary" %>
     <% end %>
     </div>
 </div>
@@ -24,7 +24,6 @@
     <% if @has_category %>
         Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>
     <% end %>
-=======
 <table class="table">
     <thead>
         <tr>
