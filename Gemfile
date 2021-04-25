@@ -72,3 +72,5 @@ gem "bootstrap_form", "~> 4.0"
 gem "stimulus_reflex", "~> 3.4"
 gem 'redis'
 gem 'redis-rails'
+gem 'omniauth-auth0', '~> 2.5'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'

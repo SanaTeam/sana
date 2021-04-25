@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :administrators
-  get 'password_resets/new'
-  get 'password_resets/edit'
   default_url_options :host => "localhost:3000"
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :messages
@@ -11,6 +8,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :matches
+  resources :administrators
   resources :password_resets, only: [:new, :create, :edit, :update]
 
 
@@ -19,7 +17,10 @@ Rails.application.routes.draw do
   get "/match", to: "posts#match"
   get "/users/:id/:section", to: "users#show", constraints: { section: /(home|match|activity|match|organizations)/ }
   get "posts/:query/search", to: "posts#index", as: "post_search"
-
+  get '/auth/auth0/callback' => 'auth0#callback'
+  get '/auth/failure' => 'auth0#failure'
+  get 'password_resets/new'
+  get 'password_resets/edit'
 
   post "/posts/new", to: "posts#create"
   post "/sessions/new", to: "sessions#create"

@@ -7,10 +7,22 @@ class User < ApplicationRecord
 
     validates :first_name, presence: true 
     validates :last_name, presence: true
-    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-    validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+    validate :email_or_oauth_present?
     validates :password, length: { minimum: 6 }, allow_nil: true, unless: proc { |x| x.password.blank? }
 
+
+    def email_or_oauth_present?
+        if !self[:email] && !self[:oauth_id]
+          errors.add(:email, "No email/oauth present")
+        end
+        if self[:email] && !self[:oauth_id]
+          if self[:email].blank?
+            errors.add(:email, "can't be blank")
+          elsif !self[:email].match?(/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+            errors.add(:email, "invalid format")
+          end
+        end
+    end
 
     def full_name
         "#{self[:first_name]} #{self[:last_name]}"
