@@ -1,6 +1,14 @@
 <h1><%= fa_icon "unlock-alt", text: "Log In" %></h1>
 
-<%= render 'form'%>
+<%= render 'form' %>
+<div class="btn-group mt-2 mb-2" role="group">
+    <%= button_to '/auth/auth0', method: :post, class: 'btn btn-outline-primary mt-1' do %>
+        <%= fa_icon "facebook", text: "Log In with", right: true %>
+    <% end %>
+    <%= button_to '/auth/auth0', method: :post, class: 'btn btn-outline-danger mt-1' do %>
+        <%= fa_icon "google", text: "Log In with", right: true %>
+    <% end %>
+</div>
 
 <p>Don't have an account? Sign up <%= link_to "here!", "/users/new" %></p>
 <%= link_to "Forgot Password", new_password_reset_path %>

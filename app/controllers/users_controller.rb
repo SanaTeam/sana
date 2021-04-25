@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :logged_in!, only: [:show, :index]
     skip_before_action :verify_authenticity_token, only: [:create]
 
     def index
