@@ -17,6 +17,11 @@
           <%= fa_icon "handshake-o", text: "Match" %>
         <% end %>
       </li>
+      <li class="nav-item">
+      <%= link_to(users_path, class: "nav-link") do %>
+        <%= fa_icon "users", text: "Users" %>
+      <% end %>
+    </li>
     </ul>
     <ul class="navbar-nav">
       <% if logged_in? %>

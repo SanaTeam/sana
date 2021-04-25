@@ -9,6 +9,8 @@
                     <%= button_to "Request Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
                     <%= button_to "Offer Help", new_post_path, :method => "get", class: "btn btn-primary mt-2" %>
                     <%= button_to "Register an Organization", new_organization_path, :method => "get", class: "btn btn-primary mt-2" %>
+                <% else %>
+                    <%= render '/layouts/match_form', match: Match.new, user1_id: current_user.id, user2_id: @user.id, post_id: -1 %>
                 <% end %> 
             </div>
             <div class="col-2">

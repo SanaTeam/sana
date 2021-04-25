@@ -33,6 +33,15 @@ class User < ApplicationRecord
     def send_password_reset_email
       UserMailer.password_reset(self).deliver_now
     end
+
+    searchkick
+
+    def search_data
+        {
+            full_name: full_name,
+            email: email
+        }
+    end 
   
     private
   

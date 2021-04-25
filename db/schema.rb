@@ -57,18 +57,9 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.integer "organization_id"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "organization_id"
-    t.string "description"
-    t.boolean "is_active"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.text "categories", default: [], array: true
     t.boolean "is_request"
+    t.integer "organization_id"
   end
 
   create_table "replies", force: :cascade do |t|
