@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_150629) do
     t.string "title"
     t.text "categories", default: [], array: true
     t.boolean "is_request"
+    t.integer "organization_id"
   end
 
   create_table "profiles", force: :cascade do |t|
