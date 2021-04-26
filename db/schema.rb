@@ -69,8 +69,6 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.boolean "is_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "categories", default: [], array: true
-    t.boolean "is_request"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -90,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
     t.boolean "admin", default: false
     t.string "reset_digest"
     t.datetime "reset_sent_at"
