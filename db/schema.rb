@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_170049) do
+ActiveRecord::Schema.define(version: 2021_04_25_150629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "administrators", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.integer "post_id"
@@ -83,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_170049) do
     t.boolean "admin", default: false
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "oauth_id"
   end
 
 end

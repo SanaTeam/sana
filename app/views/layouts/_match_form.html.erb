@@ -1,5 +1,7 @@
 <%= form_with model: match do |form| %>
-    <%= form.hidden_field :post_id, :value => post_id %>
+    <% if Post.where(id: post_id).count == 1 %> 
+        <%= form.hidden_field :post_id, :value => post_id %>
+    <% end %>
     <%= form.hidden_field :user1_id, :value => user1_id %>
     <%= form.hidden_field :user2_id, :value => user2_id %>
     <%= form.hidden_field :user1_confirmed, :value => true %>

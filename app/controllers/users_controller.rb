@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
+    before_action :logged_in!, only: [:show, :index]
     skip_before_action :verify_authenticity_token, only: [:create]
+
+    def index
+        search = params[:search].present? ? params[:search] : nil
+        @users = if search
+            User.search(search)
+        else
+            User.all
+        end
+        @users = User.where(id: @users.pluck(:id)).order("LOWER(last_name)").page(params[:page])
+    end
 
     def show
         @user = User.find(params[:id])

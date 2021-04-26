@@ -1,0 +1,15 @@
+<%= form_with model: @organization do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'mb-1 form-control' %>
+    <br>
+    <%= form.label :org_type %>
+    <%= form.number_field :org_type %>
+    <br>
+    <%= form.label :accepts_donations %>
+    <%= form.check_box :accepts_donations %>
+    <br>
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+    <br>
+    <%= form.submit class: 'btn btn-primary' %>
+<% end %>

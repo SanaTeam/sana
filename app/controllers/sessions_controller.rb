@@ -16,9 +16,24 @@ class SessionsController < ApplicationController
     end
   
     def destroy
+      logout_route = current_user.oauth_id ? logout_url : root_url
       log_out
+      reset_session
       flash[:notice] = "You successfully logged out."
-      redirect_to root_url
+      redirect_to logout_route
+    end
+
+    def logout_url
+      request_params = {
+        returnTo: root_url,
+        client_id: ENV['AUTH0_CLIENT_ID']
+      }
+  
+      URI::HTTPS.build(host: ENV['AUTH0_DOMAIN'], path: '/v2/logout', query: to_query(request_params)).to_s
+    end
+  
+    def to_query(hash)
+      hash.map { |k, v| "#{k}=#{CGI.escape(v)}" unless v.nil? }.reject(&:nil?).join('&')
     end
 
 end
