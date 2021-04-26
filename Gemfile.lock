@@ -333,6 +333,7 @@ DEPENDENCIES
   bootstrap_form (~> 4.0)
   byebug
   capybara (>= 3.26)
+  elasticsearch
   faker
   font-awesome-rails
   hirb
