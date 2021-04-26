@@ -71,4 +71,5 @@ gem "select2-rails"
 gem "bootstrap_form", "~> 4.0"
 gem "stimulus_reflex", "~> 3.4"
 gem 'redis'
+gem 'elasticsearch'
 gem 'redis-rails'
