@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col ms-12">
+    <%= form_with(model: @user, url: users_path, method: :get, :class => "form-inline justify-content-center") do |form| %>
+        <%= search_field_tag :search, params[:search], placeholder: "Keyword Search", class: "form-control" %>
+    <%= form.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <h1 class="d-inline"><%= fa_icon "users", text: "Users" %></h1>
+<table class="table">
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td>
+            <%= user.full_name %>
+            </td>
+            <td><%= user.email %></td>
+            <td>
+                <%= link_to(user) do %>
+                    <%= fa_icon "info-circle", text: "Show" %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <%= paginate @users %>
+</div>
