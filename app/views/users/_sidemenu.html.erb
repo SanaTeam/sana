@@ -1,29 +1,28 @@
-<div>
+
     <ul>
-        <li>
-            <%= link_to(user_path(current_user.id, section: "home")) do %>
+      </li>
+            <%= link_to(user_path(current_user.id, section: "home"), class: "nav-link text-reset") do %>
                 <%= fa_icon "id-card", text: "Home" %>
             <% end %>
         </li>
         <li>
-            <%= link_to(user_path(current_user.id, section: "message")) do %>
+            <%= link_to(user_path(current_user.id, section: "message"), class: "nav-link text-reset") do %>
                 <%= fa_icon "envelope", text: "Messages" %>
             <% end %>
         </li>
         <li>
-            <%= link_to(user_path(current_user.id, section: "activity")) do %>
+            <%= link_to(user_path(current_user.id, section: "activity"), class: "nav-link text-reset") do %>
                 <%= fa_icon "comments", text: "Activity" %>
             <% end %>
         </li>
         <li>
-            <%= link_to(user_path(current_user.id, section: "match")) do %>
+            <%= link_to(user_path(current_user.id, section: "match"), class: "nav-link text-reset") do %>
                 <%= fa_icon "handshake-o", text: "Matches" %>
             <% end %>
         </li>
         <li>
-            <%= link_to(user_path(current_user.id, section: "organizations")) do %>
+            <%= link_to(user_path(current_user.id, section: "organizations"), class: "nav-link text-reset") do %>
                 <%= fa_icon "users", text: "Organizations" %>
             <% end %>
         </li>
     </ul>
-</div>

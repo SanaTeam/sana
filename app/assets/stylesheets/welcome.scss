@@ -2,7 +2,77 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.btn-primary {
-    background-color: #c60063;
-    border-color: #c60063;
+.txt {
+    font: "Raleway", sans-serif;
+}
+.banner-button {
+    background-color: #2287aa;
+    padding-right: 60px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    border-radius: 10px;
+    border: solid #2287aa;
+}
+
+.banner-button:hover {
+    background-color: transparent;
+	color: #2287aa;
+	text-decoration: none;
+}
+
+.banner {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
+    font-size: 24px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: bold; 
+    line-height: 26px; 
+}
+
+.title {
+    padding-top: 40px;
+}
+
+.text1 {
+    color: #2596be;
+}
+
+.text2 {
+    color: #5c4c8c;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 16px; 
+}
+
+/***************************/
+/*      User Types         */
+/***************************/
+
+.cards-1 .card {
+    display: inline-block;
+    max-width: 17.125rem;
+    vertical-align: top;
+}
+
+.col-lg-12 {
+    display: inline-block;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.card-image {
+	width: 2rem;
+	height: 8rem;
+	margin-right: auto;
+	margin-bottom: 2rem;
+	margin-left: auto;
+}
+
+.cards-1 .card-title {
+	margin-bottom: 0.875rem;
 }

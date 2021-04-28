@@ -3,18 +3,34 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 ul {
     padding: 0;
+    
 }
 
 li {
     list-style-type: none;
+    color: white;
 }
 
-.col-md-2 {
-    background-color: #e2e2e2;
-    border: solid black;
-    padding: 15px;
+li :hover {
+    list-style-type: none;
+    color: lightgray;
+}
+.col-sm-2 {
+    background-color: #2287aa;
+    padding-top: 15px;
+    color: white;
 }
 
 .btn, .btn-primary, .mt-2 {
     color: white;
+    background-color: #2287aa !important;
+    border: solid #2287aa !important;
+    font: "Raleway" !important;
 }
+
+.mt-2 :hover {
+    color: white;
+    background-color: #2287aa!important;
+    border: solid #2287aa !important;
+}
+

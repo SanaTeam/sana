@@ -1,10 +1,10 @@
 <div class="row">
   <% if @user.id == current_user.id %>
-    <div class="col-md-2 justify-content-start">
+    <div class="col-sm-2 justify-content-start">
       <%= render partial: "sidemenu" %>
     </div>
   <% end %>
-  <div class="col-md-10 justify-content-center">
+  <div class="col-sm-10 justify-content-center">
     <% valid_partials = ["home", "match", "activity", "message", "organizations"] %>
     <% if params[:section] == nil || !valid_partials.include?(params[:section]) %>
       <%= render partial: "home"%>

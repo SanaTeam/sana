@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
   <%= link_to(root_url, class: "navbar-brand") do %>
     <%= fa_icon "heartbeat", text: "Sana" %>
   <% end %>
@@ -6,20 +7,20 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbar-sana">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <%= link_to(posts_path, class: "nav-link") do %>
-          <%= fa_icon "comments", text: "Forum" %> 
+          Forum
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to(matches_path, class: "nav-link") do %>
-          <%= fa_icon "handshake-o", text: "Match" %>
+          Match
         <% end %>
       </li>
       <li class="nav-item">
       <%= link_to(users_path, class: "nav-link") do %>
-        <%= fa_icon "users", text: "Users" %>
+        Users
       <% end %>
     </li>
     </ul>
