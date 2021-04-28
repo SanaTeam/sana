@@ -12,17 +12,23 @@
             <% if owns_model?(model) %>
               <div><%= render "/layouts/operations", edit_route: "", destroy_route: model %></div>
             <% end %>
-            <div style="float:right; margin:2px">
-              <%= fa_icon "thumbs-up" %>
+            <div id="reaction">
+            <div id="1">
+             <%= link_to "#", data: { reflex: "click->ReactionReflex#like", id: model.id } do %>
+              <%= fa_icon "thumbs-up" %><%= tag.span model.like, id:"1"%>
+            <% end %>
+            </div>
+            <%= link_to "#", data: { reflex: "click->ReactionReflex#dislike", id: model.id } do %>
+              <%= fa_icon "thumbs-down" %><%= tag.span model.dislike, id:"reply-#{model.id}-dislikes"%>
+            <% end %>
+            <%= link_to "#", data: { reflex: "click->ReactionReflex#love", id: model.id } do %>
+              <%= fa_icon "heart" %><%= tag.span model.love, id:"reply-#{model.id}-loves"%>
+            <% end %>
+            <%= link_to "#", data: { reflex: "click->ReactionReflex#exclamation", id: model.id } do %>
+              <%= fa_icon "exclamation" %><%= tag.span model.exclamation, id:"reply-#{model.id}-exclamations"%>
+            <% end %>
             </div>
             <div style="float:right; margin:2px">
-              <%= fa_icon "thumbs-down" %>
-            </div>
-            <div style="float:right; margin:2px">
-              <%= fa_icon "heart" %>
-            </div>
-            <div style="float:right; margin:2px">
-              <%= fa_icon "exclamation" %>
             </div>
           </div>
         </div>
