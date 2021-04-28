@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   post "/posts/new", to: "posts#create"
+  post "/users/new", to: "users#create"
   post "/sessions/new", to: "sessions#create"
   post "/matches/:id", to: "messages#create"
   post "/posts/:id", to: "replies#create"

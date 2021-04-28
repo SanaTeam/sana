@@ -1,4 +1,34 @@
 require "test_helper"
+require_relative '../helpers/NewSessionHelper.rb'
+require_relative '../helpers/NewUserHelper.rb'
+
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
+    include NewSessionHelper
+    include NewUserHelper
+
+    test "not logged in" do
+        get root_path
+        assert_response :success
+        get posts_path
+        assert_redirected_to controller: "sessions", action: "new"
+        get matches_path
+        assert_redirected_to controller: "sessions", action: "new"
+        get user_path(users(:valid_user).id)
+        assert_redirected_to controller: "sessions", action: "new"
+    end
+
+    test "logged in" do
+
+        puts "request = #{new_user_path}"
+        post new_user_path, params: {
+            user: {
+                first_name: users(:valid_user).first_name,
+                last_name: users(:valid_user).last_name,
+                email: users(:valid_user).email,
+                password: users(:valid_user).password
+            }
+        }
+        assert_select ".card-title", "#{users(:valid_user).first_name} #{users(:valid_user).last_name}"
+    end
 end
