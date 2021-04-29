@@ -37,3 +37,20 @@ body {
 .text-blue {
     color: #2287aa !important;
 }
+
+.btn-white-background {
+    background-color: white;
+}
+
+.navbar-custom{
+    background-color:#2287aa;
+}
+
+.navbar-brand {
+    color:white !important;
+    font-size: 18px !important; 
+    font: "Raleway" !important;
+}
+.navbar-brand:hover{
+    color: lightgray !important;
+}
