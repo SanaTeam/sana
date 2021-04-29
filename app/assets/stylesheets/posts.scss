@@ -1,3 +1,23 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff !important;
+    background-color: #2287aa !important;
+    border-color: #2287aa !important;
+}
+
+.page-link {
+    color: #2287aa !important;
+}
+
+.badge-blue {
+    background-color: #2287aa !important;
+    color: #fff !important;
+}
+
+.badge-grey {
+    background-color: #f8f9fa !important;
+}

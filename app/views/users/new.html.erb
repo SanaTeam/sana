@@ -1,5 +1,12 @@
-<h1><%= fa_icon "user-plus", text: "Sign Up" %></h1>
-
+<div class="container">
+    <div class ="d-flex justify-content-between flex-wrap">
+        <div class="w-30 ml-3">
+            <%= image_tag("welcome.svg", size: "220x200")%>
+        </div>
+        <div class="w-50 heading mr-auto ml-5 pt-5">
+            <h1 class="d-inline">Sign up below</h1>
+        </div>
+    </div>
+</div>
 <%= render 'form', user: User.new %>
-
-<p>Already have an account? Sign in <%= link_to "here!", "/sessions/new" %></p>
+<p>Already have an account? Sign in <span class="text-blue"><%= link_to "here!", "/sessions/new" %></span></p>

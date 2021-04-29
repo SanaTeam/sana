@@ -14,18 +14,16 @@
                     </h5>
                     <p>
                         <%= link_to(match) do %>
-                            <%= fa_icon "info-circle", text: "Show" %>
+                            <span class="text-blue"><%= fa_icon "info-circle", text: "Show" %></span>
                         <% end %>
                     </p>
-                <% else %>
-                    <h5>You can't message anyone, because you don't have any confirmed matches yet!</h5>
                 <% end %>
             <% end %>
         <% else %>
             <h5>You can't message anyone, because you don't have any matches yet!</h5>
         <% end %>
         <%= link_to("/matches", class: "ml-2 d-inline") do %>
-            <%= fa_icon "search", text: "Search for Matches" %>
+            <span class="text-blue"><%= fa_icon "search", text: "Search for Matches" %></span>
         <% end %>
     </div>
 </div>

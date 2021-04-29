@@ -18,7 +18,7 @@
   <div class="card-footer text-muted">
     <% if @post %>
       <%= link_to(@post) do %>
-        <%= fa_icon "info-circle", text: "Show" %>
+        <span class="text-blue"><%= fa_icon "info-circle", text: "Show" %></span>
       <% end %>
     <% end %>
     <% if owns_match?(@match) %>
