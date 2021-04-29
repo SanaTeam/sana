@@ -47,7 +47,7 @@ body {
 }
 
 .navbar-brand {
-    color:white !important;
+    color:#2287aa !important;
     font-size: 18px !important; 
     font: "Raleway" !important;
 }
@@ -56,4 +56,13 @@ body {
 }
 .dropdown-item.active, .dropdown-item:active{
     background-color:  #104355 !important;
+}
+
+.btn, .btn-primary {
+    border-radius: 30px !important;
+    /* background-color: #5c4c8c !important; */
+}
+
+.p {
+    font-family: "Raleway" !important;
 }
