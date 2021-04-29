@@ -17,9 +17,9 @@
     <h5 class="card-title"><%= @post.title %></h5>
     <div class="mb-2">
       <% if @post.is_request %>
-        <span class="badge badge-pill badge-primary">Help Request</span>
+        <span class="badge badge-pill badge-blue border">Help Request</span>
       <% else %>
-        <span class="badge badge-pill badge-success">Help Offer</span>
+        <span class="badge badge-pill badge-grey border border-dark">Help Offer</span>
       <% end %>
       <% @post.categories.each do |cat| %>
         <span class="badge badge-pill"><%= cat %></span>
@@ -39,5 +39,5 @@
 </div>
 
 <%= render '/replies/form', reply: Reply.new %>
-<%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
+<%= render '/layouts/match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
 <a href="/posts" class="btn btn-primary">Back to Posts</a>
