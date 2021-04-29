@@ -35,28 +35,28 @@
         <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "user-circle", text: current_user.first_name %>
+            <%= current_user.first_name %>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
             <%= link_to(user_path(current_user), class: "dropdown-item") do %>
-              <%= fa_icon "id-card", text: "Profile" %>
+              Profile
             <% end %>
             <%= link_to(session_path(session), class: "dropdown-item", method: :delete) do %>
-              <%= fa_icon "user-times", text: "Log Out" %>
+              Log Out
             <% end %>
           </div>
         </li>
       <% else %> 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbar-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= fa_icon "user-secret", text: "Guest" %>
+            Guest
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown">
             <%= link_to(new_session_path, class: "dropdown-item") do %>
-              <%= fa_icon "unlock-alt", text: "Log In" %>
+             Log In
             <% end %>    
             <%= link_to(new_user_path, class: "dropdown-item") do %>
-              <%= fa_icon "user-plus", text: "Sign Up" %>
+              Sign Up
             <% end %>
           </div>
         </li>
