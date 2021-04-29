@@ -1,7 +1,6 @@
 class ReactionReflex < ApplicationReflex
 
     def like
-        morph :nothing
         reply = Reply.find(element.dataset[:id])
         reply.increment! :like
         cable_ready["reaction"].text_content(
