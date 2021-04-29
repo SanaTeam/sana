@@ -52,5 +52,8 @@ body {
     font: "Raleway" !important;
 }
 .navbar-brand:hover{
-    color: lightgray !important;
+    color: #104355 !important;
+}
+.dropdown-item.active, .dropdown-item:active{
+    background-color:  #104355 !important;
 }

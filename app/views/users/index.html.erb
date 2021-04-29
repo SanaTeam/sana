@@ -13,7 +13,7 @@
     <div class="col ms-12">
     <%= form_with(model: @user, url: users_path, method: :get, :class => "form-inline justify-content-center") do |form| %>
         <%= search_field_tag :search, params[:search], placeholder: "Keyword Search", class: "form-control" %>
-    <%= form.submit "Search", class: "btn btn-primary" %>
+    <%= form.submit "Search", class: "btn btn-primary ml-2" %>
     <% end %>
     </div>
 </div>
