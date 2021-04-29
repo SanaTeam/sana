@@ -3,10 +3,10 @@
 <%= render 'form' %>
 <br>
 <div class="btn-group btn-background-white" role="group">
-    <%= button_to '/auth/auth0', method: :post, class: 'btn-outline-primary mt-1' do %>
+    <%= button_to '/auth/auth0', method: :post, class: 'btn-fb mt-1' do %>
         <%= fa_icon "facebook", text: "Log In with", right: true %>
     <% end %>
-    <%= button_to '/auth/auth0', method: :post, class: 'btn-outline-danger mt-1 ml-3' do %>
+    <%= button_to '/auth/auth0', method: :post, class: 'btn-googl mt-1 ml-3' do %>
         <span class="btn-background-white"><%= fa_icon "google", text: "Log In with", right: true %></span>
     <% end %>
 </div>
