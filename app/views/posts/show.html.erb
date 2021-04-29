@@ -39,5 +39,5 @@
 </div>
 
 <%= render '/replies/form', reply: Reply.new %>
-<%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
+<%= render '/layouts/match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
 <a href="/posts" class="btn btn-primary">Back to Posts</a>

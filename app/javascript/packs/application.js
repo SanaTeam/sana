@@ -27,3 +27,7 @@ document.addEventListener("turbolinks:load", () => {
     $('.toast').toast({ autohide: false })
     $('.toast').toast('show')
 })
+
+document.addEventListener("turbolinks:load", () => {
+    $('.toast').toast('show')
+})
