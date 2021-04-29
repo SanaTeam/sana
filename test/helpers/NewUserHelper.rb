@@ -13,7 +13,5 @@ module NewUserHelper
             }  
         }
         return [user_email, user_password]
-
-        # follow_redirect!
     end
 end

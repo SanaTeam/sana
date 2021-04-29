@@ -8,9 +8,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     include NewUserHelper
 
     setup do
+        # creates new user, so we can pass that info to login
         @user_info = new_user()
         @user_email = @user_info[0]
-        @user_password = @user_info[1]
+        @user_password = @user_info[1]        
         @user = User.find_by(email: @user_info[0])
         delete session_path(session)
     end
