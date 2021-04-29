@@ -9,12 +9,16 @@ class Post < ApplicationRecord
         a2.subset?(a1)
     end 
 
+    searchkick
+
     def search_data
         {
             title: title,
             content: content
         }
     end 
+
+    Post.reindex
 
     validates :title, presence: true 
     validates :content, presence: true 
