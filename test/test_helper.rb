@@ -8,6 +8,7 @@ class ActiveSupport::TestCase
 
   # reindex models for searchkick 
   Post.reindex
+  User.reindex
 
   # and disable callbacks
   Searchkick.disable_callbacks
@@ -15,7 +16,4 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   
-
-  # Helps create a new session to be used for routes that are regulated by authentication
-
 end

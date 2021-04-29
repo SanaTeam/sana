@@ -6,11 +6,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     include NewUserHelper
 
     test "sign up" do
-        new_user(users(:valid_user))
-        
-        # follow_redirect!
-
+        new_user()
+        assert_response :redirect
         assert flash[:notice], "Your account was created!"
+    end
+
+    test "should get index" do
+        get users_path
+        assert_response :success
     end
         
     # test "should get index" do

@@ -20,15 +20,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     test "logged in" do
 
-        puts "request = #{new_user_path}"
-        post new_user_path, params: {
-            user: {
-                first_name: users(:valid_user).first_name,
-                last_name: users(:valid_user).last_name,
-                email: users(:valid_user).email,
-                password: users(:valid_user).password
-            }
-        }
-        assert_select ".card-title", "#{users(:valid_user).first_name} #{users(:valid_user).last_name}"
+        new_session(users(:valid_user))
+        assert_response :redirect
+        # assert_select ".card-title", "#{users(:valid_user).first_name} #{users(:valid_user).last_name}"
     end
 end

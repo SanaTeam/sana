@@ -1,14 +1,13 @@
 module NewUserHelper
-    def new_user(user)
+    def new_user()
         post users_path, params: { 
             user: {
-                first_name: user.first_name,
-                last_name: user.last_name,
-                email: user.email,
-                password: user.password
+                first_name: Faker::Name.first_name,
+                last_name: Faker::Name.last_name,
+                email: "sarah@example.com",
+                password: Faker::Internet.password(min_length: 8)
             }  
         }
-        puts "request = #{request.url}"
 
         # follow_redirect!
     end
