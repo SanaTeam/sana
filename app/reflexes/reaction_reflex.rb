@@ -1,14 +1,9 @@
 class ReactionReflex < ApplicationReflex
     def like
-        #need to know the user check
         reply = Reply.find(element.dataset[:id])
-        # morph "#reply-#{reply.id}-likes", ApplicationController.render(
-            #     partial: "layouts/minitexts"
-            # )
-        morph :nothing
         reply.increment! :like
         cable_ready["reaction"].text_content(
-            selector: "#1",
+            selector: "reply-#{reply.id}-likes",
             text: reply.like
         ).broadcast
         
