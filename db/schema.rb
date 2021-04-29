@@ -62,15 +62,6 @@ ActiveRecord::Schema.define(version: 2021_04_25_150629) do
     t.integer "organization_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "organization_id"
-    t.string "description"
-    t.boolean "is_active"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "replies", force: :cascade do |t|
     t.string "content"
     t.integer "to"
@@ -88,6 +79,8 @@ ActiveRecord::Schema.define(version: 2021_04_25_150629) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
     t.boolean "admin", default: false
     t.string "reset_digest"
     t.datetime "reset_sent_at"

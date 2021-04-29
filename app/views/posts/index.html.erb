@@ -4,7 +4,7 @@
             <%= image_tag("opinions.svg", size: "200x200")%>
         </div>
         <div class="w-70 heading mr-auto p-5">
-            <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
+            <h1 class="d-inline">Forum</h1>
         </div>
     </div>
 </div>
@@ -26,9 +26,9 @@
         <%= render 'filtering_bar', posts: @posts%>
     </div>
 
-    <div class="col-9 ancher-text">
+    <div class="col-9">
     <%= link_to("/posts/new", class: "ml-2 d-inline a text-reset") do %>
-        <%= fa_icon "plus", text: "Create" %>
+        <span class="text-blue"><%= fa_icon "plus", text: "Create" %></span>
     <% end %>
     <br>
     <% if @has_category %>
@@ -60,14 +60,14 @@
             <td><%= post.replies.count %>
             <td>
                 <% if post.is_request%>
-                    <span class="badge badge-pill badge-primary">Help Request</span>
+                    <span class="badge badge-pill badge-blue border">Help Request</span>
                 <% else %>
-                    <span class="badge badge-pill badge-success">Help Offer</span>
+                    <span class="badge badge-pill badge-grey border border-dark">Help Offer</span>
                 <% end %>
             </td>
             <td>
                 <%= link_to(post) do %>
-                    <%= fa_icon "info-circle", text: "Show" %>
+                    <span class="text-blue"><%= fa_icon "info-circle", text: "Show" %></span>
                 <% end %>
                 <% if owns_model?(post) %>
                     <%= render "/layouts/operations", edit_route: edit_post_path(post), destroy_route: post %>
