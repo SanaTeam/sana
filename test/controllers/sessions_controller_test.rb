@@ -7,6 +7,14 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     include NewSessionHelper
     include NewUserHelper
 
+    setup do
+        @user_info = new_user()
+        @user_email = @user_info[0]
+        @user_password = @user_info[1]
+        @user = User.find_by(email: @user_info[0])
+        delete session_path(session)
+    end
+
     test "not logged in" do
         get root_path
         assert_response :success
@@ -19,12 +27,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "logged in" do
-
-        # puts users(:valid_user).inspect
-
-        new_session(users(:valid_user))
-        # assert_equal 2, 2
+        new_session(@user_email, @user_password)
         assert_response :redirect
-        # assert_select ".card-title", "#{users(:valid_user).first_name} #{users(:valid_user).last_name}"
+        assert_redirected_to user_path(@user)
     end
 end

@@ -1,13 +1,10 @@
 module NewSessionHelper
-    def new_session(user)
+    def new_session(user_email, user_password)
         post sessions_path, params: { 
-            email: user.email,
-            password: user.password
+            session: {
+                email: user_email,
+                password: user_password
+            }
         }
-
-        # follow_redirect!
-
     end
-    
-
 end
