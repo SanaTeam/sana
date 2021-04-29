@@ -8,6 +8,7 @@ class ActiveSupport::TestCase
 
   # reindex models for searchkick 
   Post.reindex
+  User.reindex
 
   # and disable callbacks
   Searchkick.disable_callbacks
@@ -27,7 +28,8 @@ class ActiveSupport::TestCase
         last_name: last, 
         email: email, 
         password: pass, 
-        password_confirmation: pass 
+        password_confirmation: pass,
+        admin: true
       } }
       
     assert_response :redirect
