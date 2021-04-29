@@ -6,6 +6,13 @@ class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)
 
+  # reindex models for searchkick 
+  Post.reindex
+  User.reindex
+
+  # and disable callbacks
+  Searchkick.disable_callbacks
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
@@ -21,7 +28,8 @@ class ActiveSupport::TestCase
         last_name: last, 
         email: email, 
         password: pass, 
-        password_confirmation: pass 
+        password_confirmation: pass,
+        admin: true
       } }
       
     assert_response :redirect
