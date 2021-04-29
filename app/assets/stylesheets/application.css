@@ -27,11 +27,11 @@ body {
 
 .heading {
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif; 
-    font-size: 24px; 
+    font-size: 2.5rem; 
     font-style: normal; 
     font-variant: normal; 
-    font-weight: bold; 
-    line-height: 26px; 
+    font-weight: 500; 
+    line-height: 1.2; 
 }
 
 .text-blue {
