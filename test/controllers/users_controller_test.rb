@@ -6,6 +6,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     include NewUserHelper
 
     setup do
+        # simulates a new user signing up
         @user_info = new_user()
         @user_email = @user_info[0]
         @user_password = @user_info[1]
@@ -17,6 +18,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         new_user()
         assert_response :redirect
         assert flash[:notice], "Your account was created!"
+    end
+
+    test "sign out" do
+        delete session_path(session)
+        assert_response :redirect
+        assert_redirected_to root_url
     end
         
     test "should get index" do

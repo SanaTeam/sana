@@ -32,4 +32,12 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
         assert_response :redirect
         assert_redirected_to user_path(@user)
     end
+
+    test "logged out" do
+        new_session(@user_email, @user_password)
+        assert_redirected_to user_path(@user)
+        delete session_path(session)
+        assert_response :redirect
+        assert_redirected_to root_url
+    end
 end
