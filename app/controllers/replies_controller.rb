@@ -1,5 +1,5 @@
 class RepliesController < ApplicationController
-
+    include CableReady::Broadcaster
     def create
         @post = Post.find(params[:id])
         @reply = Reply.new(content: params[:content], to: params[:to], user_id: current_user.id, post_id: params[:id])

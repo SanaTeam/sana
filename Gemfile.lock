@@ -163,7 +163,14 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (1.0.1)
     method_source (1.0.0)
+<<<<<<< HEAD
     mini_mime (1.0.3)
+=======
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
+    mini_mime (1.0.2)
+>>>>>>> 129faa0be2dc2cfd92e0582f272a868d8339bbbd
     mini_portile2 (2.5.0)
     minitest (5.11.3)
     minitest-reporters (1.3.8)

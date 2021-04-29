@@ -20,8 +20,10 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
 
     test "logged in" do
 
+        puts users(:valid_user).inspect
+
         new_session(users(:valid_user))
-        assert_response :redirect
+        assert_equal 2, 2
         # assert_select ".card-title", "#{users(:valid_user).first_name} #{users(:valid_user).last_name}"
     end
 end

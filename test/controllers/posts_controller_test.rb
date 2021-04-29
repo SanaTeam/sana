@@ -17,9 +17,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_search
-    Post.create!(title: "Test Post1", content: "Content for test 1", user_id: 230, pinned: true, is_anonymous: false, organization_id: 2, is_request: true, categories: ["Financial Literacy"])
+    Post.create!(title: "Test Post1", content: "Content for test 1", user_id: User.all.sample.id, pinned: true, is_anonymous: false, organization_id: 2, is_request: true, categories: ["Financial Literacy"])
     Post.search_index.refresh
-    assert_equal ["Test Post1"], Product.search("test post1").map(&:title)
+    assert_equal ["Test Post1"], Post.search("test post1").map(&:title)
   end
 
   test "should get index view" do 
