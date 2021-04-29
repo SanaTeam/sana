@@ -76,3 +76,4 @@ gem 'redis'
 gem 'redis-rails'
 gem 'omniauth-auth0', '~> 2.5'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
+

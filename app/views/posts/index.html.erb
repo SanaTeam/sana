@@ -1,8 +1,19 @@
+
+    <div class ="d-flex justify-content-between flex-wrap">
+        <div class="w-30 ml-4">
+            <%= image_tag("opinions.svg", size: "200x200")%>
+        </div>
+        <div class="w-70 heading mr-auto p-5">
+            <h1 class="d-inline">Forum</h1>
+        </div>
+    </div>
+
+<hr>
 <div class="row">
-    <div class="col ms-12">
+    <div class="col lg">
     <%= form_with(model: @post, url: posts_path, method: :get, :class => "form-inline justify-content-center") do |form| %>
         <%= search_field_tag :search, params[:search], placeholder: "Keyword Search", class: "form-control" %>
-    <%= form.submit "Search", class: "btn btn-primary" %>
+    <%= form.submit "Search", class: "btn btn-primary ml-2" %>
     <% end %>
     </div>
 </div>
@@ -16,9 +27,8 @@
     </div>
 
     <div class="col-9">
-    <h1 class="d-inline"><%= fa_icon "comments", text: "Forum" %></h1>
-    <%= link_to("/posts/new", class: "ml-2 d-inline") do %>
-        <%= fa_icon "plus", text: "Create" %>
+    <%= link_to("/posts/new", class: "ml-2 d-inline a text-reset") do %>
+        <span class="text-blue"><%= fa_icon "plus", text: "Create" %></span>
     <% end %>
     <br>
     <% if @has_category %>
@@ -50,18 +60,19 @@
             <td><%= post.replies.count %>
             <td>
                 <% if post.is_request%>
-                    <span class="badge badge-pill badge-primary">Help Request</span>
+                    <span class="badge badge-pill badge-blue border">Help Request</span>
                 <% else %>
-                    <span class="badge badge-pill badge-success">Help Offer</span>
+                    <span class="badge badge-pill badge-grey border border-dark">Help Offer</span>
                 <% end %>
             </td>
             <td>
                 <%= link_to(post) do %>
-                    <%= fa_icon "info-circle", text: "Show" %>
+                    <span class="text-blue"><%= fa_icon "info-circle", text: "Show" %></span>
                 <% end %>
                 <% if owns_model?(post) %>
                     <%= render "/layouts/operations", edit_route: edit_post_path(post), destroy_route: post %>
                 <% end %>
+                </div>
             </td>
         </tr>
         <% end %>

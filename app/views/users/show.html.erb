@@ -1,10 +1,21 @@
+<div class="container">
+    <div class ="d-flex justify-content-between flex-wrap">
+        <div class="w-30 ml-3">
+            <%= image_tag("profile.svg", size: "200x200")%>
+        </div>
+        <div class="w-50 heading mr-auto p-5">
+            <h1 class="d-inline">Profile</h1>
+        </div>
+    </div>
+</div>
+<hr>
 <div class="row">
   <% if @user.id == current_user.id %>
-    <div class="col-md-2 justify-content-start">
+    <div class="col-sm-2 justify-content-start">
       <%= render partial: "sidemenu" %>
     </div>
   <% end %>
-  <div class="col-md-10 justify-content-center">
+  <div class="col-sm-10 justify-content-center">
     <% valid_partials = ["home", "match", "activity", "message", "organizations"] %>
     <% if params[:section] == nil || !valid_partials.include?(params[:section]) %>
       <%= render partial: "home"%>

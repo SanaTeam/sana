@@ -1,8 +1,110 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Sana</h1>
-    <p class="lead">Sana comes from the verb sanar in Spanish, which means healing. We firmly believe that serving our communities has healing powers on an individual and collective level.</p>
-    <hr>
-    <p>Sana will be a platform where users and organizations alike can create profiles and match with people based on what their needs are and what they can provide. A user or organization can make a post about the type of help they would like to offer up, or about the type of help they require, and people can match with each other and begin messaging to facilitate whatever transaction of services they’re looking for. A user or organization would be able to make either a stand-alone post or a post in a larger forum, and the help or services that people would request or offer up would be from a wide variety of topics, ranging from providing financial guidance to providing someone with unofficial support on a matter of their choosing.</p>
+
+<div class="container">
+  <div class ="d-flex justify-content-between align-content-center flex-wrap">
+    <div class="w-50">
+      <div class ="banner title">
+        <h1>Sana</h1>
+      </div>
+      <div class="banner text1">
+       For solidary and strong communities
+      <br>
+      Receive help for free! 
+      </div>
+      <hr>
+      <br>
+      <div class="txt">
+        A platform where users and organizations alike can create profiles and match with people based on what their needs are and what they can provide.
+      </div>
+      <br>
+      <br>
+      <a class="banner-button" href="#scroll-target" role="button"> Learn more </a>
+    </div>
+    <div class= "w-50">
+      <%= image_tag("connection.svg", size: "400x400") %>
+    </div>
+  </div>
+  <br>
+  <br>
+  <hr>
+
+<div class="row">
+  <div class="col-lg-12 heading text-center pb-3 pt-3"> 
+    <h2>How the Magic Happens </h2>
+  </div>
+
+  <div class="col-sm card"> 
+
+    <div class= "card-image">
+      <%= image_tag("organization.svg", style: 'height:90%;width:auto;') %>
+    </div>
+    <div class="text-center">
+      <div class="card-title">
+        <h4>For Organizations</h4>
+      </div>
+      <div class="ml-5 mr-5">
+        <p>Organizations can create profiles and post about the type of help and services they offer. They can also share if they are accepting donations.
+        <br><br>This is a great way to expand the impact of your work!</p>
+      </div>
+      <div class="pb-4">
+        <% if logged_in? %>
+          <%= link_to(new_organization_path, class: "btn btn-primary mt-2") do %>
+            Start Today
+          <%end%>
+        <% else %>
+          <%= link_to(new_user_path, class: "btn btn-primary mt-2") do %>
+              Start Today 
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-sm card ml-4"> 
+
+    <div class= "card-image">
+      <%= image_tag("team.svg", style: 'height:100%;width:auto;') %>
+    </div>
+    <div class="text-center">
+      <div class="card-title">
+        <h4>For Users</h4>
+      </div>
+      <div class="ml-5 mr-5">
+        <p>Users can be to be community-givers, community-receivers or both. This is a space to connect with community members, share your expertise, and receive help when you need it. 
+        <br> Yup, all in one place. </p>
+      </div>
+      <div class="pb-4">
+        <% if logged_in? %>
+          <%= link_to(new_user_path, class: "btn btn-primary mt-2") do %>
+            Check it out
+          <%end%>
+        <% else %>
+          <%= link_to(posts_path, class: "btn btn-primary mt-2") do %>
+              Check it out
+          <%end%>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  </div>
+  </div>
+
+  <div class="containter">
+  <br>
+  <hr>
+  <br>
+  <div class="heading subtitle">Our Story</div>
+  <br>
+  <div id="scroll-target">
+    <div class="container mx-auto text-center">
+    <p>Sana comes from the verb <strong>sanar</strong> in Spanish, which means healing. <br>We firmly believe that serving our communities has healing powers on an individual and collective level.</p>
+    <p>The story about how Sana came to be is pretty interesting, and it came from multiple people. During the pandemic, one of our founders noticed that members from his synagogue were offering
+    help to each other in an informal way, whether it be picking up groceries or dropping of items, his community was there for support. Another co-founder realized that although she had a desire to serve her community
+    <br> it was difficult to commit a regular amount of time for specific activities because of a changing schedule. 
+    <br> They asked, what if there was a place where you could share what you are good at, or what you can offer based on your availability? 
+    <br> What if you could connect to people willing to help you out for free?
+    <br><br> That is how Sana was born. But a platform is not only about an idea, it's about implementing it! So, what you are looking at is the result of the effort of 4 programmers who are passionate about supporting their communities.    
+    <br><br>A user or organization can either make a stand-alone post or a post in a larger forum. The help or services that people would request or offer up would be from a wide variety of topics, ranging from providing financial guidance to providing someone with unofficial support on a matter of their choosing</p>
+    </div>
   </div>
 </div>

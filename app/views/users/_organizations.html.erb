@@ -8,7 +8,7 @@
                 <h5 class="card-title"><%= organization.name %></h5>
                 <p>
                     <%= link_to(organization) do %>
-                        <%= fa_icon "info-circle", text: "Show" %>
+                        <span class="text-blue"><%= fa_icon "info-circle", text: "Show" %></span>
                     <% end %>
                 </p>
             <% end %>
@@ -16,7 +16,7 @@
             <h5>You haven't created any organizations yet!</h5>
         <% end %>
         <%= link_to("/organizations/new", class: "ml-2 d-inline") do %>
-            <%= fa_icon "plus", text: "Create an Organization" %>
+            <span class="text-blue"><%= fa_icon "plus", text: "Create an Organization" %></span>
         <% end %>
     </div>
 </div>
