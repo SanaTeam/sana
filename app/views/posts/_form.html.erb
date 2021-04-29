@@ -11,6 +11,15 @@
     <%= form.label :content %>
     <%= form.text_area :content, class: 'mb-1 form-control' %>
     <br>
+    <label class="mb-1">Categories</label>
+    <br>
+    <% categories = ["Financial Literacy", "Transportation", "Productivity", "Mindfulness", "Healthy Habits", "Academics/Tutoring", "Language Learning", "Other"] %>
+    <% categories.each do |category| %>
+        <%= check_box_tag 'category[]', category, @post && @post.categories.include?(category) %>
+        <%= category %>
+        <br>
+    <% end %>
+    <br>
     <% if current_user.admin %>
         <%= form.label :pinned, "Pin post?" %>
         <%= form.check_box :pinned %>
