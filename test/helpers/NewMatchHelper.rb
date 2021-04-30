@@ -5,8 +5,7 @@ module NewMatchHelper
                 post_id: parent_post_id,
                 user1_id: user_1_id,
                 user2_id: user_2_id,
-                user1_confirmed: true,
-                user2_confirmed: true
+                user1_confirmed: true
             }  
         }
     end
