@@ -47,7 +47,7 @@
   <% end %>
 <% end %>
 <% if current_user.id != @user.id && !matched %>
-  <%= render 'match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
+  <%= render '/layouts/match_form', match: Match.new, post_id: @post.id, user1_id: current_user.id, user2_id: @post.user_id %>
   <br>
 <% end %>
 <a href="/posts" class="btn btn-primary">Back to Posts</a>
