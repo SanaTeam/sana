@@ -29,8 +29,9 @@
 
     <div class="col-9">
         <%= link_to("/posts/new", class: "ml-2 d-inline a text-reset") do %>
-            <span class="text-blue"><%= fa_icon "plus", text: "Create" %></span>
+            <span class="text-blue"><%= fa_icon "plus", text: "Create Post" %></span>
         <% end %>
+        <br>
         <br>
         <% if @has_category %>
             Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>

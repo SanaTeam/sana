@@ -1,3 +1,11 @@
+<% matched = false %>
+<% matches = Match.all.where(post_id: post.id) %>
+<% matches.each do |match| %>
+  <% if match.user1_id == current_user.id || match.user2_id == current_user.id %>
+      <% matched = true %>
+  <% end %>
+<% end %>
+
 <div class="card mb-5">
   <h5 class="card-header">
     <strong>
@@ -14,7 +22,14 @@
     <small class="float-right"><%= to_datetime_string(post.created_at)%></small>
   </h5>
   <div class="card-body">
-    <h5 class="card-title"><%= post.title %></h5>
+    <h5 class="card-title">
+        <%= post.title %>
+        <% if current_user.id != user.id && !matched %>
+            <div class="float-right">
+                <%= render '/layouts/match_form', match: Match.new, post_id: post.id, user1_id: current_user.id, user2_id: post.user_id %>
+            </div>
+        <% end %>
+    </h5>
     <div class="mb-2">
       <% if post.is_request %>
         <span class="badge badge-pill badge-blue border">Help Request</span>
@@ -26,6 +41,11 @@
       <% end %>
     </div>
     <%= post.content %>
+    <br><br>
+    <div class="replies">
+        <%= render '/layouts/minitexts', models: post.replies %>
+    </div>
+    <%= render '/replies/form', reply: Reply.new %>
   </div>
   <% if owns_model?(post) %>
     <div class="card-footer text-muted">
@@ -34,18 +54,5 @@
   <% end %>
 </div>
 
-<div class="replies">
-  <%= render '/layouts/minitexts', models: post.replies %>
-</div>
 
-<%= render '/replies/form', reply: Reply.new %>
-<% matched = false %>
-<% matches = Match.all.where(post_id: post.id) %>
-<% matches.each do |match| %>
-  <% if match.user1_id == current_user.id || match.user2_id == current_user.id %>
-      <% matched = true %>
-  <% end %>
-<% end %>
-<% if current_user.id != user.id && !matched %>
-  <%= render '/layouts/match_form', match: Match.new, post_id: post.id, user1_id: current_user.id, user2_id: post.user_id %>
-<% end %>
+
