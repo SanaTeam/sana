@@ -3,6 +3,10 @@ Organization.delete_all
 Post.delete_all
 Reply.delete_all
 
+def parse_json(file)
+    JSON.parse(File.read(Rails.public_path.join(file)))
+end
+
 # User model fields
 # first_name:string last_name:string email:string password:string
 15.times do
@@ -25,21 +29,27 @@ end
 
 # Post model fields
 # title:string content:string user_id:integer pinned:boolean is_anonymous:boolean
-15.times do 
-    post_title = Faker::GreekPhilosophers.name
-    post_content = Faker::GreekPhilosophers.quote
-    post_pinned = Faker::Boolean.boolean
-    post_anon = Faker::Boolean.boolean(true_ratio: 0.5)
-    post_isrequest = Faker::Boolean.boolean(true_ratio: 0.5)
-    post_categories = ["Financial Literacy", "Transportation", "Productivity", "Mindfulness", "Healthy Habits", "Academics/Tutoring", "Language Learning", "Other"].sample(2)
-    Post.create(title: post_title, content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon, categories: post_categories, is_request: post_isrequest)
-end 
 
 # Reply model fields
 # content:string to:integer user_id:integer post_id:integer
-15.times do 
-    reply_cont = Faker::Quotes::Chiquito.term
-    Reply.create(content: reply_cont, to: User.all.sample.id, user_id: User.all.sample.id, post_id: Post.all.sample.id)
+
+posts_json = parse_json("posts.json")
+replies_json = parse_json("replies.json")
+
+posts_json.each do |post_json|
+    post_title = post_json['title']
+    post_content = post_json['content']
+    post_categories = post_json['categories']
+    post_pinned = Faker::Boolean.boolean
+    post_anon = Faker::Boolean.boolean(true_ratio: 0.5)
+    post_isrequest = Faker::Boolean.boolean(true_ratio: 0.5)
+    post = Post.new(title: post_title, content: post_content, user_id: User.all.sample.id, pinned: post_pinned, is_anonymous: post_anon, categories: post_categories, is_request: post_isrequest)
+    post.save
+
+    rand(0..3).times do 
+        reply_cont = replies_json.sample
+        Reply.create(content: reply_cont, to: User.all.sample.id, user_id: User.all.sample.id, post_id: post.id)
+    end 
 end 
 
 

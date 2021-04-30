@@ -1,0 +1,67 @@
+[
+    {
+        "title": "Calc 3 Assistance",
+        "content": "I'm studying for my Calc 3 final and have a bunch of questions for my final exam. Please help!",
+        "categories": ["Academics/Tutoring"]
+    },
+    {
+        "title": "Looking for weekend babysitter",
+        "content": "Hi! My wife and I have to go to a friend's wedding and our looking for a babysitter. We'll pay $20/hr. Thanks!",
+        "categories": ["Productivity", "Other"]
+    },
+    {
+        "title": "Ride from practice on Thursdays",
+        "content": "I'm looking to carpool home from General High School Thursday afternoons. Is anyone else leaving around 5:30pm?",
+        "categories": ["Transportation", "Productivity"]
+    },
+    {
+        "title": "Yoga",
+        "content": "Can someone give me a list of 5-10 yoga poses please?",
+        "categories": ["Mindfulness", "Healthy Habits"]
+    },
+    {
+        "title": "Web development help",
+        "content":"I'm looking to improve my coding skills and am willing to make a one page website. Let me know if you're interested",
+        "categories": ["Academics/Tutoring", "Other"]
+    },
+    {
+        "title": "Sweet potatoes",
+        "content": "I bought way to many sweet potatoes and I don't want them to go bad. Does anyone want 5-10 of them?",
+        "categories": ["Other"]
+    },   
+    {
+        "title": "Lower body workouts",
+        "content": "I'm trying to start lifting. Any recommendations for lower body exercises?",
+        "categories": ["Productivity", "Mindfulness", "Healthy Habits"]
+    },
+    {
+        "title": "Requesting Spanish speaker",
+        "content": "I'm looking for a Spanish translator for my club rally next month. Can anyone help?",
+        "categories": ["Language Learning"]
+    },
+    {
+        "title": "Keto Coach",
+        "content": "I've been on Keto for 4 years now and want to spread awareness of the amazing benefits. If you're interested in learning more, let's talk!",
+        "categories": ["Mindfulness", "Healthy Habits", "Academics/Tutoring"]
+    },
+    {
+        "title": "Hand me downs",
+        "content": "My son just left for college and I have so many clothes to give away. Please respond if you have a son who is around 6', 180lbs",
+        "categories": ["Other"]
+    },
+    {
+        "title": "Study Partner",
+        "content": "Does anyone want to start a study group for Monday nights? I'm having trouble with some of my science classes.",
+        "categories": ["Academics/Tutoring"]
+    },
+    {
+        "title": "Car rental",
+        "content": "I'm going abroad for 3 months and was wondering if anyone would be interested in renting a 2016 Mazda CX5 for $300 a month. It runs great!",
+        "categories": ["Financial Literacy", "Transportation", "Other"]
+    },
+    {
+        "title": "Tax assistant",
+        "content": "I'm currently so lost! How do I file taxes?! Someone help!",
+        "categories": ["Financial Literacy", "Academics/Tutoring"]
+    }
+]
