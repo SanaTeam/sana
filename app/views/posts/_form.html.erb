@@ -30,15 +30,14 @@
     <%= form.check_box :is_anonymous %>
     <small class="form-text text-muted">Check to post anonymously, leave unchecked to use your name.</small>
     <br>
-    <%= form.label :is_request, "Requesting help?" %>
-    <%= form.check_box :is_request %>
-    <small class="form-text text-muted">Check to request help, leave unchecked to offer.</small>
-    <br>
     <% if organizations.size > 0 %>
         <%= form.select :organization_id, 
             options_for_select(organizations.collect{ |organization| ["Post for #{organization.name}", organization.id] }), {include_blank: 'Personal post'} %>
         <br>
     <% end %>
+    <%= form.label :is_request, "Requesting help?" %>
+    <%= form.check_box :is_request %>
+    <small class="form-text text-muted">Check to request help, leave unchecked to offer.</small>
     <br>
     <%= form.submit class: 'btn btn-primary' %>
 <% end %>

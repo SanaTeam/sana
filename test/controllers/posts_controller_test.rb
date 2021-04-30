@@ -1,12 +1,30 @@
 require "test_helper"
 require "minitest/reporters"
+require_relative '../helpers/NewUserHelper.rb'
+require_relative '../helpers/NewOrganizationHelper.rb'
+require_relative '../helpers/NewPostHelper.rb'
+
 Minitest::Reporters.use!
 
+
 class PostsControllerTest < ActionDispatch::IntegrationTest
+  include NewUserHelper
+  include NewOrganizationHelper
+  include NewPostHelper
 
   setup do
-    help_new_session
+    new_user()
+    
     Searchkick.enable_callbacks
+    organization_name = Faker::Company.name
+    new_organization(organization_name)
+    @organization = Organization.find_by(name: organization_name)
+    personal_post_title = "Post #1"
+    new_post(personal_post_title, nil)
+    @personal_post = Post.find_by(title: personal_post_title)
+    organization_post_title = "Post #2"
+    new_post(organization_post_title, @organization.id)
+    @organization_post = Post.find_by(title: organization_post_title)
   end
  
   def teardown
@@ -22,25 +40,31 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should get index view" do 
     get posts_url
     assert_response :success
-    assert_select "h1", text: "Forum"
+    assert_template "index"
   end
 
   test "should get show view" do
     get "/posts/1"
     assert_response :success
-    assert_select "h5", text: "Hello, world!"
+    assert_template "show"
   end
   
-  test "should get edit view" do
-    get "/posts/1/edit"
+  test "should get personal post edit view" do
+    get "/posts/#{@personal_post.id}/edit"
     assert_response :success
-    assert_select "h1", text: "Edit Post"
+    assert_template "edit"
+  end
+
+  test "should get organization post edit view" do
+    get "/posts/#{@organization_post.id}/edit"
+    assert_response :success
+    assert_template "edit"
   end
 
   test "should get new view" do
     get "/posts/new"
     assert_response :success
-    assert_select "h1", text: "New Post"
+    assert_template "new"
   end
 
 end

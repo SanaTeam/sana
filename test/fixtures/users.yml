@@ -2,35 +2,56 @@
 
 short_password:
   id: 1
-  first_name: A
-  last_name: User
-  email: test@user.com
-  password: pass
+  first_name: Buddy
+  last_name: Runte
+  email: raymonde.hartmann@funk-mckenzie.name
+  password: ZnTc
 
 duplicate_email:
   id: 2
-  first_name: MyString
-  last_name: MyString
-  email: test@user.com
-  password: MyString
+  first_name: Peggy
+  last_name: Hyatt
+  email: raymonde.hartmann@funk-mckenzie.name
+  password: Q72hK1bI38sCjSdA
 
 without_email:
   id: 3
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  password: MyString
+  first_name: Elwood
+  last_name: Leffler
+  email:
+  password: WeQqPxMw69K
 
 valid_user:
   id: 4
-  first_name: A
-  last_name: User
-  email: user@gmail.com
+  first_name: Dona
+  last_name: Kuvalis
+  email: holly.simonis@douglas-kilback.net
   password_digest: <%= BCrypt::Password.create('password') %>
 
-email_user:
+valid_user_without_activity:
   id: 5
-  first_name: Aaron
-  last_name: Portman
-  email: aaronportman@gmail.com
-  password_digest: <%= BCrypt::Password.create('password') %>
+  first_name: Liza
+  last_name: Schuppe
+  email: fred.friesen@marvin.com
+  password: 67Iy9Zp7H8rVpL28
+
+valid_user_without_matches:
+  id: 6
+  first_name: Tempie
+  last_name: Conn
+  email: kindra@hammes.name
+  password: 8Ka418ZpBvG0
+
+valid_user_without_organizations:
+  id: 7
+  first_name: Emerita
+  last_name: Emard
+  email: benedict.dibbert@kulas.name
+  password: DzEaEkWl4
+
+email_user:
+  id: 8
+  first_name: Kimi
+  last_name: Schinner
+  email: janeen@klocko.biz
+  password: 18R47rQ2p902W
