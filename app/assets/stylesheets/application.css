@@ -58,7 +58,7 @@ body {
     background-color:  #104355 !important;
 }
 
-.btn, .btn-primary {
+.btn, .btn-primary, .btn-secondary {
     border-radius: 30px !important;
     /* background-color: #5c4c8c !important; */
 }

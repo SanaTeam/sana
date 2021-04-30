@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.btn-fb:hover, .btn-googl:hover {
-    background: rgba(59, 89, 152, .1);
+.btn-fb {
+    background-color: #4267B2 !important;
+    border: solid #4267B2 !important;
+    font: "Raleway" !important;
+}
+
+.btn-googl {
+    background-color: #0F9D58 !important;
+    border: solid #0F9D58 !important;
+    font: "Raleway" !important;
+}
+
+.btn-fb:hover {
+    background-color: #203359 !important;
+    border: solid #203359 !important;
+    font: "Raleway" !important;
+}
+
+.btn-googl:hover {
+    background-color:#074e2c !important;
+    border: solid #074e2c !important;
+    font: "Raleway" !important;
 }
