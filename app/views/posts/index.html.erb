@@ -35,23 +35,10 @@
         <% if @has_category %>
             Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>
         <% end %>
-        <table class="table">
-            <thead>
-                <tr>
-                <th>Title</th>
-                <th>Date Posted</th>
-                <th># of Replies</th>
-                <th>Status</th>
-                <th>Actions</th>
-                </tr>
-            </thead>
+        <% @posts.each do |post| %>
+            <%= render partial: "show_forum", locals: {post: post, user: User.find(post.user_id)} %>
+        <% end %>
 
-            <tbody>
-                <% @posts.each do |post| %>
-                    <%= render partial: "show_forum", locals: {post: post, user: User.find(post.user_id)} %>
-                <% end %>
-            </tbody>
-        </table>
     </div>
     <%= paginate @posts %>
 </div>
