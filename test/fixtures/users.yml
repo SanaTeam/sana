@@ -6,7 +6,6 @@ short_password:
   last_name: Runte
   email: raymonde.hartmann@funk-mckenzie.name
   password: ZnTc
-  password_digest: MyString
 
 duplicate_email:
   id: 2
@@ -14,7 +13,6 @@ duplicate_email:
   last_name: Hyatt
   email: raymonde.hartmann@funk-mckenzie.name
   password: Q72hK1bI38sCjSdA
-  password_digest: MyString
 
 without_email:
   id: 3
@@ -22,15 +20,13 @@ without_email:
   last_name: Leffler
   email:
   password: WeQqPxMw69K
-  password_digest: MyString
 
 valid_user:
   id: 4
   first_name: Dona
   last_name: Kuvalis
   email: holly.simonis@douglas-kilback.net
-  password: TuL8nP1pUt08XzN
-  password_digest: MyString
+  password_digest: <%= BCrypt::Password.create('password') %>
 
 valid_user_without_activity:
   id: 5
@@ -38,7 +34,6 @@ valid_user_without_activity:
   last_name: Schuppe
   email: fred.friesen@marvin.com
   password: 67Iy9Zp7H8rVpL28
-  password_digest: MyString
 
 valid_user_without_matches:
   id: 6
@@ -46,7 +41,6 @@ valid_user_without_matches:
   last_name: Conn
   email: kindra@hammes.name
   password: 8Ka418ZpBvG0
-  password_digest: MyString
 
 valid_user_without_organizations:
   id: 7
@@ -54,7 +48,6 @@ valid_user_without_organizations:
   last_name: Emard
   email: benedict.dibbert@kulas.name
   password: DzEaEkWl4
-  password_digest: MyString
 
 email_user:
   id: 8
@@ -62,4 +55,3 @@ email_user:
   last_name: Schinner
   email: janeen@klocko.biz
   password: 18R47rQ2p902W
-  password_digest: MyString
