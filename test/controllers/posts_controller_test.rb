@@ -1,15 +1,21 @@
 require "test_helper"
 require "minitest/reporters"
+require_relative '../helpers/NewUserHelper.rb'
+require_relative '../helpers/NewPostHelper.rb'
+
 Minitest::Reporters.use!
 
-class PostsControllerTest < ActionDispatch::IntegrationTest
 
-  fixtures :posts
-  fixtures :users
+class PostsControllerTest < ActionDispatch::IntegrationTest
+  include NewUserHelper
+  include NewPostHelper
 
   setup do
-    help_new_session
+    new_user()
     Searchkick.enable_callbacks
+    post_title = Faker::GreekPhilosophers.name
+    new_post(post_title, nil)
+    @post = Post.find_by(title: post_title)
   end
  
   def teardown
@@ -25,25 +31,25 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should get index view" do 
     get posts_url
     assert_response :success
-    assert_select "h1", text: "Forum"
+    assert_template "index"
   end
 
   test "should get show view" do
     get "/posts/1"
     assert_response :success
-    assert_select "h5", text: "Hello, world!"
+    assert_template "show"
   end
   
   test "should get edit view" do
-    get "/posts/1/edit"
+    get "/posts/#{@post.id}/edit"
     assert_response :success
-    assert_select "h1", text: "Edit Post"
+    assert_template "edit"
   end
 
   test "should get new view" do
     get "/posts/new"
     assert_response :success
-    assert_select "h1", text: "New Post"
+    assert_template "new"
   end
 
 end
