@@ -34,7 +34,9 @@ class MatchesController < ApplicationController
     def show
         @match = Match.find(params[:id])
         match_contains_user!(@match)
-        match_confirmed!(@match)
+        if @match.contains_user?(current_user)
+            match_confirmed!(@match)
+        end
     end
 
     private
