@@ -14,7 +14,7 @@
             </div>
             <div class="col-3 text-center">
                 <div>
-                    <%= get_gravatar(@user, "", 80) %>
+                    <%= get_picture(@user, "", 80) %>
                 </div>
                 <% if @user.id == current_user.id %>
                     <div class="mt-3">

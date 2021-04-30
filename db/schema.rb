@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_25_150629) do
+ActiveRecord::Schema.define(version: 2021_04_30_185344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,18 +57,9 @@ ActiveRecord::Schema.define(version: 2021_04_25_150629) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "title"
-    t.integer "organization_id"
     t.text "categories", default: [], array: true
     t.boolean "is_request"
-  end
-
-  create_table "profiles", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "organization_id"
-    t.string "description"
-    t.boolean "is_active"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "replies", force: :cascade do |t|
@@ -98,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_04_25_150629) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.string "oauth_id"
+    t.string "picture"
   end
 
 end
