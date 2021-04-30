@@ -14,7 +14,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     new_user()
-    
     Searchkick.enable_callbacks
     organization_name = Faker::Company.name
     new_organization(organization_name)
@@ -44,7 +43,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show view" do
-    get "/posts/1"
+    get "/posts/#{@personal_post.id}"
     assert_response :success
     assert_template "show"
   end
