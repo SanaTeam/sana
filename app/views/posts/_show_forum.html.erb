@@ -1,0 +1,52 @@
+<div class="card mb-5">
+  <h5 class="card-header">
+    <strong>
+      <% if !post.is_anonymous %>
+        <%= get_gravatar(User.find(post.user_id), "rounded mr-2", 25) %>
+        <%= user.full_name %>
+        <% if post.organization_id != nil %>
+          (<%= Organization.find(post.organization_id).name %>)
+        <% end %>
+      <% else %>
+        Anonymous
+      <% end %>
+    </strong>
+    <small class="float-right"><%= to_datetime_string(post.created_at)%></small>
+  </h5>
+  <div class="card-body">
+    <h5 class="card-title"><%= post.title %></h5>
+    <div class="mb-2">
+      <% if post.is_request %>
+        <span class="badge badge-pill badge-blue border">Help Request</span>
+      <% else %>
+        <span class="badge badge-pill badge-grey border border-dark">Help Offer</span>
+      <% end %>
+      <% post.categories.each do |cat| %>
+        <span class="badge badge-pill"><%= cat %></span>
+      <% end %>
+    </div>
+    <%= post.content %>
+  </div>
+  <% if owns_model?(post) %>
+    <div class="card-footer text-muted">
+      <%= render "/layouts/operations", edit_route: edit_post_path(post), destroy_route: post %>
+    </div>
+  <% end %>
+</div>
+
+<div class="replies">
+  <%= render '/layouts/minitexts', models: post.replies %>
+</div>
+
+<%= render '/replies/form', reply: Reply.new %>
+<% matched = false %>
+<% matches = Match.all.where(post_id: post.id) %>
+<% matches.each do |match| %>
+  <% if match.user1_id == current_user.id || match.user2_id == current_user.id %>
+      <% matched = true %>
+  <% end %>
+<% end %>
+<% if current_user.id != user.id && !matched %>
+  <%= render '/layouts/match_form', match: Match.new, post_id: post.id, user1_id: current_user.id, user2_id: post.user_id %>
+<% end %>
+<a href="/posts" class="btn btn-primary">Back to Posts</a>

@@ -1,13 +1,13 @@
 
-    <div class ="d-flex justify-content-between flex-wrap">
-        <div class="w-30 ml-4">
-            <%= image_tag("opinions.svg", size: "200x200")%>
-        </div>
-        <div class="mr-auto p-5">
-            <h1 class="d-inline w-70 heading">Forum</h1>
-            <p>Interact with other users by replying to and creating posts</p>
-        </div>
+<div class ="d-flex justify-content-between flex-wrap">
+    <div class="w-30 ml-4">
+        <%= image_tag("opinions.svg", size: "200x200")%>
     </div>
+    <div class="mr-auto p-5">
+        <h1 class="d-inline w-70 heading">Forum</h1>
+        <p>Interact with other users by replying to and creating posts</p>
+    </div>
+</div>
 
 <hr>
 <div class="row">
@@ -28,57 +28,30 @@
     </div>
 
     <div class="col-9">
-    <%= link_to("/posts/new", class: "ml-2 d-inline a text-reset") do %>
-        <span class="text-blue"><%= fa_icon "plus", text: "Create" %></span>
-    <% end %>
-    <br>
-    <% if @has_category %>
-        Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>
-    <% end %>
-<table class="table">
-    <thead>
-        <tr>
-        <th>Title</th>
-        <th>Date Posted</th>
-        <th># of Replies</th>
-        <th>Status</th>
-        <th>Actions</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <% @posts.each do |post| %>
-        <tr>
-            <td>
-            <%= post.title %>
-            <% if post.pinned %>
-                <span class="badge badge-secondary">
-                    <%= fa_icon "tag", text: "Pinned" %>
-                </span>
-            <% end %>
-            </td>
-            <td><%= to_datetime_string(post.created_at) %></td>
-            <td><%= post.replies.count %>
-            <td>
-                <% if post.is_request%>
-                    <span class="badge badge-pill badge-blue border">Help Request</span>
-                <% else %>
-                    <span class="badge badge-pill badge-grey border border-dark">Help Offer</span>
-                <% end %>
-            </td>
-            <td>
-                <%= link_to(post) do %>
-                    <span class="text-blue"><%= fa_icon "info-circle", text: "Show" %></span>
-                <% end %>
-                <% if owns_model?(post) %>
-                    <%= render "/layouts/operations", edit_route: edit_post_path(post), destroy_route: post %>
-                <% end %>
-                </div>
-            </td>
-        </tr>
+        <%= link_to("/posts/new", class: "ml-2 d-inline a text-reset") do %>
+            <span class="text-blue"><%= fa_icon "plus", text: "Create" %></span>
         <% end %>
-        </tbody>
-    </table>
+        <br>
+        <% if @has_category %>
+            Categories Selected:  <%= @has_category.map(&:inspect).join(", ") %>
+        <% end %>
+        <table class="table">
+            <thead>
+                <tr>
+                <th>Title</th>
+                <th>Date Posted</th>
+                <th># of Replies</th>
+                <th>Status</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @posts.each do |post| %>
+                    <%= render partial: "show_forum", locals: {post: post, user: User.find(post.user_id)} %>
+                <% end %>
+            </tbody>
+        </table>
     </div>
     <%= paginate @posts %>
 </div>
