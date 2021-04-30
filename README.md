@@ -1,11 +1,14 @@
+<img src="https://raw.githubusercontent.com/SanaTeam/sana/main/public/logo.svg" width="100" height="100">
+
 # Sana
 Sana comes from the verb sanar in Spanish, which means healing. We firmly believe that serving our communities has healing powers on an individual and collective level. Our app will enable people to contribute with their skills and expertise to fulfill the needs of their community. 
 
-Sana is a platform where users can create profiles and match with people based on what their needs are and what they can provide. Users can authenticate, and once signed in, post to the forum about services they can offer or a need they have. Users can respond to posts, and if interested in connecting, request a match with the creator of the post. On the user profile, users can accept pending matches, navigate to their matches, and view their message/post history. Within matches, users can interact directly on their mutual focus. 
+Sana is a platform where users can create profiles and match with people based on what their needs are and what they can provide. Users can authenticate, and once signed in, post to the forum about services they can offer or a need they have. Users can respond to posts, and if interested in connecting, request a match with the creator of the post. On the user profile, users can accept pending matches, navigate to their matches, and view their message/post history. Within matches, users can interact directly on their mutual focus. Further useful features include searching and filtering by categories, real-time response refreshing and notifications, a swipe-like view to also look for potential need matches to meet, and organization profiles to be delegated to users, among others. 
 
-Future functionality includes search and filtering by categories, real-time response refreshing and notifications, a swipe-like view to also look for potential need matches to meet, and organization profiles to be delegated to users, among others. 
+Builds on the main branch are validated against our test suite via CodeShip and deployed to Heroku automatically upon passing.
 
-## Assets
+[![Codeship Status for SanaTeam/sana](https://app.codeship.com/projects/f5b8ec28-e505-4bd2-8ceb-270ae746f985/status?branch=main)](https://app.codeship.com/projects/443139)
+
 [Heroku link](http://sana-app.herokuapp.com/)
 
 [Paper prototype](https://github.com/SanaTeam/sana/blob/main/public/paper_prototypes.pdf)
@@ -13,9 +16,14 @@ Future functionality includes search and filtering by categories, real-time resp
 [Figma interactive wireframe](https://www.figma.com/proto/mFxItAbMhLuY8SrB0KFrXL/Wireframe?node-id=4%3A301&scaling=min-zoom)
 
 ## APIs/gems/libraries
-The application as it stands has flash alerts and UI augmented by bootstrap, jquery and popper, kaminari for post pagination, minitest for testing validation, rails_admin for an admin view to manipulate models, and fontawesome-rails for our icon typography and for more accessible views. 
-
-Planned APIs/gems/libraries include stimulus & stimulus reflex for real-time response, noticed for notifications, textacular or searchkick for the search functionality, and Google or Brandeis alternative OAuth.
+* Bootstrap, JQuery and Popper for UI & alerts
+* FontAwesome-Rails for our icon typography
+* Kaminari for pagination of post and user views
+* RailsAdmin for an admin view for admin users to manipulate models
+* Stimulus, Hammer.js, and Animate.css for match swiping view
+* Redis, StimulusReflex & CableReady for real-time notifications of replies and matches you're involved in
+* Auth0 for Google and Facebook OAuth alternative login
+* Searchkick and Elasticsearch for searching post and user models
 
 ## Architecture
 Post
@@ -129,11 +137,8 @@ Implemented
   * Displays all of the messages between you and the other person involved in the match
   * Each individual message displays the sender’s first name, the content of the message, and a button to delete the message
   * Input box and Save button at the bottom to send a new message
-
-Not yet implemented
 * Views to create, edit, and show an organization
 * View to browse for matches
 * View to search for a user
-* View to search for an organization
 * View to see any notifications
 * View to see your organizations, that you follow, that you’re an admin of
