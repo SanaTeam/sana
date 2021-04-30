@@ -1,5 +1,9 @@
 class RepliesController < ApplicationController
     include CableReady::Broadcaster
+
+    def index
+        redirect_to posts_url
+    end
     def create
         @post = Post.find(params[:id])
         @reply = Reply.new(content: params[:content], to: params[:to], user_id: current_user.id, post_id: params[:id])
@@ -20,6 +24,7 @@ class RepliesController < ApplicationController
     end
 
     def new
+        redirect_to posts_url
     end
 
 end
