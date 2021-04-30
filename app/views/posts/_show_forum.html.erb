@@ -6,6 +6,17 @@
   <% end %>
 <% end %>
 
+<script>
+    function displayReplies() {
+        if (document.getElementById("replies").style.display == "block") {
+            document.getElementById("replies").style.display = "none";
+        } else {
+            document.getElementById("replies").style.display = "block";
+        }
+    }
+
+</script>
+
 <div class="card mb-5">
   <h5 class="card-header">
     <strong>
@@ -42,10 +53,13 @@
     </div>
     <%= post.content %>
     <br><br>
-    <div class="replies">
-        <%= render '/layouts/minitexts', models: post.replies %>
+    <button class="btn btn-primary mb-2" onclick="displayReplies()">Show Replies</button>
+    <div id="replies" style="display:none;">
+        <div class="replies">
+            <%= render '/layouts/minitexts', models: post.replies %>
+        </div>
+        <%= render '/replies/form', reply: Reply.new %>
     </div>
-    <%= render '/replies/form', reply: Reply.new %>
   </div>
   <% if owns_model?(post) %>
     <div class="card-footer text-muted">
