@@ -14,7 +14,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   setup do
     new_user()
-    
     Searchkick.enable_callbacks
     organization_name = Faker::Company.name
     new_organization(organization_name)

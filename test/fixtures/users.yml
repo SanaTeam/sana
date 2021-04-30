@@ -33,25 +33,25 @@ valid_user_without_activity:
   first_name: Liza
   last_name: Schuppe
   email: fred.friesen@marvin.com
-  password: 67Iy9Zp7H8rVpL28
+  password_digest: <%= BCrypt::Password.create('67Iy9Zp7H8rVpL28') %>
 
 valid_user_without_matches:
   id: 6
   first_name: Tempie
   last_name: Conn
   email: kindra@hammes.name
-  password: 8Ka418ZpBvG0
+  password_digest: <%= BCrypt::Password.create('8Ka418ZpBvG0') %>
 
 valid_user_without_organizations:
   id: 7
   first_name: Emerita
   last_name: Emard
   email: benedict.dibbert@kulas.name
-  password: DzEaEkWl4
+  password_digest: <%= BCrypt::Password.create('DzEaEkWl4') %>
 
 email_user:
   id: 8
   first_name: Kimi
   last_name: Schinner
   email: janeen@klocko.biz
-  password: 18R47rQ2p902W
+  password_digest: <%= BCrypt::Password.create('18R47rQ2p902W') %>
