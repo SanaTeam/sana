@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
     end
 
     def create
-        @match = Match.new(match_params)
+        @match = Match.new(match_params[:post_id, :user1_id, :user2_id, :user1_confirmed])
         if @match.save
             flash[:notice] = "You requested a match!"
             redirect_to posts_path
@@ -39,9 +39,15 @@ class MatchesController < ApplicationController
         end
     end
 
+    def filter_matches
+        post_id = params[:post_id_to_match]
+        Match.matches_for_post()
+    end 
+
     private
 
     def match_params
         params.require(:match).permit(:post_id, :user1_id, :user2_id, :user1_confirmed)
     end 
+
 end

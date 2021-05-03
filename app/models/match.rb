@@ -22,6 +22,12 @@ class Match < ApplicationRecord
         end
     end
 
+    def matches_for_post(postid)
+        post = Post.find(id: postid)
+        posts = Post.all.where(is_request: !post.is_request)
+        
+    end 
+
     after_create do
         ApplicationController.helpers.dispatch_match(self[:user1_id], self[:id])
     end

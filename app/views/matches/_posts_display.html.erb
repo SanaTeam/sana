@@ -1,0 +1,18 @@
+<div class="card">
+    <h5 class="card-header">What Posts do you want to filter by</h5>
+    <div class="card-body">
+        <% posts = Post.all.where(user_id: current_user.id) %>
+        <% if posts.size > 0 %>
+            <% posts.each do | post | %>
+                <h5 class="card-title">
+                    <%= button_to post.title, :post_id_for_match => post.id %>
+                </h5>
+                <p>
+                <%= post.content %>  
+                </p>
+            <% end %>
+        <% else %>
+            <h5>You haven't created any posts yet!</h5>
+        <% end %>
+    </div>
+</div>
