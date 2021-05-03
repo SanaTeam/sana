@@ -24,7 +24,6 @@ description: >- # this means to ignore newlines until "baseurl:"
   alike can create profiles and match with 
   people based on what their needs are and 
   what they can provide.
-baseurl: "/sana" # the subpath of your site, e.g. /blog
 url: "https://sanateam.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sanateam
 logo: "/assets/logo.svg"
