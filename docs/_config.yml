@@ -31,6 +31,7 @@ footer_content: "With &hearts; by Sana team<br>Aaron Portman, Adam Fleishaker, N
 
 # Build settings
 theme: "just-the-docs"
+remote_theme: pmarsceill/just-the-docs
 plugins:
   - jekyll-feed
 color_scheme: sana
