@@ -1,0 +1,68 @@
+{"0": {
+    "doc": "Interesting Engineering",
+    "title": "Interesting Engineering",
+    "content": "This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at jekyllrb.com . You can find the source code for Minima at GitHub: jekyll / minima . You can find the source code for Jekyll at GitHub: jekyll / jekyll . ",
+    "url": "/engineering/",
+    "relUrl": "/engineering/"
+  },"1": {
+    "doc": "About",
+    "title": "Sana",
+    "content": "Sana comes from the verb sanar in Spanish, which means healing. We firmly believe that serving our communities has healing powers on an individual and collective level. Our app will enable people to contribute with their skills and expertise to fulfill the needs of their community. Try it out . ",
+    "url": "/#sana",
+    "relUrl": "/#sana"
+  },"2": {
+    "doc": "About",
+    "title": "About",
+    "content": ". ",
+    "url": "/",
+    "relUrl": "/"
+  },"3": {
+    "doc": "Team Process & Methodologies",
+    "title": "Process",
+    "content": " ",
+    "url": "/process/#process",
+    "relUrl": "/process/#process"
+  },"4": {
+    "doc": "Team Process & Methodologies",
+    "title": "Team",
+    "content": "Our team utilized weekly meetings on Tuesdays, paired programming or breakout sessions where necessary, and a Trello project board to manage our tasks and process. Adam did a varied stack of work, managing our deployment and CI/CD with Heroku and Codeship respectively, setting up our initial UI and CRUD operations, implementing our initial Figma wireframe, and worked with many of our external gems and libraries for our features. He was responsible for our real-time notifications, alerts and tooltips, matching &amp; messaging, and native &amp; SSO authentication. Sarah did a varied stack of work, being the primary maintainee and implementer of our testing suite, developing our profile views and organization system, and implementing critical sections of our match backend logic. Nicole focused on a lot of front-end and design work, designing our logo, design typography and final UI, co-developing our paper prototype, implementing our home and about pages, implementing search and filtering functionality, and incorporating our category system. Aaron worked on mostly back-end development, implementing CRUD operations for posting and replying, enabling mailing capability for password reset, building a lot of our forms, and implementing reactions. ",
+    "url": "/process/#team",
+    "relUrl": "/process/#team"
+  },"5": {
+    "doc": "Team Process & Methodologies",
+    "title": "Development",
+    "content": "Our application was conceptualized as a blending of ideas in creating communities for those living with illnesses and a forum to connect those who can provide for or are requesting help with specific needs. Our conceptualization started with paper prototypes and continued with interactive Figma wireframes, with our UI blending as a combination of the two. ",
+    "url": "/process/#development",
+    "relUrl": "/process/#development"
+  },"6": {
+    "doc": "Team Process & Methodologies",
+    "title": "Deployment &amp; Testing",
+    "content": "We utilized minitest to test our models for valid and invalid cases and test routes and critical functionality, developing helpers to assist in testing more complex flows. We adhere to continuous integration and continuous deployment practices. Initially automatically deploying to Heroku on every push to the main branch, we further optimized by connecting with CodeShip, so now upon every push to the main branch, CodeShip runs our test suite in its environment, and if it passes, it then deploys our application to production on Heroku. ",
+    "url": "/process/#deployment--testing",
+    "relUrl": "/process/#deployment--testing"
+  },"7": {
+    "doc": "Team Process & Methodologies",
+    "title": "Team Process & Methodologies",
+    "content": " ",
+    "url": "/process/",
+    "relUrl": "/process/"
+  },"8": {
+    "doc": "Schema",
+    "title": "Schema",
+    "content": "Post . | Belongs_to User | Has_many Replies | content - string, the body of a post | user_id - integer, the id of the posting user | pinned - boolean, whether a post has been pinned to the top of the forum | is_anonymous - boolean, whether a post is written anonymously | title - string, the title of a post | . User . | Has_many Posts, Organizations, Messages | first_name - string, the first name of a user | last_name - string, the last name of a user | email - string, the email of a user | password_digest - string, the BCrypt digested password of a user | . Match . | Has_many Messages | post_id - integer, the id of the corresponding post if applicable | user1_id - integer, the id of one of the users in the match | user2_id - integer, the id of the other user in the match | user1_confirmed - boolean, whether user1 confirmed the match | user2_confirmed - boolean, whether user2 confirmed the match | . Organization . | name - string, the name of an organization | accepts_donations - boolean, whether an organization accepts donations | location - string, where an organization is located | . Message . | Belongs_to Match | content - string, the body of a message | user_id - integer, the id of a posting user | match_id - integer, the id of the corresponding match | . Reply . | Belongs_to Post | content - string, the body of a reply | to - integer, the id of a recipient user | user_id - integer, the id of a posting user | post_id - integer, the id of the corresponding post | . ",
+    "url": "/schema/",
+    "relUrl": "/schema/"
+  },"9": {
+    "doc": "Functionality & Technologies",
+    "title": "Functionality &amp; Technologies",
+    "content": "| Functionality | Technologies | Description | . | Alert and toast messages/tooltips | Bootstrap, Popper.js, and jQuery | We use Bootstrap’s toasts and alerts for notifications and model validations respectively. To make the toasts appear and manage their attributes, we utilize jQuery, and we use Popper.js to make them dismissable. Bootstrap, jQuery and Popper.js are added to Sana as yarn packages. | . | Icon typography | Font Awesome | The fontawesome-rails gem provides Font Awesome version 4 icons, which we use to augment the appearance and comprehension of some of our site attributes, such as icons corresponding to different app features and sections, for navigation, etc. | . | Model search and pagination | Kaminari, Searchkick, and Elasticsearch | For optimal depiction of our user and post models, we provide search functionality and paginate their displayed contents. The gem Kaminari enables our pagination of our user and post index views, and the gem Searchkick, underpinned by an Elasticsearch 7 server (on Heroku we use Bonsai), provides the ability to search user and post models by attributes we configured. | . | Administration panel | RailsAdmin | To enable moderation of content on our platform, users can be optionally flagged as admins. Upon doing so, they can edit or delete all models via the app UI even if they don’t own them, pin posts to show up on the top of the forums, and access an entirely separate administration panel provided by RailsAdmin, a gem which comprehensively enables app management. | . | Matching system | StimulusReflex, Hammer.js, and Animate.css | Our matching system which enables users to swipe on posts offering or requesting help is built using a variety of integrated technologies. The gem StimulusReflex is invoked upon user swipes left or right to accept/deny, morphing the post card to the next one and creating a match if applicable. Hammer.js, provided by CDN, enables for the swiping and tracking of swipe motions of the user, and Animate.css, provided by CDN, gives our post cards a nice fade out animation when swiped, and upon animation beginning and ending, we modify the card color to designate their decision. | . | Real-time notifications | Stimulus, CableReady, ActionCable, and Redis | We display real-time notifications via Bootstrap’s toasts (mentioned above) using the gem CableReady (and its underlying ActionCable and Redis dependencies) to broadcast when users who are involved in a post thread or match receive a new reply or a match request and the gem Stimulus to display the toasts. | . | Native authentication and SSO via Facebook &amp; Google | Auth0, BCrypt, Gravatar | We provide native authentication signup via email and password by using the gem BCrypt to securely one-way hash users’ password information and compare them when logging in. Users sign in and maintain being logged in via storing their user_id as session data to the browser. Alternative single sign-on via Facebook &amp; Google is also allowed via the gem Auth0, which we configured as another option. Users also have profile pictures either provided by a personal Gravatar which they can set, or by their SSO via Facebook &amp; Google profile pictures. | . | Password reset | ActionMailer | Users can request a password reset via ActionMailer and receive an email to proceed with resetting their password. | . ",
+    "url": "/functionality-technologies/#functionality--technologies",
+    "relUrl": "/functionality-technologies/#functionality--technologies"
+  },"10": {
+    "doc": "Functionality & Technologies",
+    "title": "Functionality & Technologies",
+    "content": " ",
+    "url": "/functionality-technologies/",
+    "relUrl": "/functionality-technologies/"
+  }
+}
