@@ -24,6 +24,7 @@ Builds on the main branch are validated against our test suite via CodeShip and 
 * Redis, StimulusReflex & CableReady for real-time notifications of replies and matches you're involved in
 * Auth0 for Google and Facebook OAuth alternative login
 * Searchkick and Elasticsearch for searching post and user models
+* ActionMailer for password reset
 
 ## Architecture
 Post
