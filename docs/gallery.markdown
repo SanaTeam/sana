@@ -29,35 +29,35 @@ h1 {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="/assets/architecture.png" class="d-block w-100" alt="Architecture diagram">
+      <img src="/sana/assets/architecture.png" class="d-block w-100" alt="Architecture diagram">
       <div class="carousel-caption d-none d-md-block">
         <h5>Architecture diagram</h5>
         <p>An overview of our CI/CD process and app architecture.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="/assets/index.png" class="d-block w-100" alt="App homepage">
+      <img src="/sana/assets/index.png" class="d-block w-100" alt="App homepage">
       <div class="carousel-caption d-none d-md-block">
         <h5>App homepage</h5>
         <p>What our app's interface and landing page looks like.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="/assets/match.png" class="d-block w-100" alt="Match view">
+      <img src="/sana/assets/match.png" class="d-block w-100" alt="Match view">
       <div class="carousel-caption d-none d-md-block">
         <h5>Match view</h5>
         <p>Our app has an interactive swipe-able match view to connect with users with relevant needs/offerings.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="/assets/notifs.png" class="d-block w-100" alt="Real-time notifications">
+      <img src="/sana/assets/notifs.png" class="d-block w-100" alt="Real-time notifications">
       <div class="carousel-caption d-none d-md-block">
         <h5>Real-time notifications</h5>
         <p>Recieve real-time notifications for threads and matches that you are involved in.</p>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="/assets/profile.png" class="d-block w-100" alt="Profile">
+      <img src="/sana/assets/profile.png" class="d-block w-100" alt="Profile">
       <div class="carousel-caption d-none d-md-block">
         <h5>Profile</h5>
         <p>Access your profile to view your activity, accept matches, and more.</p>
