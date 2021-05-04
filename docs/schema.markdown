@@ -12,6 +12,9 @@ Post
 * pinned - boolean, whether a post has been pinned to the top of the forum
 * is_anonymous - boolean, whether a post is written anonymously
 * title - string, the title of a post
+* categories - string array, the categories pertaining to a post
+* is_request - boolean, whether a post is asking for or offering help
+* organization_id - integer, the id of a posting user's organization if applicable
   
 User
 * Has_many Posts, Organizations, Messages
@@ -19,6 +22,9 @@ User
 * last_name - string, the last name of a user
 * email - string, the email of a user
 * password_digest - string, the BCrypt digested password of a user
+* oauth_id - string, the returned unique identifier from Auth0 for Facebook or Google accounts if they don't use email
+* picture - string, the url to an Auth0 user's profile picture if applicable
+* admin - boolean, whether the user is an admin for Sana and can edit all models, pin posts, etc.
   
 Match
 * Has_many Messages
@@ -45,3 +51,7 @@ Reply
 * to - integer, the id of a recipient user
 * user_id - integer, the id of a posting user
 * post_id - integer, the id of the corresponding post
+
+Administrators
+* user_id - integer, the id of the managing organization user
+* organization_id - integer, the id of the managed organization
