@@ -10,13 +10,13 @@ permalink: /process/
 
 Our team utilized weekly meetings on Tuesdays, paired programming or breakout sessions where necessary, and a [Trello project board](https://trello.com/b/7bAUsPY6/sana-project-board) to manage our tasks and process.
 
-Adam did a varied stack of work, managing our deployment and CI/CD with Heroku and Codeship respectively, setting up our initial UI and CRUD operations, implementing our initial Figma wireframe, and worked with many of our external gems and libraries for our features. He was responsible for our real-time notifications, alerts and tooltips, matching & messaging, and native & SSO authentication.
+Aaron Portman (aaronportman@brandeis.edu) worked on mostly back-end development, implementing CRUD operations for posting and replying, enabling mailing capability for password reset, building a lot of our forms, and implementing reactions.
 
-Sarah did a varied stack of work, being the primary maintainee and implementer of our testing suite, developing our profile views and organization system, and implementing critical sections of our match backend logic.
+Adam Fleishaker (afleishaker@brandeis.edu) did a varied stack of work, managing our deployment and CI/CD with Heroku and Codeship respectively, setting up our initial UI and CRUD operations, implementing our initial Figma wireframe, and worked with many of our external gems and libraries for our features. He was responsible for our real-time notifications, alerts and tooltips, matching & messaging, and native & SSO authentication.
 
-Nicole focused on a lot of front-end and design work, designing our logo, design typography and final UI, co-developing our paper prototype, implementing our home and about pages, implementing search and filtering functionality, and incorporating our category system.
+Nicole Zamora Flores (nicolebzf@brandeis.edu) focused on a lot of front-end and design work, designing our logo, design typography and final UI, co-developing our paper prototype, implementing our home and about pages, implementing search and filtering functionality, and incorporating our category system.
 
-Aaron worked on mostly back-end development, implementing CRUD operations for posting and replying, enabling mailing capability for password reset, building a lot of our forms, and implementing reactions.
+Sarah Baum (sarahbaum@brandeis.edu) did a varied stack of work, being the primary maintainee and implementer of our testing suite, developing our profile views and organization system, and implementing critical sections of our match backend logic.
 
 ## Development
 
