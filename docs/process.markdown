@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Team Process & Methodologies
+title: Process
 permalink: /process/
 ---
 

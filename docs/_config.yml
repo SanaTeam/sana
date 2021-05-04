@@ -27,7 +27,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 url: "https://sanateam.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  sanateam
 logo: "/assets/logo.svg"
-footer_content: "With &hearts; by Sana team<br>Aaron Portman, Adam Fleishaker, Nicole Zamora Flores and Sarah Baum"
+footer_content: "With &hearts; by Sana team<br>Aaron Portman (aaronportman@brandeis.edu)<br>Adam Fleishaker (afleishaker@brandeis.edu)<br>Nicole Zamora Flores (nicolebzf@brandeis.edu)<br>Sarah Baum (sarahbaum@brandeis.edu)"
 
 # Build settings
 theme: "just-the-docs"
