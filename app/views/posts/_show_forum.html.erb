@@ -7,11 +7,11 @@
 <% end %>
 
 <script>
-    function displayReplies() {
-        if (document.getElementById("replies").style.display == "block") {
-            document.getElementById("replies").style.display = "none";
+    function displayReplies(post_id) {
+        if (document.getElementById(post_id).style.display == "block") {
+            document.getElementById(post_id).style.display = "none";
         } else {
-            document.getElementById("replies").style.display = "block";
+            document.getElementById(post_id).style.display = "block";
         }
     }
 
@@ -21,7 +21,6 @@
   <h5 class="card-header">
     <strong>
       <% if !post.is_anonymous %>
-        <% get_gravatar(User.find(post.user_id), "rounded mr-2", 25) %>
         <%= user.full_name %>
         <% if post.organization_id != nil %>
           (<%= Organization.find(post.organization_id).name %>)
@@ -52,9 +51,10 @@
       <% end %>
     </div>
     <%= post.content %>
+    <% post_id = post.id %>
     <br><br>
-    <button class="btn btn-primary mb-2" onclick="displayReplies()">Show Replies</button>
-    <div id="replies" style="display:none;">
+    <button class="btn btn-primary mb-2" onclick="displayReplies(<%= post_id %>)">Show Replies</button>
+    <div id="<%= post_id %>" style="display:none;">
         <div class="replies">
             <%= render '/layouts/minitexts', models: post.replies %>
         </div>
