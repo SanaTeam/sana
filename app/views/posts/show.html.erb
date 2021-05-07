@@ -38,7 +38,7 @@
   <%= render '/layouts/minitexts', models: @post.replies %>
 </div>
 
-<%= render '/replies/form', reply: Reply.new %>
+<%= render '/replies/form', reply: Reply.new, post_id: @post.id %>
 <% matched = false %>
 <% matches = Match.all.where(post_id: @post.id) %>
 <% matches.each do |match| %>
