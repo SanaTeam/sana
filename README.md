@@ -9,6 +9,8 @@ Builds on the main branch are validated against our test suite via CodeShip and 
 
 [![Codeship Status for SanaTeam/sana](https://app.codeship.com/projects/f5b8ec28-e505-4bd2-8ceb-270ae746f985/status?branch=main)](https://app.codeship.com/projects/443139)
 
+[Read our documentation GitHub Pages](https://sanateam.github.io/sana/)
+
 [Heroku link](http://sana-app.herokuapp.com/)
 
 [Paper prototype](https://github.com/SanaTeam/sana/blob/main/public/paper_prototypes.pdf)
@@ -24,6 +26,7 @@ Builds on the main branch are validated against our test suite via CodeShip and 
 * Redis, StimulusReflex & CableReady for real-time notifications of replies and matches you're involved in
 * Auth0 for Google and Facebook OAuth alternative login
 * Searchkick and Elasticsearch for searching post and user models
+* ActionMailer for password reset
 
 ## Architecture
 Post
@@ -34,6 +37,9 @@ Post
 * pinned - boolean, whether a post has been pinned to the top of the forum
 * is_anonymous - boolean, whether a post is written anonymously
 * title - string, the title of a post
+* categories - string array, the categories pertaining to a post
+* is_request - boolean, whether a post is asking for or offering help
+* organization_id - integer, the id of a posting user's organization if applicable
   
 User
 * Has_many Posts, Organizations, Messages
@@ -41,6 +47,9 @@ User
 * last_name - string, the last name of a user
 * email - string, the email of a user
 * password_digest - string, the BCrypt digested password of a user
+* oauth_id - string, the returned unique identifier from Auth0 for Facebook or Google accounts if they don't use email
+* picture - string, the url to an Auth0 user's profile picture if applicable
+* admin - boolean, whether the user is an admin for Sana and can edit all models, pin posts, etc.
   
 Match
 * Has_many Messages
@@ -68,6 +77,9 @@ Reply
 * user_id - integer, the id of a posting user
 * post_id - integer, the id of the corresponding post
 
+Administrators
+* user_id - integer, the id of the managing organization user
+* organization_id - integer, the id of the managed organization
 
 ## URL Scheme
 Implemented URL paths:

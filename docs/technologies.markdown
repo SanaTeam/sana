@@ -1,0 +1,18 @@
+---
+layout: page
+title: Functionality & Technologies
+permalink: /functionality-technologies/
+---
+
+# Functionality & Technologies
+
+|Functionality | Technologies        | Description          |
+|:------------|:------------------|:---------------------|
+|Alert and toast messages/tooltips | Bootstrap, Popper.js, and jQuery              | We use Bootstrap's toasts and alerts for notifications and model validations respectively. To make the toasts appear and manage their attributes, we utilize jQuery, and we use Popper.js to make them dismissable. Bootstrap, jQuery and Popper.js are added to Sana as yarn packages.   |
+| Icon typography | Font Awesome   | The fontawesome-rails gem provides Font Awesome version 4 icons, which we use to augment the appearance and comprehension of some of our site attributes, such as icons corresponding to different app features and sections, for navigation, etc. |
+| Model search and pagination | Kaminari, Searchkick, and Elasticsearch   | For optimal depiction of our user and post models, we provide search functionality and paginate their displayed contents. The gem Kaminari enables our pagination of our user and post index views, and the gem Searchkick, underpinned by an Elasticsearch 7 server (on Heroku we use Bonsai), provides the ability to search user and post models by attributes we configured. |
+|  Administration panel  | RailsAdmin | To enable moderation of content on our platform, users can be optionally flagged as admins. Upon doing so, they can edit or delete all models via the app UI even if they don't own them, pin posts to show up on the top of the forums, and access an entirely separate administration panel provided by RailsAdmin, a gem which comprehensively enables app management. |
+| Matching system | StimulusReflex, Hammer.js, and Animate.css | Our matching system which enables users to swipe on posts offering or requesting help is built using a variety of integrated technologies. The gem StimulusReflex is invoked upon user swipes left or right to accept/deny, morphing the post card to the next one and creating a match if applicable. Hammer.js, provided by CDN, enables for the swiping and tracking of swipe motions of the user, and Animate.css, provided by CDN, gives our post cards a nice fade out animation when swiped, and upon animation beginning and ending, we modify the card color to designate their decision. |
+| Real-time notifications | Stimulus, CableReady, ActionCable, and Redis | We display real-time notifications via Bootstrap's toasts (mentioned above) using the gem CableReady (and its underlying ActionCable and Redis dependencies) to broadcast when users who are involved in a post thread or match receive a new reply or a match request and the gem Stimulus to display the toasts. |
+| Native authentication and SSO via Facebook & Google | Auth0, BCrypt, Gravatar | We provide native authentication signup via email and password by using the gem BCrypt to securely one-way hash users' password information and compare them when logging in. Users sign in and maintain being logged in via storing their user_id as session data to the browser. Alternative single sign-on via Facebook & Google is also allowed via the gem Auth0, which we configured as another option. Users also have profile pictures either provided by a personal Gravatar which they can set, or by their SSO via Facebook & Google profile pictures. |
+| Password reset | ActionMailer | Users can request a password reset via ActionMailer and receive an email to proceed with resetting their password.

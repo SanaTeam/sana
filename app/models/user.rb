@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :posts
     has_many :messages
     has_secure_password
+    paginates_per 10
 
     validates :first_name, presence: true 
     validates :last_name, presence: true

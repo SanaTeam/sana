@@ -1,0 +1,11 @@
+---
+name: Sana
+blurb: Sana comes from the verb sanar in Spanish, which means healing. Our app will enable people to contribute with their skills and expertise to fulfill the needs of their community.
+course: CS166B
+semester: 2021 (Spring)
+github: https://github.com/SanaTeam/sana 
+application: https://sana-app.herokuapp.com/
+presentation: https://github.com/SanaTeam/sana/blob/main/public/presentation.pdf
+image: http://raw.githubusercontent.com/SanaTeam/sana/main/public/logo.png
+team: Aaron Portman, Adam Fleishaker, Nicole Zamora Flores, Sarah Baum
+---
