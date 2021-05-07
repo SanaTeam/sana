@@ -10,8 +10,10 @@
     function displayReplies(post_id) {
         if (document.getElementById(post_id).style.display == "block") {
             document.getElementById(post_id).style.display = "none";
+            event.target.innerHTML = "Show Replies";
         } else {
             document.getElementById(post_id).style.display = "block";
+            event.target.innerHTML = "Hide Replies";
         }
     }
 
@@ -52,6 +54,7 @@
     </div>
     <%= post.content %>
     <% post_id = post.id %>
+    <% button_id = post.id.to_s + "button" %>
     <br><br>
     <button class="btn btn-primary mb-2" onclick="displayReplies(<%= post_id %>)">Show Replies</button>
     <div id="<%= post_id %>" style="display:none;">
