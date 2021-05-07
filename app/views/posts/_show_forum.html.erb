@@ -7,18 +7,11 @@
 <% end %>
 
 <script>
-    function displayReplies(post_id, button_id) {
+    function displayReplies(post_id) {
         if (document.getElementById(post_id).style.display == "block") {
             document.getElementById(post_id).style.display = "none";
         } else {
             document.getElementById("replies").style.display = "block";
-        }
-
-        if (document.getElementById(button_id).value == "Show Replies") {
-          document.getElementById(button_id).value = "Hide Replies"
-        } else {
-          document.getElementById(button_id).value = "Show Replies"
-
         }
     }
 
@@ -28,8 +21,6 @@
   <h5 class="card-header">
     <strong>
       <% if !post.is_anonymous %>
-        <%= User.find(post.user_id) %>
-        <%= get_gravatar(User.find(post.user_id), "rounded mr-2", 25) %>
         <%= user.full_name %>
         <% if post.organization_id != nil %>
           (<%= Organization.find(post.organization_id).name %>)
@@ -62,7 +53,7 @@
     <%= post.content %>
     <br><br>
     <% post_id = post.id %>
-    <button id="<%= post_id %>_button" class="btn btn-primary mb-2" onclick=displayReplies(<%= post_id %>, "<%= post_id %>_button")>Show Replies</button>
+    <button class="btn btn-primary mb-2" onclick=displayReplies("<%= post_id %>")>Show Replies</button>
     <div id="<%= post_id %>" style="display:none;">
         <div class="replies">
             <%= render '/layouts/minitexts', models: post.replies %>
