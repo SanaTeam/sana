@@ -7,9 +7,9 @@
 <% end %>
 
 <script>
-    function displayReplies(post_id) {
-        if (document.getElementById(post_id).style.display == "block") {
-            document.getElementById(post_id).style.display = "none";
+    function displayReplies() {
+        if (document.getElementById("replies").style.display == "block") {
+            document.getElementById("replies").style.display = "none";
         } else {
             document.getElementById("replies").style.display = "block";
         }
@@ -53,9 +53,8 @@
     </div>
     <%= post.content %>
     <br><br>
-    <% post_id = post.id %>
-    <button class="btn btn-primary mb-2" onclick=displayReplies(<%= post_id %>)>Show Replies</button>
-    <div id="<%= post_id %>" style="display:none;">
+    <button class="btn btn-primary mb-2" onclick="displayReplies()">Show Replies</button>
+    <div id="replies" style="display:none;">
         <div class="replies">
             <%= render '/layouts/minitexts', models: post.replies %>
         </div>
